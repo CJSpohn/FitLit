@@ -1,10 +1,10 @@
-class UserRepository = {
+class UserRepository {
   constructor(data) {
-    this.users = data,
+    this.users = data
   }
 
   getUserData(userId) {
-    return data.find(user => user.id === userId);
+    return this.users.find(user => user.id === userId);
   }
 
   getAvgStepGoal() {
@@ -17,7 +17,6 @@ class UserRepository = {
   }
 
 }
-
 
 if (typeof module !== 'undefined') {
   module.exports = UserRepository;
