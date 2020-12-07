@@ -15,3 +15,4 @@ console.log(curUser.getUserFirstName())
 
 console.log(userHydration.getLifetimeHydrationAvg());
 console.log(userHydration.getHydrationForSpecificDate("2019/06/15"));
+console.log(userHydration.getHydrationDataForRange("2019/07/15", "2019/07/22"))

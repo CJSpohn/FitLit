@@ -18,4 +18,16 @@ class Hydration {
   getHydrationForSpecificDate(date) {
     return this.userHydrationData.find(data => date === data.date).numOunces;
   }
+
+  getHydrationDataForRange(startDate, endDate) {
+    let firstIndex = this.userHydrationData.findIndex(data => startDate === data.date);
+    let endIndex = this.userHydrationData.findIndex(data => endDate === data.date);
+
+    let dataRange = this.userHydrationData.slice(firstIndex, endIndex + 1);
+
+    let ouncesPerDay = dataRange.map(data => data.numOunces);
+
+    return ouncesPerDay;
+
+  }
 }
