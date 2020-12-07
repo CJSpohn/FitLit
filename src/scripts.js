@@ -6,9 +6,13 @@ let allUsers = new UserRepository(userData);
 
 console.log(allUsers.getAvgStepGoal())
 
-let curUser = allUsers.getUserData(30)
+let curUser = new User(allUsers.getUserData(30));
 
-let curUserObject = new User(curUser);
+let userHydration = new Hydration(curUser);
 
-console.log(curUserObject)
-console.log(curUserObject.getUserFirstName())
+console.log(curUser)
+console.log(curUser.getUserFirstName())
+
+console.log(userHydration.getLifetimeHydrationAvg());
+console.log(userHydration.getHydrationForSpecificDate("2019/06/15"));
+console.log(userHydration.getHydrationDataForRange("2019/07/15", "2019/07/22"))
