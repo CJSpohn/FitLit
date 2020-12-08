@@ -4,7 +4,7 @@ class Sleep {
     this.userSleepData = sleepData.filter(data => this.userID === data.userID);
   }
 
-  getLifetimeSleepAvg() {
+  getLifetimeSleepHoursAvg() {
     let userSleepHoursTotal = this.userSleepData.reduce((total, day) => {
       total += day.hoursSlept;
       return total;
@@ -15,7 +15,7 @@ class Sleep {
     return userSleepAvg;
   }
 
-  getLifetimeSleepQuality() {
+  getLifetimeSleepQualityAvg() {
     let userSleepQualityTotal = this.userSleepData.reduce((total, day) => {
       total += day.sleepQuality;
       return total;
@@ -25,7 +25,11 @@ class Sleep {
 
     return userSleepAvg;
   }
-  
+
+  getInformationForSpecificDate(date, attribute) {
+    return this.userSleepData.find(data => data.date === date)[attribute];
+  }
+
 
 
 }
