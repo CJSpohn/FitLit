@@ -58,7 +58,7 @@ class Sleep {
     userData.forEach(user => {
       let curUser = new Sleep(user);
       let userSleepRange = curUser.getSleepInfoForRange(startDate, endDate, 'sleepQuality');
-      let userSleepTotal = userSleepRange.reduce((a,c) => a + c);
+      let userSleepTotal = userSleepRange.reduce((a, c) => a + c);
       let userSleepAvg = userSleepTotal / userSleepRange.length
       if (userSleepAvg > 3) {
         usersWhoAvgOver3.push(user);
@@ -87,4 +87,15 @@ class Sleep {
     return usersWhoAvgOver3;
   }
 
+
+  getSleepRecordForDate(date) {
+    let usersSleepData = sleepData.filter(data => data.date === date);
+
+    let sortedSleepData = usersSleepData.sort((a, b) => b.hoursSlept - a.hoursSlept);
+    let mostSleptHours = sortedSleepData[0].hoursSlept
+
+    let sleepRecordWinners = sortedSleepData.filter(data => data.hoursSlept === mostSleptHours)
+
+    return sleepRecordWinners
+  }
 }

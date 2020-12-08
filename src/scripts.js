@@ -27,3 +27,4 @@ console.log('user sleep info for range: (quality)', userSleep.getSleepInfoForRan
 console.log('user sleep info for range: (hours)', userSleep.getSleepInfoForRange('2019/06/15', '2019/06/22', 'hoursSlept'))
 console.log('all user sleep quality', userSleep.getAllUsersAvgSleepQuality())
 console.log('get all users over avg of 3', userSleep.getAllUsersSleepQualityAvgOver3('2019/06/20', '2019/06/22'))
+console.log('get sleep record winner for date:', userSleep.getSleepRecordForDate('2019/06/20'))
