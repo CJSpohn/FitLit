@@ -12,7 +12,7 @@ class Sleep {
 
     let userSleepAvg = userSleepHoursTotal / this.userSleepData.length;
 
-    return userSleepAvg;
+    return parseFloat(userSleepAvg.toFixed(2));
   }
 
   getLifetimeSleepQualityAvg() {
@@ -23,7 +23,7 @@ class Sleep {
 
     let userSleepAvg = userSleepQualityTotal / this.userSleepData.length;
 
-    return userSleepAvg;
+    return parseFloat(userSleepAvg.toFixed(2));
   }
 
   getSleepInfoForSpecificDate(date, attribute) {
