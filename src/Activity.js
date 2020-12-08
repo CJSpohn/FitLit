@@ -45,4 +45,9 @@ class Activity {
     return daysThatGoalReached.map(day => day.date);
   }
 
+  getStairClimbRecord() {
+      const highestStairDay = this.userActivityData.reduce((data1, data2) => data1.flightsOfStairs > data2.flightsOfStairs ? data1 : data2);
+      return highestStairDay.flightsOfStairs;
+  }
+
 }
