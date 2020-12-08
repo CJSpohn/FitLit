@@ -39,4 +39,10 @@ class Activity {
     }
   }
 
+  getAllDaysThatStepGoalReached() {
+    const daysThatGoalReached =  this.userActivityData.filter(data => data.numSteps >= this.userStepGoal);
+
+    return daysThatGoalReached.map(day => day.date);
+  }
+
 }
