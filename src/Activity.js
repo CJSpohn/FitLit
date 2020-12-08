@@ -2,6 +2,7 @@ class Activity {
   constructor(user) {
     this.userID = user.id;
     this.strideLength = user.strideLength;
+    this.userStepGoal = user.dailyStepGoal;
     this.userActivityData = activityData.filter(data => this.userID === data.userID);
   }
 
@@ -28,6 +29,14 @@ class Activity {
     return minutesActiverPerDay;
   }
 
+  verifyStepGoalForSpecificDate(date) {
+    let numOfStepsOnDate = this.userActivityData.find(data => data.date === date).numSteps;
 
+    if (numOfStepsOnDate >= this.userStepGoal) {
+      return "You have reached your goal!"
+    } else {
+      return "You're almost to your goal!"
+    }
+  }
 
 }
