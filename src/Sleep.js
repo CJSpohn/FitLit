@@ -4,24 +4,13 @@ class Sleep {
     this.userSleepData = sleepData.filter(data => this.userID === data.userID);
   }
 
-  getLifetimeSleepHoursAvg() {
-    let userSleepHoursTotal = this.userSleepData.reduce((total, day) => {
-      total += day.hoursSlept;
+  getLifetimeSleepAttAvg(attribute) {
+    let userSleepAttTotal = this.userSleepData.reduce((total, day) => {
+      total += day[attribute];
       return total;
     }, 0)
 
-    let userSleepAvg = userSleepHoursTotal / this.userSleepData.length;
-
-    return parseFloat(userSleepAvg.toFixed(2));
-  }
-
-  getLifetimeSleepQualityAvg() {
-    let userSleepQualityTotal = this.userSleepData.reduce((total, day) => {
-      total += day.sleepQuality;
-      return total;
-    }, 0)
-
-    let userSleepAvg = userSleepQualityTotal / this.userSleepData.length;
+    let userSleepAvg = userSleepAttTotal / this.userSleepData.length;
 
     return parseFloat(userSleepAvg.toFixed(2));
   }
@@ -65,25 +54,6 @@ class Sleep {
       }
     })
 
-    // userData.forEach(user => {
-    //   let userSleepData = sleepData.filter(data => user.id === data.userID);
-    //   let startIndex = userSleepData.findIndex(data => startDate === data.date);
-    //   let endIndex = userSleepData.findIndex(data => endDate === data.date);
-    //
-    //   let dataRange = userSleepData.slice(startIndex, endIndex + 1);
-    //
-    //   let userSleepQualityTotal = dataRange.reduce((total, date) => {
-    //     total += date.sleepQuality;
-    //     return total;
-    //   }, 0)
-    //
-    //   let userSleepQualityAvg = userSleepQualityTotal / dataRange.length;
-    //
-    //   if (userSleepQualityAvg > 3) {
-    //     usersWhoAvgOver3.push(userData.find(data => data.id === user.id))
-    //   };
-    // })
-
     return usersWhoAvgOver3;
   }
 
@@ -92,9 +62,9 @@ class Sleep {
     let usersSleepData = sleepData.filter(data => data.date === date);
 
     let sortedSleepData = usersSleepData.sort((a, b) => b.hoursSlept - a.hoursSlept);
-    let mostSleptHours = sortedSleepData[0].hoursSlept
+    let mostSleptHours = sortedSleepData[0].hoursSlept;
 
-    let sleepRecordWinners = sortedSleepData.filter(data => data.hoursSlept === mostSleptHours)
+    let sleepRecordWinners = sortedSleepData.filter(data => data.hoursSlept === mostSleptHours);
 
     return sleepRecordWinners
   }
