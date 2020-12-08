@@ -10,9 +10,12 @@ let curUser = new User(allUsers.getUserData(30));
 
 let userHydration = new Hydration(curUser);
 
+let userActivity = new Activity(curUser);
+
 console.log(curUser)
 console.log(curUser.getUserFirstName())
 
 console.log(userHydration.getLifetimeHydrationAvg());
 console.log(userHydration.getHydrationForSpecificDate("2019/06/15"));
-console.log(userHydration.getHydrationDataForRange("2019/07/15", "2019/07/22"))
+console.log(userHydration.getHydrationDataForRange("2019/07/15", "2019/07/22"));
+console.log(userActivity.getMilesForSpecificDate("2019/06/15"));

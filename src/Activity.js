@@ -6,6 +6,10 @@ class Activity {
   }
 
   getMilesForSpecificDate(date) {
-    let numOfStepsOnDate
+    let numOfStepsOnDate = this.userActivityData.find(data => data.date === date).numSteps;
+    const numOfMiles = (numOfStepsOnDate * this.strideLength) / 5280;
+    return parseFloat(numOfMiles.toFixed(2));
   }
+
+
 }
