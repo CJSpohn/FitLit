@@ -46,8 +46,18 @@ class Activity {
   }
 
   getStairClimbRecord() {
-      const highestStairDay = this.userActivityData.reduce((data1, data2) => data1.flightsOfStairs > data2.flightsOfStairs ? data1 : data2);
-      return highestStairDay.flightsOfStairs;
+    const highestStairDay = this.userActivityData.reduce((data1, data2) => data1.flightsOfStairs > data2.flightsOfStairs ? data1 : data2);
+    return highestStairDay.flightsOfStairs;
+  }
+
+  getActivityAvgsForAllUsers(activity) {
+    let totalNumOfActivity = activityData.reduce((total, data) => {
+      total += data[activity];
+      return total
+    }, 0)
+
+    let avgNumOfActivity = totalNumOfActivity / activityData.length;
+    return parseFloat(avgNumOfActivity.toFixed(2));
   }
 
 }
