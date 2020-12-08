@@ -42,38 +42,47 @@ class Sleep {
   }
 
   getAllUsersAvgSleepQuality() {
-    let allUserSleepQualityTotal = sleepData.reduce((total, data) => {
+    let allUserSleepQualityTotal = sleepData.reduce((total, day) => {
       total += day.sleepQuality;
       return total
     }, 0)
 
     let allUserSleepQualityAvg = allUserSleepQualityTotal / sleepData.length
 
-    return allUserSleepQualityAvg
+    return parseFloat(allUserSleepQualityAvg.toFixed(2));
   }
 
   getAllUsersSleepQualityAvgOver3(startDate, endDate) {
     let usersWhoAvgOver3 = [];
 
-    users.forEach(user => {
-      let userSleepData = sleepData.filter(data => user.id === data.userID);
-
-      let startIndex = userSleepData.findIndex(data => startDate === data.date);
-      let endIndex = userSleepData.findIndex(data => endDate === data.date);
-
-      let dataRange = userSleepData.slice(startIndex, endIndex + 1);
-
-      let userSleepQualityTotal = dataRange.reduce((total, date) => {
-        total += date.sleepQuality;
-        return total;
-      }, 0)
-
-      let userSleepQualityAvg = userSleepQualityTotal / userSleepData.length;
-
-      if (userSleepQualityAvg > 3) {
-        usersWhoAvgOver3.push(userData.find(data => data.id === user.id))
-      };
+    userData.forEach(user => {
+      let curUser = new Sleep(user);
+      let userSleepRange = curUser.getSleepInfoForRange(startDate, endDate, 'sleepQuality');
+      let userSleepTotal = userSleepRange.reduce((a,c) => a + c);
+      let userSleepAvg = userSleepTotal / userSleepRange.length
+      if (userSleepAvg > 3) {
+        usersWhoAvgOver3.push(user);
+      }
     })
+
+    // userData.forEach(user => {
+    //   let userSleepData = sleepData.filter(data => user.id === data.userID);
+    //   let startIndex = userSleepData.findIndex(data => startDate === data.date);
+    //   let endIndex = userSleepData.findIndex(data => endDate === data.date);
+    //
+    //   let dataRange = userSleepData.slice(startIndex, endIndex + 1);
+    //
+    //   let userSleepQualityTotal = dataRange.reduce((total, date) => {
+    //     total += date.sleepQuality;
+    //     return total;
+    //   }, 0)
+    //
+    //   let userSleepQualityAvg = userSleepQualityTotal / dataRange.length;
+    //
+    //   if (userSleepQualityAvg > 3) {
+    //     usersWhoAvgOver3.push(userData.find(data => data.id === user.id))
+    //   };
+    // })
 
     return usersWhoAvgOver3;
   }
