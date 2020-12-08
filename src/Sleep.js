@@ -5,16 +5,26 @@ class Sleep {
   }
 
   getLifetimeSleepAvg() {
-    let userSleepTotal = this.userSleepData.reduce((total, day) => {
+    let userSleepHoursTotal = this.userSleepData.reduce((total, day) => {
       total += day.hoursSlept;
       return total;
     }, 0)
 
-    let userSleepAvg = userSleepTotal / this.userSleepData.length;
+    let userSleepAvg = userSleepHoursTotal / this.userSleepData.length;
 
     return userSleepAvg;
   }
 
+  getLifetimeSleepQuality() {
+    let userSleepQualityTotal = this.userSleepData.reduce((total, day) => {
+      total += day.sleepQuality;
+      return total;
+    }, 0)
+
+    let userSleepAvg = userSleepQualityTotal / this.userSleepData.length;
+
+    return userSleepAvg;
+  }
   
 
 
