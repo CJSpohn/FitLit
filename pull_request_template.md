@@ -1,9 +1,9 @@
-#### Is this a fix or a feature?
+Is this a fix or a feature?
 
-####  What is the change/fix?
+What is the change/fix?
 
-####  Where should the reviewer start?
+Where should the reviewer start?
 
-####  How should this be tested?
+How should this be tested?
 
-####  Screenshots(if appropriate)
+Screenshots(if appropriate)

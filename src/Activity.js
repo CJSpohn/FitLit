@@ -33,9 +33,9 @@ class Activity {
     let numOfStepsOnDate = this.userActivityData.find(data => data.date === date).numSteps;
 
     if (numOfStepsOnDate >= this.userStepGoal) {
-      return "You have reached your goal!"
+      return "You have reached your goal!";
     } else {
-      return "You're almost to your goal!"
+      return "You're almost to your goal!";
     }
   }
 
@@ -53,10 +53,11 @@ class Activity {
   getActivityAvgsForAllUsers(activity) {
     let totalNumOfActivity = activityData.reduce((total, data) => {
       total += data[activity];
-      return total
-    }, 0)
+      return total;
+    }, 0);
 
     let avgNumOfActivity = totalNumOfActivity / activityData.length;
+
     return parseFloat(avgNumOfActivity.toFixed(2));
   }
 
