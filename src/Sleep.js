@@ -24,10 +24,7 @@ class Sleep {
     let endIndex = this.userSleepData.findIndex(data => endDate === data.date);
 
     let dataRange = this.userSleepData.slice(startIndex, endIndex + 1);
-
-    let attributePerDay = dataRange.map(data => data[attribute]);
-
-    return attributePerDay
+    return dataRange
   }
 
   getAllUsersAvgSleepQuality() {
