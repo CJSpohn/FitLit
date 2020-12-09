@@ -10,8 +10,13 @@ let curUser = new User(allUsers.getUserData(30));
 
 let userHydration = new Hydration(curUser);
 
+let userActivity = new Activity(curUser);
+
 console.log(curUser)
 console.log('user first name:', curUser.getUserFirstName())
+
+
+console.log(userActivity.getActivityAvgsForAllUsers("numSteps"));
 
 console.log('user hydration avg:', userHydration.getLifetimeHydrationAvg());
 console.log('user hydration for date:', userHydration.getHydrationForSpecificDate('2019/06/15'));
@@ -28,3 +33,4 @@ console.log('user sleep info for range: (hours)', userSleep.getSleepInfoForRange
 console.log('all user sleep quality', userSleep.getAllUsersAvgSleepQuality())
 console.log('get all users over avg of 3', userSleep.getAllUsersSleepQualityAvgOver3('2019/06/20', '2019/06/27'))
 console.log('get sleep record winner for date:', userSleep.getSleepRecordForDate('2019/06/20'));
+
