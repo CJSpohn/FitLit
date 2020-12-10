@@ -47,7 +47,7 @@ class Activity {
 
   getStairClimbRecord() {
     const highestStairDay = this.userActivityData.reduce((data1, data2) => data1.flightsOfStairs > data2.flightsOfStairs ? data1 : data2);
-    return highestStairDay.flightsOfStairs;
+    return highestStairDay;
   }
 
   getActivityAvgsForAllUsers(activity) {

@@ -88,7 +88,10 @@ const writeSleepHoursAvg = () => {
 
 const writeUserStepsRecord = () => {
   const userActivity = new Activity(currentUser);
-  const userLifetimeStairsRecord = userActivity.
+  const userLifetimeStairsRecord = userActivity.getStairClimbRecord();
+  lifetimeStairsRecord.innerHTML += `
+    <p>On ${lifetimeStairsRecord.date} you climbed a record ${lifetimeStairsRecord.flightsOfStairs} flights of stairs!</p>
+  `
 }
 
 const populateWidgets = () => {
