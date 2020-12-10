@@ -12,7 +12,7 @@ const infoCard = document.querySelector('.js-user-info');
 const allUserStepGoalCard = document.querySelector('.js-step-goal');
 const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
 const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
-const lifetimeStairsAvg = document.querySelector('.js-sc-lifetime-avg');
+const lifetimeStairsRecord = document.querySelector('.js-stair-record');
 
 //buttons
 const hydrationButton = document.querySelector('.js-hydration');
@@ -79,11 +79,16 @@ const writeUserHydrationAvg = () => {
 }
 
 const writeSleepHoursAvg = () => {
-  
+  const userSleep = new Sleep(currentUser);
+  const userLifetimeSleepHoursAvg = userSleep.getLifetimeSleepAttAvg('hoursSlept');
+  lifetimeSleepHoursAvg.innerHTML += `
+    <p>You've slept ${userLifetimeSleepHoursAvg} hours per day since starting FitLit!</p>
+  `
 }
 
 const writeUserStepsRecord = () => {
-
+  const userActivity = new Activity(currentUser);
+  const userLifetimeStairsRecord = userActivity.
 }
 
 const populateWidgets = () => {
