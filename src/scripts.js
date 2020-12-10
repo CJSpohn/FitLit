@@ -29,10 +29,25 @@ const activityDisplay = document.querySelector('.js-activity-display');
 const profileDisplay = document.querySelector('.js-profile-display');
 
 
-
 //Functions
 const hidePages = () => {
+  hydrationDisplay.classList.add('hidden');
+  sleepDisplay.classList.add('hidden');
+  activityDisplay.classList.add('hidden');
+  profileDisplay.classList.add('hidden');
+}
 
+const displayPage = (pageToShow) => {
+  hidePages();
+  if (pageToShow === 'activity') {
+    activityDisplay.classList.remove('hidden');
+  } else if (pageToShow === 'sleep') {
+    sleepDisplay.classList.remove('hidden');
+  } else if (pageToShow === 'hydration') {
+    hydrationDisplay.classList.remove('hidden');
+  } else if (pageToShow === 'profile') {
+    profileDisplay.classList.remove('hidden');
+  }
 }
 
 const switchPage = () => {
@@ -109,7 +124,6 @@ const goToDashboard = () => {
   populateWidgets();
 }
 
-
 //Event listeners
 window.onload = () => {
   allUsers.users.forEach(user => {
@@ -119,3 +133,15 @@ window.onload = () => {
 })};
 
 goToDashboardButton.addEventListener('click', goToDashboard);
+hydrationButton.addEventListener('click', function() {
+  displayPage('hydration')
+)
+sleepButton.addEventListener('click', function() {
+  displayPage('sleep')
+)
+activityButton.addEventListener('click', function() {
+  displayPage('activity')
+)
+profileButton.addEventListener('click', function() {
+  displayPage('profile')
+)
