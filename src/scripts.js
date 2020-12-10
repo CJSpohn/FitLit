@@ -72,7 +72,18 @@ const createUserInfo = () => {
 
 const writeUserHydrationAvg = () => {
   const userHydration = new Hydration(currentUser);
-  const userLifeTimeAvg = userHydration.getLifetimeHydrationAvg();
+  const userLifetimeAvg = userHydration.getLifetimeHydrationAvg();
+  lifetimeHydrationAvg.innerHTML += `
+    <p>You've consumed ${userLifetimeAvg} ounces per day since starting FitLit!</p>
+  `
+}
+
+const writeSleepHoursAvg = () => {
+  
+}
+
+const writeUserStepsRecord = () => {
+
 }
 
 const populateWidgets = () => {
