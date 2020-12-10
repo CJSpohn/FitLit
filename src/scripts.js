@@ -37,15 +37,26 @@ const hidePages = () => {
   profileDisplay.classList.add('hidden');
 }
 
+const updateNavDisplay = (buttonToHighlight) => {
+  sleepButton.classList.remove('nav-button-select');
+  hydrationButton.classList.remove('nav-button-select');
+  activityButton.classList.remove('nav-button-select');
+  buttonToHighlight.classList.add('nav-button-select');
+}
+
 const displayPage = (pageToShow) => {
   hidePages();
   if (pageToShow === 'activity') {
+    updateNavDisplay(activityButton);
     activityDisplay.classList.remove('hidden');
   } else if (pageToShow === 'sleep') {
+    updateNavDisplay(sleepButton);
     sleepDisplay.classList.remove('hidden');
   } else if (pageToShow === 'hydration') {
+    updateNavDisplay(hydrationButton);
     hydrationDisplay.classList.remove('hidden');
   } else if (pageToShow === 'profile') {
+    updateNavDisplay(profileButton);
     profileDisplay.classList.remove('hidden');
   }
 }
@@ -105,7 +116,7 @@ const writeUserStepsRecord = () => {
   const userActivity = new Activity(currentUser);
   const userLifetimeStairsRecord = userActivity.getStairClimbRecord();
   lifetimeStairsRecord.innerHTML += `
-    <p>On ${lifetimeStairsRecord.date} you climbed a record ${lifetimeStairsRecord.flightsOfStairs} flights of stairs!</p>
+    <p>On ${userLifetimeStairsRecord.date} you climbed a record ${userLifetimeStairsRecord.flightsOfStairs} flights of stairs!</p>
   `
 }
 
@@ -113,7 +124,7 @@ const populateWidgets = () => {
   createUserInfo();
   compareStepGoals();
   writeUserHydrationAvg();
-  writeUserSleepHoursAvg();
+  writeSleepHoursAvg();
   writeUserStepsRecord();
 }
 
@@ -135,13 +146,13 @@ window.onload = () => {
 goToDashboardButton.addEventListener('click', goToDashboard);
 hydrationButton.addEventListener('click', function() {
   displayPage('hydration')
-)
+});
 sleepButton.addEventListener('click', function() {
   displayPage('sleep')
-)
+});
 activityButton.addEventListener('click', function() {
   displayPage('activity')
-)
+});
 profileButton.addEventListener('click', function() {
   displayPage('profile')
-)
+});
