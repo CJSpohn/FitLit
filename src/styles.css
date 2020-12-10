@@ -63,19 +63,14 @@ body {
 }
 
 /* Main Page */
-.user-info,
-.step-goal-display{
-  border: 1px solid black;
-  width: 300px;
-  height: 300px;
-}
 
+/* header */
 .main-page-header {
   width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
 }
 
 .welcome-message {
@@ -92,6 +87,27 @@ body {
   background-repeat: no-repeat;
 }
 
+/* nav buttons */
+.nav-buttons-wrapper {
+  width: 100vw;
+  height: 3vh;
+  display: flex;
+}
+
+.nav-button {
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  width: 34vw;
+  background-color: #005AB5;
+}
+
+.nav-button-select {
+  border-bottom: 3px solid orange;
+}
+
+
+/* widgets */
 .widget-display {
   display: flex;
   flex-direction: column;
@@ -100,11 +116,11 @@ body {
 
 .widget {
   text-align: center;
-  margin: 2vw;
+  margin: 2vw 0 2vw 0;
   width: 70vw;
   height: 20vh;
+  border: 1px solid black;
 }
-
 
 .hidden {
   display: none;
