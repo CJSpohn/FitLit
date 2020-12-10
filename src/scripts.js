@@ -56,10 +56,6 @@ const goToDashboard = () => {
 }
 
 
-
-
-
-
 //Event listeners
 window.onload = () => {
   allUsers.users.forEach(user => {
