@@ -21,33 +21,34 @@
     <main class="main-page js-main-page hidden">
       <header class="main-page-header">
         <h1 class="welcome-message js-welcome">Welcome</h1>
-        <button class="main-page-menu"></button>
+        <button class="main-page-menu js-profile"></button>
       </header>
       <section class="nav-buttons-wrapper">
-        <button class="nav-button nav-button-select">Hydration</button>
-        <button class="nav-button">Sleep</button>
-        <button class="nav-button">Activity</button>
+        <button class="nav-button nav-button-select js-hydration">Hydration</button>
+        <button class="nav-button js-sleep">Sleep</button>
+        <button class="nav-button js-activity">Activity</button>
       </section>
+
       <section class="widget-display">
-        <section class="profile-widget-display hidden">
+        <section class="profile-widget-display hidden js-profile-display">
           <section class="widget user-info js-user-info">
           </section>
           <section class=" widget step-goal-display js-step-goal">
           </section>
         </section>
 
-        <section class="hydration-widget-display">
-          <section class="widget num-ounces js-ounces">
+        <section class="hydration-widget-display js-hydration-display">
+          <section class="widget hy-lifetime-avg js-hy-lifetime-avg">
           </section>
         </section>
 
-        <section class="sleep-widget-display hidden">
-          <section class="widget hours-slept js-hours-slept">
+        <section class="sleep-widget-display hidden js-sleep-display">
+          <section class="widget sh-lifetime-avg js-sh-lifetime-avg">
           </section>
         </section>
 
-        <section class="activity-widget-display hidden">
-          <section class="widget stairs-climbed js-stairs">
+        <section class="activity-widget-display hidden js-activity-display">
+          <section class="widget sc-lifetime-avg js-sc-lifetime-avg">
           </section>
         </section>
       </section>

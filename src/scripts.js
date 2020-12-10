@@ -4,14 +4,37 @@ let currentUser;
 
 //query selectors
 const dropDownForUsers = document.querySelector('.js-all-users');
-const loginPage = document.querySelector('.js-login');
 const goToDashboardButton = document.querySelector('.js-enter-dashboard');
-const mainPage = document.querySelector('.js-main-page');
 const welcomeMessage = document.querySelector('.js-welcome');
+
+//widgets
 const infoCard = document.querySelector('.js-user-info');
 const allUserStepGoalCard = document.querySelector('.js-step-goal');
+const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
+const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
+const lifetimeStairsAvg = document.querySelector('.js-sc-lifetime-avg');
+
+//buttons
+const hydrationButton = document.querySelector('.js-hydration');
+const sleepButton = document.querySelector('.js-sleep');
+const activityButton = document.querySelector('.js-activity');
+const profileButton = document.querySelector('.js-profile');
+
+//pages
+const mainPage = document.querySelector('.js-main-page');
+const loginPage = document.querySelector('.js-login');
+const hydrationDisplay = document.querySelector('.js-hydration-display');
+const sleepDisplay = document.querySelector('.js-sleep-display');
+const activityDisplay = document.querySelector('.js-activity-display');
+const profileDisplay = document.querySelector('.js-profile-display');
+
+
 
 //Functions
+const hidePages = () => {
+
+}
+
 const switchPage = () => {
   loginPage.classList.toggle('hidden');
   mainPage.classList.toggle('hidden');
@@ -47,12 +70,24 @@ const createUserInfo = () => {
   }
 }
 
+const writeUserHydrationAvg = () => {
+  const userHydration = new Hydration(currentUser);
+  const userLifeTimeAvg = userHydration.getLifetimeHydrationAvg();
+}
+
+const populateWidgets = () => {
+  createUserInfo();
+  compareStepGoals();
+  writeUserHydrationAvg();
+  writeUserSleepHoursAvg();
+  writeUserStepsRecord();
+}
+
 const goToDashboard = () => {
   switchPage();
   instantiateUser();
   welcomeUser();
-  createUserInfo();
-  compareStepGoals();
+  populateWidgets();
 }
 
 
