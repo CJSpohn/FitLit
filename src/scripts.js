@@ -38,6 +38,7 @@ const hidePages = () => {
 }
 
 const updateNavDisplay = (buttonToHighlight) => {
+  profileButton.classList.remove('nav-button-select');
   sleepButton.classList.remove('nav-button-select');
   hydrationButton.classList.remove('nav-button-select');
   activityButton.classList.remove('nav-button-select');

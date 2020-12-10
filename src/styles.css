@@ -102,6 +102,13 @@ body {
   background-color: #005AB5;
 }
 
+.nav-button:hover,
+.main-page-menu:hover,
+.main-page-menu:focus,
+.nav-button:focus {
+  outline: none;
+}
+
 .nav-button-select {
   border-bottom: 3px solid orange;
 }
