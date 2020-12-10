@@ -105,7 +105,7 @@ const sampleHydrationData = [{
   }
 ];
 
-const sampleSleepDatas = [
+const sampleSleepData = [
   {
     "userID": 1,
     "date": "2019/06/15",
@@ -143,3 +143,10 @@ const sampleSleepDatas = [
     "sleepQuality": 3
   }
 ];
+
+module.exports = {
+  sampleUserData,
+  sampleSleepData,
+  sampleActivityData,
+  sampleHydrationData
+}
