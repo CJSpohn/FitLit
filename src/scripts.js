@@ -1,36 +1,71 @@
-console.log('Hello World');
-
-let userId = 30;
-
+//Global variables
 let allUsers = new UserRepository(userData);
+let currentUser;
 
-console.log(allUsers.getAvgStepGoal())
+//query selectors
+const dropDownForUsers = document.querySelector('.js-all-users');
+const loginPage = document.querySelector('.js-login');
+const goToDashboardButton = document.querySelector('.js-enter-dashboard');
+const mainPage = document.querySelector('.js-main-page');
+const welcomeMessage = document.querySelector('.js-welcome');
+const infoCard = document.querySelector('.js-user-info');
+const allUserStepGoalCard = document.querySelector('.js-step-goal');
 
-let curUser = new User(allUsers.getUserData(30));
+//Functions
+const switchPage = () => {
+  loginPage.classList.toggle('hidden');
+  mainPage.classList.toggle('hidden');
+}
 
-let userHydration = new Hydration(curUser);
+const instantiateUser = () => {
+  const selectedUser = allUsers.getUserData(parseInt(dropDownForUsers.value));
+  currentUser = new User(selectedUser);
+}
 
-let userActivity = new Activity(curUser);
+const welcomeUser = () => {
+  welcomeMessage.innerText = `Welcome ${currentUser.getUserFirstName()}`;
+}
 
-console.log(curUser)
-console.log('user first name:', curUser.getUserFirstName())
+const compareStepGoals = () => {
+  const allUsersStepGoal = allUsers.getAvgStepGoal();
+  if (currentUser.dailyStepGoal > allUsersStepGoal) {
+    allUserStepGoalCard.innerHTML += `
+      <p>Your step goal of ${currentUser.dailyStepGoal} steps is ${currentUser.dailyStepGoal - allUsersStepGoal} steps more than the average user step goal!</p>
+    `
+  } else {
+    allUserStepGoalCard.innerHTML += `
+    <p>Your step goal of ${currentUser.dailyStepGoal} steps is ${allUsersStepGoal - currentUser.dailyStepGoal} steps fewer than the average user step goal!<p>
+    `
+  }
+}
+//REFACTOR
+const createUserInfo = () => {
+  for (let key in currentUser) {
+    infoCard.innerHTML += `
+      <p>${key}: ${currentUser[key]}</p>
+    `
+  }
+}
+
+const goToDashboard = () => {
+  switchPage();
+  instantiateUser();
+  welcomeUser();
+  createUserInfo();
+  compareStepGoals();
+}
 
 
-console.log(userActivity.getActivityAvgsForAllUsers("numSteps"));
 
-console.log('user hydration avg:', userHydration.getLifetimeHydrationAvg());
-console.log('user hydration for date:', userHydration.getHydrationForSpecificDate('2019/06/15'));
-console.log('user hydration for range:', userHydration.getHydrationDataForRange('2019/07/15', '2019/07/22'))
 
-let userSleep = new Sleep(curUser);
 
-console.log('user sleep avg:', userSleep.getLifetimeSleepAttAvg('hoursSlept'))
-console.log('user sleep quality avg:', userSleep.getLifetimeSleepAttAvg('sleepQuality'))
-console.log('user sleep quality for specific date (should be 5.7):', userSleep.getSleepInfoForSpecificDate('2019/06/15', 'hoursSlept'))
-console.log('user sleep hours for specific date (should be 2.4):', userSleep.getSleepInfoForSpecificDate('2019/06/15', 'sleepQuality'))
-console.log('user sleep info for range: (quality)', userSleep.getSleepInfoForRange('2019/06/15', '2019/06/22', 'sleepQuality'))
-console.log('user sleep info for range: (hours)', userSleep.getSleepInfoForRange('2019/06/15', '2019/06/22', 'hoursSlept'))
-console.log('all user sleep quality', userSleep.getAllUsersAvgSleepQuality())
-console.log('get all users over avg of 3', userSleep.getAllUsersSleepQualityAvgOver3('2019/06/20', '2019/06/27'))
-console.log('get sleep record winner for date:', userSleep.getSleepRecordForDate('2019/06/20'));
 
+//Event listeners
+window.onload = () => {
+  allUsers.users.forEach(user => {
+  dropDownForUsers.innerHTML += `
+    <option value='${user.id}'>${user.name}</option>
+    `;
+})};
+
+goToDashboardButton.addEventListener('click', goToDashboard);

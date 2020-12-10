@@ -3,10 +3,30 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://d3js.org/d3.v6.min.js"></script>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
+    <section class="login-page js-login">
+      <form>
+        <h1>FitLit</h1>
+        <label>Select User</label>
+        <select class="all-users-list js-all-users">
+        </select>
+      </form>
+      <button class="go-to-site js-enter-dashboard">Enter Dashboard</button>
+    </section>
+    <main class="main-page js-main-page hidden">
+      <header class="main-page-header">
+        <h1 class="welcome-message js-welcome">Welcome</h1>
+        <button class="main-page-menu"></button>
+        <hr>
+      </header>
+      <section class="user-info js-user-info">
+      </section>
+      <section class="step-goal-display js-step-goal">
+      </section>
+    </main>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
