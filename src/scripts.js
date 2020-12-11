@@ -11,6 +11,8 @@ const welcomeMessage = document.querySelector('.js-welcome');
 const infoCard = document.querySelector('.js-user-info');
 const allUserStepGoalCard = document.querySelector('.js-step-goal');
 const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
+const dailyHydration = document.querySelector('.js-hy-daily');
+const weeklyHydration = document.querySelector('.js-hy-weekly');
 const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
 const lifetimeStairsRecord = document.querySelector('.js-stair-record');
 
@@ -88,6 +90,22 @@ const compareStepGoals = () => {
     `
   }
 }
+//WIDGET  CREATOR FUNCTIONS
+const writeWeeklyHydration = (userHydration) => {
+  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/16', '2019/09/22');
+  hydrationWeekly.forEach(day => {
+    weeklyHydration.innerHTML += `
+      <p>${day.date}: ${day.numOunces}</p>
+    `
+  })
+}
+
+const writeDailyHydration = (userHydration) => {
+  const hydrationToday = userHydration.getHydrationForSpecificDate('2019/09/22');
+  dailyHydration.innerHTML += `
+    <p>You have consumed ${hydrationToday} ounces of water today.</p>
+  `
+}
 //REFACTOR
 const createUserInfo = () => {
   for (let key in currentUser) {
@@ -97,36 +115,51 @@ const createUserInfo = () => {
   }
 }
 
-const writeUserHydrationAvg = () => {
-  const userHydration = new Hydration(currentUser);
+const writeUserHydrationAvg = (userHydration) => {
   const userLifetimeAvg = userHydration.getLifetimeHydrationAvg();
   lifetimeHydrationAvg.innerHTML += `
     <p>You've consumed ${userLifetimeAvg} ounces per day since starting FitLit!</p>
   `
 }
 
-const writeSleepHoursAvg = () => {
-  const userSleep = new Sleep(currentUser);
+const writeSleepHoursAvg = (userSleep) => {
   const userLifetimeSleepHoursAvg = userSleep.getLifetimeSleepAttAvg('hoursSlept');
   lifetimeSleepHoursAvg.innerHTML += `
     <p>You've slept ${userLifetimeSleepHoursAvg} hours per day since starting FitLit!</p>
   `
 }
 
-const writeUserStepsRecord = () => {
-  const userActivity = new Activity(currentUser);
+const writeUserStepsRecord = (userActivity) => {
   const userLifetimeStairsRecord = userActivity.getStairClimbRecord();
   lifetimeStairsRecord.innerHTML += `
     <p>On ${userLifetimeStairsRecord.date} you climbed a record ${userLifetimeStairsRecord.flightsOfStairs} flights of stairs!</p>
   `
 }
 
-const populateWidgets = () => {
+const makeProfileWidgets = () => {
   createUserInfo();
   compareStepGoals();
-  writeUserHydrationAvg();
-  writeSleepHoursAvg();
-  writeUserStepsRecord();
+}
+
+const makeActivityWidgets = () => {
+  writeUserStepsRecord(new Activity(currentUser));
+}
+
+const makeHydrationWidgets = () => {
+  writeDailyHydration(new Hydration(currentUser));
+  writeUserHydrationAvg(new Hydration(currentUser));
+  writeWeeklyHydration(new Hydration(currentUser));
+}
+
+const makeSleepWidgets = () => {
+  writeSleepHoursAvg(new Sleep(currentUser));
+}
+
+const populateWidgets = () => {
+  makeProfileWidgets();
+  makeActivityWidgets();
+  makeSleepWidgets();
+  makeHydrationWidgets();
 }
 
 const goToDashboard = () => {
