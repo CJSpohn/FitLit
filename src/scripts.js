@@ -12,6 +12,7 @@ const infoCard = document.querySelector('.js-user-info');
 const allUserStepGoalCard = document.querySelector('.js-step-goal');
 const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
 const dailyHydration = document.querySelector('.js-hy-daily');
+const weeklyHydration = document.querySelector('.js-hy-weekly');
 const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
 const lifetimeStairsRecord = document.querySelector('.js-stair-record');
 
@@ -89,15 +90,23 @@ const compareStepGoals = () => {
     `
   }
 }
-//REFACTOR
 //WIDGET  CREATOR FUNCTIONS
+const writeWeeklyHydration = (userHydration) => {
+  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/16', '2019/09/22');
+  hydrationWeekly.forEach(day => {
+    weeklyHydration.innerHTML += `
+      <p>${day.date}: ${day.numOunces}</p>
+    `
+  })
+}
+
 const writeDailyHydration = (userHydration) => {
   const hydrationToday = userHydration.getHydrationForSpecificDate('2019/09/22');
   dailyHydration.innerHTML += `
     <p>You have consumed ${hydrationToday} ounces of water today.</p>
   `
 }
-
+//REFACTOR
 const createUserInfo = () => {
   for (let key in currentUser) {
     infoCard.innerHTML += `
@@ -139,6 +148,7 @@ const makeActivityWidgets = () => {
 const makeHydrationWidgets = () => {
   writeDailyHydration(new Hydration(currentUser));
   writeUserHydrationAvg(new Hydration(currentUser));
+  writeWeeklyHydration(new Hydration(currentUser));
 }
 
 const makeSleepWidgets = () => {

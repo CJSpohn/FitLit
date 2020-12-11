@@ -25,9 +25,6 @@ class Hydration {
 
     let dataRange = this.userHydrationData.slice(startIndex, endIndex + 1);
 
-    let ouncesPerDay = dataRange.map(data => data.numOunces);
-
-    return ouncesPerDay;
-
+    return dataRange;
   }
 }
