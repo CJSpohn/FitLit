@@ -14,6 +14,8 @@ const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
 const dailyHydration = document.querySelector('.js-hy-daily');
 const weeklyHydration = document.querySelector('.js-hy-weekly');
 const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
+const dailySleep = document.querySelector('.js-sl-daily');
+const weeklySleep = document.querySelector('.js-sl-weekly');
 const lifetimeStairsRecord = document.querySelector('.js-stair-record');
 
 //buttons
@@ -122,6 +124,24 @@ const writeUserHydrationAvg = (userHydration) => {
   `
 }
 
+const writeWeeklySleep = (userSleep) => {
+  const sleepWeekly = userSleep.getSleepInfoForRange('2019/09/16', '2019/09/22');
+  sleepWeekly.forEach(day => {
+    weeklySleep.innerHTML += `
+      <p>Day: ${day.date} Hours: ${day.hoursSlept} Quality: ${day.sleepQuality}</p>
+    `
+  })
+}
+
+const writeDailySleep = (userSleep) => {
+  const userDailySleep = userSleep.getSleepInfoForSpecificDate('2019/09/22');
+  dailySleep.innerHTML += `
+    <h1>Today's Sleep</h1>
+    <p>Sleep Quality: ${userDailySleep.sleepQuality}</p>
+    <p>Hours Slept: ${userDailySleep.hoursSlept}</p>
+  `
+}
+
 const writeSleepHoursAvg = (userSleep) => {
   const userLifetimeSleepHoursAvg = userSleep.getLifetimeSleepAttAvg('hoursSlept');
   lifetimeSleepHoursAvg.innerHTML += `
@@ -152,7 +172,9 @@ const makeHydrationWidgets = () => {
 }
 
 const makeSleepWidgets = () => {
+  writeWeeklySleep(new Sleep(currentUser));
   writeSleepHoursAvg(new Sleep(currentUser));
+  writeDailySleep(new Sleep(currentUser));
 }
 
 const populateWidgets = () => {
