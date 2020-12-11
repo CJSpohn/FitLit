@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
     <script src="https://d3js.org/d3.v6.min.js"></script>
   </head>
   <body>
     <section class="login-page js-login">
-      <form>
-        <h1>FitLit</h1>
-        <label>Select User</label>
+      <form class="login-form">
+        <h1 class='login-header'>FitLit</h1>
+        <label class="user-select-label">Select User</label>
         <select class="all-users-list js-all-users">
         </select>
       </form>
@@ -19,12 +21,36 @@
     <main class="main-page js-main-page hidden">
       <header class="main-page-header">
         <h1 class="welcome-message js-welcome">Welcome</h1>
-        <button class="main-page-menu"></button>
-        <hr>
+        <button class="main-page-menu js-profile"></button>
       </header>
-      <section class="user-info js-user-info">
+      <section class="nav-buttons-wrapper">
+        <button class="nav-button nav-button-select js-hydration">Hydration</button>
+        <button class="nav-button js-sleep">Sleep</button>
+        <button class="nav-button js-activity">Activity</button>
       </section>
-      <section class="step-goal-display js-step-goal">
+
+      <section class="widget-display">
+        <section class="profile-widget-display hidden js-profile-display">
+          <section class="widget user-info js-user-info">
+          </section>
+          <section class=" widget step-goal-display js-step-goal">
+          </section>
+        </section>
+
+        <section class="hydration-widget-display js-hydration-display">
+          <section class="widget hy-lifetime-avg js-hy-lifetime-avg">
+          </section>
+        </section>
+
+        <section class="sleep-widget-display hidden js-sleep-display">
+          <section class="widget sh-lifetime-avg js-sh-lifetime-avg">
+          </section>
+        </section>
+
+        <section class="activity-widget-display hidden js-activity-display">
+          <section class="widget stair-record js-stair-record">
+          </section>
+        </section>
       </section>
     </main>
     <script type="text/javascript" src="../data/users.js"></script>

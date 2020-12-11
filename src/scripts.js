@@ -4,14 +4,64 @@ let currentUser;
 
 //query selectors
 const dropDownForUsers = document.querySelector('.js-all-users');
-const loginPage = document.querySelector('.js-login');
 const goToDashboardButton = document.querySelector('.js-enter-dashboard');
-const mainPage = document.querySelector('.js-main-page');
 const welcomeMessage = document.querySelector('.js-welcome');
+
+//widgets
 const infoCard = document.querySelector('.js-user-info');
 const allUserStepGoalCard = document.querySelector('.js-step-goal');
+const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
+const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
+const lifetimeStairsRecord = document.querySelector('.js-stair-record');
+
+//buttons
+const hydrationButton = document.querySelector('.js-hydration');
+const sleepButton = document.querySelector('.js-sleep');
+const activityButton = document.querySelector('.js-activity');
+const profileButton = document.querySelector('.js-profile');
+
+//pages
+const mainPage = document.querySelector('.js-main-page');
+const loginPage = document.querySelector('.js-login');
+const hydrationDisplay = document.querySelector('.js-hydration-display');
+const sleepDisplay = document.querySelector('.js-sleep-display');
+const activityDisplay = document.querySelector('.js-activity-display');
+const profileDisplay = document.querySelector('.js-profile-display');
+
 
 //Functions
+const hidePages = () => {
+  hydrationDisplay.classList.add('hidden');
+  sleepDisplay.classList.add('hidden');
+  activityDisplay.classList.add('hidden');
+  profileDisplay.classList.add('hidden');
+}
+
+const updateNavDisplay = (buttonToHighlight) => {
+  profileButton.classList.remove('nav-button-select');
+  sleepButton.classList.remove('nav-button-select');
+  hydrationButton.classList.remove('nav-button-select');
+  activityButton.classList.remove('nav-button-select');
+  buttonToHighlight.classList.add('nav-button-select');
+}
+
+const displayPage = (pageToShow) => {
+  hidePages();
+  if (pageToShow === 'activity') {
+    updateNavDisplay(activityButton);
+    activityDisplay.classList.remove('hidden');
+  } else if (pageToShow === 'sleep') {
+    updateNavDisplay(sleepButton);
+    sleepDisplay.classList.remove('hidden');
+  } else if (pageToShow === 'hydration') {
+    updateNavDisplay(hydrationButton);
+    hydrationDisplay.classList.remove('hidden');
+  } else if (pageToShow === 'profile') {
+    updateNavDisplay(profileButton);
+    profileDisplay.classList.remove('hidden');
+  }
+}
+
 const switchPage = () => {
   loginPage.classList.toggle('hidden');
   mainPage.classList.toggle('hidden');
@@ -47,18 +97,44 @@ const createUserInfo = () => {
   }
 }
 
+const writeUserHydrationAvg = () => {
+  const userHydration = new Hydration(currentUser);
+  const userLifetimeAvg = userHydration.getLifetimeHydrationAvg();
+  lifetimeHydrationAvg.innerHTML += `
+    <p>You've consumed ${userLifetimeAvg} ounces per day since starting FitLit!</p>
+  `
+}
+
+const writeSleepHoursAvg = () => {
+  const userSleep = new Sleep(currentUser);
+  const userLifetimeSleepHoursAvg = userSleep.getLifetimeSleepAttAvg('hoursSlept');
+  lifetimeSleepHoursAvg.innerHTML += `
+    <p>You've slept ${userLifetimeSleepHoursAvg} hours per day since starting FitLit!</p>
+  `
+}
+
+const writeUserStepsRecord = () => {
+  const userActivity = new Activity(currentUser);
+  const userLifetimeStairsRecord = userActivity.getStairClimbRecord();
+  lifetimeStairsRecord.innerHTML += `
+    <p>On ${userLifetimeStairsRecord.date} you climbed a record ${userLifetimeStairsRecord.flightsOfStairs} flights of stairs!</p>
+  `
+}
+
+const populateWidgets = () => {
+  createUserInfo();
+  compareStepGoals();
+  writeUserHydrationAvg();
+  writeSleepHoursAvg();
+  writeUserStepsRecord();
+}
+
 const goToDashboard = () => {
   switchPage();
   instantiateUser();
   welcomeUser();
-  createUserInfo();
-  compareStepGoals();
+  populateWidgets();
 }
-
-
-
-
-
 
 //Event listeners
 window.onload = () => {
@@ -69,3 +145,15 @@ window.onload = () => {
 })};
 
 goToDashboardButton.addEventListener('click', goToDashboard);
+hydrationButton.addEventListener('click', function() {
+  displayPage('hydration')
+});
+sleepButton.addEventListener('click', function() {
+  displayPage('sleep')
+});
+activityButton.addEventListener('click', function() {
+  displayPage('activity')
+});
+profileButton.addEventListener('click', function() {
+  displayPage('profile')
+});

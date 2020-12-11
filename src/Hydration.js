@@ -12,7 +12,7 @@ class Hydration {
 
     let userHydrationAvg = userHydrationTotal / this.userHydrationData.length;
 
-    return userHydrationAvg;
+    return parseFloat(userHydrationAvg.toFixed(2));
   }
 
   getHydrationForSpecificDate(date) {

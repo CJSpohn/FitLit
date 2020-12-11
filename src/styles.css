@@ -1,10 +1,134 @@
-.hidden {
-  display: none;
+/* All File */
+/* Our colors:
+#005AB5
+#DC3220
+*/
+
+* {
+  font-family: 'Comfortaa', cursive;
+
 }
 
-.user-info,
-.step-goal-display{
+body {
+  background-color: #a9a9a98a;
+}
+
+/* Login Page */
+.login-page {
+  margin-top: 30vh;
+  height: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login-form {
+  color: white;
+  font-size: 40px;
+  min-height: 60vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  opacity: .5;
+  border-radius: 20px;
+}
+
+.go-to-site {
+  color: white;
+  font-size: 2.5em;
+  margin-top: 4vh;
+  width: 60vw;
+  min-height: 5vh;
+  border-radius: 20px;
+  background: #005AB5;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.login-header {
+  font-size: 3em;
+  margin-bottom: 20vh;
+}
+
+.user-select-label {
+  font-size: 1.5em;
+}
+
+.all-users-list {
+  font-size: 1em;
+}
+
+/* Main Page */
+
+/* header */
+.main-page-header {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+}
+
+.welcome-message {
+  font-size: 2em;
+}
+
+.main-page-menu {
+  margin-right: 2vw;
+  width: 10vw;
+  border: none;
+  background-image: url("../assets/profile2.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* nav buttons */
+.nav-buttons-wrapper {
+  width: 100vw;
+  height: 3vh;
+  display: flex;
+}
+
+.nav-button {
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  width: 34vw;
+  background-color: #005AB5;
+}
+
+.nav-button:hover,
+.main-page-menu:hover,
+.main-page-menu:focus,
+.nav-button:focus {
+  outline: none;
+}
+
+.nav-button-select {
+  border-bottom: 3px solid orange;
+}
+
+
+/* widgets */
+.widget-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.widget {
+  text-align: center;
+  margin: 2vw 0 2vw 0;
+  width: 70vw;
+  height: 20vh;
   border: 1px solid black;
-  width: 300px;
-  height: 300px;
+}
+
+.hidden {
+  display: none;
 }
