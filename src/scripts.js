@@ -142,10 +142,11 @@ const writeDailySleep = (userSleep) => {
   `
 }
 
-const writeSleepHoursAvg = (userSleep) => {
+const writeSleepAvg = (userSleep) => {
   const userLifetimeSleepHoursAvg = userSleep.getLifetimeSleepAttAvg('hoursSlept');
+  const userLifetimeSleepQualityAvg = userSleep.getLifetimeSleepAttAvg('sleepQuality');
   lifetimeSleepHoursAvg.innerHTML += `
-    <p>You've slept ${userLifetimeSleepHoursAvg} hours per day since starting FitLit!</p>
+    <p>You've slept ${userLifetimeSleepHoursAvg} hours per day with an average quality of ${userLifetimeSleepQualityAvg} since starting FitLit!</p>
   `
 }
 
@@ -173,7 +174,7 @@ const makeHydrationWidgets = () => {
 
 const makeSleepWidgets = () => {
   writeWeeklySleep(new Sleep(currentUser));
-  writeSleepHoursAvg(new Sleep(currentUser));
+  writeSleepAvg(new Sleep(currentUser));
   writeDailySleep(new Sleep(currentUser));
 }
 
