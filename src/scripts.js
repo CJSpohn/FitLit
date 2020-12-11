@@ -11,6 +11,7 @@ const welcomeMessage = document.querySelector('.js-welcome');
 const infoCard = document.querySelector('.js-user-info');
 const allUserStepGoalCard = document.querySelector('.js-step-goal');
 const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
+const dailyHydration = document.querySelector('js-hy-daily');
 const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
 const lifetimeStairsRecord = document.querySelector('.js-stair-record');
 
@@ -121,12 +122,28 @@ const writeUserStepsRecord = () => {
   `
 }
 
-const populateWidgets = () => {
+const makeProfileWidgets = () => {
   createUserInfo();
   compareStepGoals();
-  writeUserHydrationAvg();
-  writeSleepHoursAvg();
+}
+
+const makeActivityWidgets = () => {
   writeUserStepsRecord();
+}
+
+const makeHydrationWidgets = () => {
+  writeUserHydrationAvg();
+}
+
+const makeSleepWidgets = () => {
+  writeSleepHoursAvg();
+}
+
+const populateWidgets = () => {
+  makeProfileWidgets();
+  makeActivityWidgets();
+  makeSleepWidgets();
+  makeHydrationWidgets();
 }
 
 const goToDashboard = () => {
