@@ -9,14 +9,22 @@
 }
 
 html {
-  background-color: #052442;
+ height: 110%;
+ background: radial-gradient(circle, #084888 0%, #052442 100%);
+ background-attachment: fixed;
+ background-repeat: no-repeat;
 }
 
 body {
   margin: 0;
-  background: radial-gradient(circle, #084888 0%, #052442 100%);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+}
+
+h1 {
+  color: white;
+}
+
+h2 {
+  font-size: 3em;
 }
 
 /* Login Page */
@@ -39,7 +47,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: black;
-  opacity: .8;
+  opacity: .7;
   border-radius: 20px;
 }
 
@@ -134,14 +142,14 @@ body {
   text-align: center;
   margin: 6vw;
   width: 80vw;
-  height: 40vh;
+  height: 20vh;
   border: 1px solid black;
 }
 
 .widget-graph {
   text-align: center;
-  margin: 2vw;
-  width: 70vw;
+  margin: 6vw;
+  width: 80vw;
   height: 20vh;
   border: 1px solid black;
 }

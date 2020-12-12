@@ -136,7 +136,6 @@ const writeWeeklySleep = (userSleep) => {
 const writeDailySleep = (userSleep) => {
   const userDailySleep = userSleep.getSleepInfoForSpecificDate('2019/09/22');
   dailySleep.innerHTML += `
-    <h1>Today's Sleep</h1>
     <p>Sleep Quality: ${userDailySleep.sleepQuality}</p>
     <p>Hours Slept: ${userDailySleep.hoursSlept}</p>
   `
