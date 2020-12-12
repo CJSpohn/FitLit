@@ -6,11 +6,17 @@
 
 * {
   font-family: 'Comfortaa', cursive;
+}
 
+html {
+  background-color: #052442;
 }
 
 body {
-  background-color: #a9a9a98a;
+  margin: 0;
+  background: radial-gradient(circle, #084888 0%, #052442 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 /* Login Page */
@@ -33,7 +39,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: black;
-  opacity: .5;
+  opacity: .8;
   border-radius: 20px;
 }
 
@@ -75,6 +81,7 @@ body {
 
 .welcome-message {
   font-size: 2em;
+  margin-left: 1vw;
 }
 
 .main-page-menu {
@@ -118,15 +125,37 @@ body {
 .widget-display {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
+
 .widget {
   text-align: center;
-  margin: 2vw 0 2vw 0;
+  margin: 6vw;
+  width: 80vw;
+  height: 40vh;
+  border: 1px solid black;
+}
+
+.widget-graph {
+  text-align: center;
+  margin: 2vw;
   width: 70vw;
   height: 20vh;
   border: 1px solid black;
+}
+
+.widget,
+.widget-graph {
+  background-color: darkgrey;
+  border-radius: 20px;
+  opacity: .8;
+}
+
+.widget-header {
+  font-size: 2.5em;
+  margin-bottom: 0;
 }
 
 .hidden {
