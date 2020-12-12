@@ -6,11 +6,26 @@
 
 * {
   font-family: 'Comfortaa', cursive;
+}
 
+html {
+ height: 100%;
+ background: radial-gradient(circle, #084888 0%, #052442 100%);
+ background-attachment: fixed;
+ background-repeat: no-repeat;
 }
 
 body {
-  background-color: #a9a9a98a;
+  margin: 0;
+}
+
+h1 {
+  color: white;
+}
+
+h2 {
+  font-size: 3em;
+  margin-bottom: 0;
 }
 
 /* Login Page */
@@ -33,7 +48,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: black;
-  opacity: .5;
+  opacity: .7;
   border-radius: 20px;
 }
 
@@ -75,6 +90,7 @@ body {
 
 .welcome-message {
   font-size: 2em;
+  margin-left: 1vw;
 }
 
 .main-page-menu {
@@ -118,15 +134,55 @@ body {
 .widget-display {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
+
 .widget {
   text-align: center;
-  margin: 2vw 0 2vw 0;
-  width: 70vw;
+  margin: 6vw;
+  width: 80vw;
   height: 20vh;
   border: 1px solid black;
+}
+
+.widget-graph {
+  text-align: center;
+  margin: 6vw;
+  width: 80vw;
+  height: 20vh;
+  border: 1px solid black;
+}
+
+.widget,
+.widget-graph {
+  background-color: darkgrey;
+  border-radius: 20px;
+  opacity: .8;
+}
+
+.widget-header {
+  font-size: 2.5em;
+  margin-bottom: 0;
+}
+
+.compare-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.compare-number {
+  font-size: 4em;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
 }
 
 .hidden {

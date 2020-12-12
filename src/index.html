@@ -29,35 +29,71 @@
         <button class="nav-button js-activity">Activity</button>
       </section>
 
-      <section class="widget-display">
+      <section class="widget-display-wrapper">
 
-        <section class="profile-widget-display hidden js-profile-display">
+        <section class="widget-display hidden js-profile-display">
+          <h1 class="widget-header">Info</h1>
           <section class="widget user-info js-user-info">
           </section>
+          <h1 class="widget-header">Daily Goals</h1>
           <section class=" widget step-goal-display js-step-goal">
           </section>
         </section>
 
-        <section class="hydration-widget-display js-hydration-display">
-          <section class="widget hy-lifetime-avg js-hy-lifetime-avg">
-          </section>
+        <section class="widget-display js-hydration-display">
+          <h1 class="widget-header">Today</h1>
           <section class="widget hy-daily js-hy-daily">
+            <h2>Daily Ounces</h2>
           </section>
-          <section class="widget hy-weekly js-hy-weekly">
+          <section class="widget hy-lifetime-avg js-hy-lifetime-avg">
+            <h2>All Time Average</h2>
+          </section>
+          <h1 class="widget-header">This Week</h1>
+          <section class="widget-graph hy-weekly js-hy-weekly">
+            <h2>Past Seven Days</h2>
           </section>
         </section>
 
-        <section class="sleep-widget-display hidden js-sleep-display">
-          <section class="widget sh-lifetime-avg js-sh-lifetime-avg">
-          </section>
+        <section class="widget-display hidden js-sleep-display">
+          <h1 class="widget-header">Today</h1>
           <section class="widget sl-daily js-sl-daily">
+            <h2>Last Night</h2>
           </section>
-          <section class="widget sl-weekly js-sl-weekly">
+          <section class="widget sh-lifetime-avg js-sh-lifetime-avg">
+            <h2>All Time Average</h2>
+          </section>
+          <h1 class="widget-header">This Week</h1>
+          <section class="widget-graph sl-weekly js-sl-weekly">
+            <h2>Past Seven Days</h2>
           </section>
         </section>
 
-        <section class="activity-widget-display hidden js-activity-display">
-          <section class="widget stair-record js-stair-record">
+        <section class="widget-display hidden js-activity-display">
+          <h1 class="widget-header">Today</h1>
+          <section class="widget ac-daily js-ac-daily">
+            <h2>Your Fitness</h2>
+          </section>
+          <section class="widget ac-comparison js-ac-comparison">
+            <h2>You Vs. Them</h2>
+            <p>See how you compare to all of our users</p>
+            <div class="compare-wrapper">
+              <div>
+                <h1 class="widget-header">Steps:</h1>
+                <p class="compare-number js-steps">0</p>
+              </div>
+              <div>
+                <h1 class="widget-header">Flights:</h1>
+                <p class="compare-number js-flights">0</p>
+              </div>
+              <div>
+                <h1 class="widget-header">Minutes:</h1>
+                <p class="compare-number js-minutes">0</p>
+              </div>
+            </div>
+          </section>
+          <h1 class="widget-header">This Week</h1>
+          <section class="widget-graph ac-weekly js-ac-weekly">
+            <h2>Past Seven Days</h2>
           </section>
         </section>
       </section>
