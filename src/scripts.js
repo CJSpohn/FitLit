@@ -16,7 +16,6 @@ const weeklyHydration = document.querySelector('.js-hy-weekly');
 const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
 const dailySleep = document.querySelector('.js-sl-daily');
 const weeklySleep = document.querySelector('.js-sl-weekly');
-const lifetimeStairsRecord = document.querySelector('.js-stair-record');
 const dailyActivity = document.querySelector('.js-ac-daily');
 const activityComparison = document.querySelector('.js-ac-comparison')
 
@@ -151,18 +150,11 @@ const writeSleepAvg = (userSleep) => {
   `
 }
 
-const writeUserStepsRecord = (userActivity) => {
-  const userLifetimeStairsRecord = userActivity.getStairClimbRecord();
-  lifetimeStairsRecord.innerHTML += `
-    <p>On ${userLifetimeStairsRecord.date} you climbed a record ${userLifetimeStairsRecord.flightsOfStairs} flights of stairs!</p>
-  `
-}
-
 const writeDailyActivity = (userActivity) => {
   const activityToday = userActivity.getActivityForSpecificDate('2019/09/22');
   const milesWalked = userActivity.getMilesForSpecificDate('2019/09/22');
   dailyActivity.innerHTML += `
-    <p>Stairs climbed: ${activityToday.flightsOfStairs}</p>
+    <p>Steps taken: ${activityToday.numSteps}</p>
     <p>Minute Active: ${activityToday.minutesActive}</p>
     <p>Miles walked: ${milesWalked}</p>
   `
@@ -195,8 +187,6 @@ const writeActivityComparison = (userActivity) => {
   const compareMinutes = document.querySelector('.js-minutes');
 
   let differences = calculateUserDifferences(userActivity);
-  console.log('user', userActivity.getActivityForSpecificDate('2019/09/22'))
-  console.log('averages', userActivity.getActivityAvgsForAllUsers('2019/09/22'))
 
   compareSteps.innerText = `${differences.numSteps}`;
   compareFlights.innerText = `${differences.flightsOfStairs}`;
@@ -214,7 +204,6 @@ const makeProfileWidgets = () => {
 }
 
 const makeActivityWidgets = () => {
-  writeUserStepsRecord(new Activity(currentUser));
   writeDailyActivity(new Activity(currentUser));
   writeActivityComparison(new Activity(currentUser));
 }
