@@ -185,7 +185,8 @@ const writeActivityComparison = (userActivity) => {
   const compareSteps = document.querySelector('.js-steps');
   const compareFlights = document.querySelector('.js-flights');
   const compareMinutes = document.querySelector('.js-minutes');
-
+  
+  //TODO: Move this function into Activity as a method
   let differences = calculateUserDifferences(userActivity);
 
   compareSteps.innerText = `${differences.numSteps}`;
