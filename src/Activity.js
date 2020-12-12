@@ -50,15 +50,21 @@ class Activity {
     return highestStairDay;
   }
 
-  getActivityAvgsForAllUsers(activity) {
-    let totalNumOfActivity = activityData.reduce((total, data) => {
-      total += data[activity];
+  getActivityAvgsForAllUsers(date) {
+    let todaysData = activityData.filter(day => day.date === date);
+
+    let totalNumOfActivity = todaysData.reduce((total, data) => {
+      total.numSteps += data.numSteps;
+      total.minutesActive += data.minutesActive;
+      total.flightsOfStairs += data.flightsOfStairs;
       return total;
-    }, 0);
+    }, { "numSteps": 0, "minutesActive": 0, "flightsOfStairs": 0 });
 
-    let avgNumOfActivity = totalNumOfActivity / activityData.length;
+    for (let key in totalNumOfActivity) {
+      totalNumOfActivity[key] = parseFloat((totalNumOfActivity[key] / todaysData.length).toFixed(2));
+    }
 
-    return parseFloat(avgNumOfActivity.toFixed(2));
+    return totalNumOfActivity;
   }
 
 }

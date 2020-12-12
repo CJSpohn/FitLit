@@ -25,6 +25,7 @@ h1 {
 
 h2 {
   font-size: 3em;
+  margin-bottom: 0;
 }
 
 /* Login Page */
@@ -176,6 +177,13 @@ h2 {
   font-size: 4em;
 }
 
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
 .hidden {
   display: none;
 }

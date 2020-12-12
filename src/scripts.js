@@ -18,7 +18,7 @@ const dailySleep = document.querySelector('.js-sl-daily');
 const weeklySleep = document.querySelector('.js-sl-weekly');
 const lifetimeStairsRecord = document.querySelector('.js-stair-record');
 const dailyActivity = document.querySelector('.js-ac-daily');
-
+const activityComparison = document.querySelector('.js-ac-comparison')
 
 //buttons
 const hydrationButton = document.querySelector('.js-hydration');
@@ -168,6 +168,46 @@ const writeDailyActivity = (userActivity) => {
   `
 }
 
+const calculateUserDifferences = (userActivity) => {
+  const activityTodayUser = userActivity.getActivityForSpecificDate('2019/09/22');
+  const activityTodayAvg = userActivity.getActivityAvgsForAllUsers('2019/09/22');
+
+  const userDifferences = {
+    minutesActive: parseInt(activityTodayUser.minutesActive - activityTodayAvg.minutesActive),
+    flightsOfStairs: parseInt(activityTodayUser.flightsOfStairs - activityTodayAvg.flightsOfStairs),
+    numSteps: parseInt(activityTodayUser.numSteps - activityTodayAvg.numSteps)
+  }
+
+  return userDifferences;
+}
+
+const editNumberStyling = (element, att, result) => {
+  if (result[att] > 0) {
+    element.classList.add('positive')
+  } else {
+    element.classList.add('negative')
+  }
+}
+
+const writeActivityComparison = (userActivity) => {
+  const compareSteps = document.querySelector('.js-steps');
+  const compareFlights = document.querySelector('.js-flights');
+  const compareMinutes = document.querySelector('.js-minutes');
+
+  let differences = calculateUserDifferences(userActivity);
+  console.log('user', userActivity.getActivityForSpecificDate('2019/09/22'))
+  console.log('averages', userActivity.getActivityAvgsForAllUsers('2019/09/22'))
+
+  compareSteps.innerText = `${differences.numSteps}`;
+  compareFlights.innerText = `${differences.flightsOfStairs}`;
+  compareMinutes.innerText = `${differences.minutesActive}`;
+
+  editNumberStyling(compareSteps, 'numSteps', differences);
+  editNumberStyling(compareFlights, 'flightsOfStairs', differences);
+  editNumberStyling(compareMinutes, 'minutesActive', differences);
+}
+
+
 const makeProfileWidgets = () => {
   createUserInfo();
   compareStepGoals();
@@ -176,6 +216,7 @@ const makeProfileWidgets = () => {
 const makeActivityWidgets = () => {
   writeUserStepsRecord(new Activity(currentUser));
   writeDailyActivity(new Activity(currentUser));
+  writeActivityComparison(new Activity(currentUser));
 }
 
 const makeHydrationWidgets = () => {
