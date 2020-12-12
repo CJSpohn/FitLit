@@ -17,8 +17,8 @@ const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
 const dailySleep = document.querySelector('.js-sl-daily');
 const weeklySleep = document.querySelector('.js-sl-weekly');
 const lifetimeStairsRecord = document.querySelector('.js-stair-record');
-const dailyStairs = document.querySelector('.js-st-daily');
-const dailyMinutes = document.querySelector('.js-mn-daily')
+const dailyActivity = document.querySelector('.js-ac-daily');
+
 
 //buttons
 const hydrationButton = document.querySelector('.js-hydration');
@@ -160,11 +160,11 @@ const writeUserStepsRecord = (userActivity) => {
 
 const writeDailyActivity = (userActivity) => {
   const activityToday = userActivity.getActivityForSpecificDate('2019/09/22');
-  dailyStairs.innerHTML += `
-    <p>Stairs climbed Today: ${activityToday.flightsOfStairs}</p>
-  `
-  dailyMinutes.innerHTML += `
-    <p>Minute Active Today: ${activityToday.minutesActive}</p>
+  const milesWalked = userActivity.getMilesForSpecificDate('2019/09/22');
+  dailyActivity.innerHTML += `
+    <p>Stairs climbed: ${activityToday.flightsOfStairs}</p>
+    <p>Minute Active: ${activityToday.minutesActive}</p>
+    <p>Miles walked: ${milesWalked}</p>
   `
 }
 
