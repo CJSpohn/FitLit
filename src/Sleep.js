@@ -15,11 +15,11 @@ class Sleep {
     return parseFloat(userSleepAvg.toFixed(2));
   }
 
-  getSleepInfoForSpecificDate(date, attribute) {
-    return this.userSleepData.find(data => data.date === date)[attribute];
+  getSleepInfoForSpecificDate(date) {
+    return this.userSleepData.find(data => data.date === date);
   }
 
-  getSleepInfoForRange(startDate, endDate, attribute) {
+  getSleepInfoForRange(startDate, endDate) {
     let startIndex = this.userSleepData.findIndex(data => startDate === data.date);
     let endIndex = this.userSleepData.findIndex(data => endDate === data.date);
 
