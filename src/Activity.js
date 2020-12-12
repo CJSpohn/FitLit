@@ -14,8 +14,8 @@ class Activity {
     return parseFloat(numOfMiles.toFixed(2));
   }
 
-  getMinutesActiveForSpecificDate(date) {
-    return this.userActivityData.find(data => data.date === date).minutesActive;
+  getActivityForSpecificDate(date) {
+    return this.userActivityData.find(data => data.date === date);
   }
 
   getMinutesActiveDataForRange(startDate, endDate) {
