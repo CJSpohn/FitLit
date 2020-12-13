@@ -95,7 +95,8 @@ const compareStepGoals = () => {
 }
 //WIDGET  CREATOR FUNCTIONS
 const writeWeeklyHydration = (userHydration) => {
-  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/16', '2019/09/22');
+  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/10', '2019/09/22');
+  barChart('.hy-bar-chart', hydrationWeekly);
   hydrationWeekly.forEach(day => {
     weeklyHydration.innerHTML += `
       <p>${day.date}: ${day.numOunces}</p>
