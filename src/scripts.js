@@ -106,7 +106,11 @@ const writeWeeklyHydration = (userHydration) => {
 const writeDailyHydration = (userHydration) => {
   const hydrationToday = userHydration.getHydrationForSpecificDate('2019/09/22');
   dailyHydration.innerHTML += `
-    <p class="widget-text">You have consumed ${hydrationToday} ounces of water today.</p>
+    <p class="widget-text">
+      You have consumed
+      <span class="user-stat">${hydrationToday}</span>
+      ounces of water today.
+    </p>
   `
 }
 //REFACTOR
@@ -121,7 +125,11 @@ const createUserInfo = () => {
 const writeUserHydrationAvg = (userHydration) => {
   const userLifetimeAvg = userHydration.getLifetimeHydrationAvg();
   lifetimeHydrationAvg.innerHTML += `
-    <p class="widget-text">You've consumed ${userLifetimeAvg} ounces per day since starting FitLit!</p>
+    <p class="widget-text">
+      You've consumed
+      <span class="user-stat">${userLifetimeAvg}</span>
+      ounces per day since starting FitLit!
+    </p>
   `
 }
 

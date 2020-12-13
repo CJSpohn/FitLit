@@ -121,6 +121,7 @@ h2 {
   border: none;
   width: 34vw;
   background-color: #005AB5;
+  opacity: 65%;
 }
 
 .nav-button:hover,
@@ -132,6 +133,7 @@ h2 {
 
 .nav-button-select {
   border-bottom: 3px solid orange;
+  opacity: 100%;
 }
 
 
@@ -194,7 +196,7 @@ h2 {
 }
 
 .user-stat {
-  color: #fda50f;
+  color: #005AB5;
   font-weight: bolder;
 }
 
@@ -234,6 +236,10 @@ h2 {
   .widget-text {
     font-size: 2.3em;
     align-self: baseline;
+  }
+
+  .widget-graph {
+    width: 95vw;
   }
 
 
