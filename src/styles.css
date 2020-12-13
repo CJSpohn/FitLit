@@ -77,6 +77,11 @@ h2 {
   font-size: 1em;
 }
 
+.all-user-list:focus {
+  height: 1px;
+  width: 1px;
+}
+
 /* Main Page */
 
 /* header */
@@ -145,6 +150,9 @@ h2 {
   width: 80vw;
   height: 20vh;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .widget-graph {
@@ -185,6 +193,48 @@ h2 {
   color: red;
 }
 
+.user-stat {
+  color: #fda50f;
+  font-weight: bolder;
+}
+
 .hidden {
   display: none;
+}
+
+@media only screen and (max-device-width: 320px) {
+  .main-page-header {
+    height: 7vh;
+  }
+
+  .welcome-message {
+    font-size: 4em;
+  }
+
+  .nav-buttons-wrapper {
+    height: 5vh;
+  }
+
+  .nav-button {
+    font-size: 2.2em
+  }
+
+  .widget-header {
+    font-size: 5em;
+    margin-top: 3vw;
+    margin-bottom: 0;
+  }
+
+  .widget {
+    width: 90vw;
+    margin: 3vw;
+    height: 25vh;
+  }
+
+  .widget-text {
+    font-size: 2.3em;
+    align-self: baseline;
+  }
+
+
 }

@@ -85,11 +85,11 @@ const compareStepGoals = () => {
   const allUsersStepGoal = allUsers.getAvgStepGoal();
   if (currentUser.dailyStepGoal > allUsersStepGoal) {
     allUserStepGoalCard.innerHTML += `
-      <p>Your step goal of ${currentUser.dailyStepGoal} steps is ${currentUser.dailyStepGoal - allUsersStepGoal} steps more than the average user step goal!</p>
+      <p class="widget-text">Your step goal of ${currentUser.dailyStepGoal} steps is ${currentUser.dailyStepGoal - allUsersStepGoal} steps more than the average user step goal!</p>
     `
   } else {
     allUserStepGoalCard.innerHTML += `
-    <p>Your step goal of ${currentUser.dailyStepGoal} steps is ${allUsersStepGoal - currentUser.dailyStepGoal} steps fewer than the average user step goal!<p>
+    <p class="widget-text">Your step goal of ${currentUser.dailyStepGoal} steps is ${allUsersStepGoal - currentUser.dailyStepGoal} steps fewer than the average user step goal!<p>
     `
   }
 }
@@ -106,7 +106,7 @@ const writeWeeklyHydration = (userHydration) => {
 const writeDailyHydration = (userHydration) => {
   const hydrationToday = userHydration.getHydrationForSpecificDate('2019/09/22');
   dailyHydration.innerHTML += `
-    <p>You have consumed ${hydrationToday} ounces of water today.</p>
+    <p class="widget-text">You have consumed ${hydrationToday} ounces of water today.</p>
   `
 }
 //REFACTOR
@@ -121,7 +121,7 @@ const createUserInfo = () => {
 const writeUserHydrationAvg = (userHydration) => {
   const userLifetimeAvg = userHydration.getLifetimeHydrationAvg();
   lifetimeHydrationAvg.innerHTML += `
-    <p>You've consumed ${userLifetimeAvg} ounces per day since starting FitLit!</p>
+    <p class="widget-text">You've consumed ${userLifetimeAvg} ounces per day since starting FitLit!</p>
   `
 }
 
@@ -146,7 +146,13 @@ const writeSleepAvg = (userSleep) => {
   const userLifetimeSleepHoursAvg = userSleep.getLifetimeSleepAttAvg('hoursSlept');
   const userLifetimeSleepQualityAvg = userSleep.getLifetimeSleepAttAvg('sleepQuality');
   lifetimeSleepHoursAvg.innerHTML += `
-    <p>You've slept ${userLifetimeSleepHoursAvg} hours per day with an average quality of ${userLifetimeSleepQualityAvg} since starting FitLit!</p>
+    <p class="widget-text">
+      You've slept
+      <span class="user-stat">${userLifetimeSleepHoursAvg}</span>
+      hours per day with an average quality of
+      <span class="user-stat">${userLifetimeSleepQualityAvg}</span>
+      since starting FitLit!
+    </p>
   `
 }
 
@@ -185,7 +191,7 @@ const writeActivityComparison = (userActivity) => {
   const compareSteps = document.querySelector('.js-steps');
   const compareFlights = document.querySelector('.js-flights');
   const compareMinutes = document.querySelector('.js-minutes');
-  
+
   //TODO: Move this function into Activity as a method
   let differences = calculateUserDifferences(userActivity);
 
