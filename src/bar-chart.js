@@ -1,7 +1,7 @@
 const barChart = (section, data) => {
   let svg = d3.select(section);
 
-  let width = 600, height = 200;
+  let width = 1200, height = 600;
 
   svg.attr('width', width)
       .attr('height', height);
@@ -12,6 +12,9 @@ const barChart = (section, data) => {
                   .domain(dates)
                   .range([50, width])
                   .padding(0.1);
+
+  let xAxis = d3.axisBottom()
+                  .scale(xScale)
 
 
   let yScale = d3.scaleLinear()
@@ -26,4 +29,9 @@ const barChart = (section, data) => {
       .attr('y', (d, i) => height - yScale(d.numOunces))
       .attr('width', (d) => xScale.bandwidth())
       .attr('height', (d, i) => yScale(d.numOunces) - 50)
+      .attr('fill', '#005AB5')
+
+  svg.append('g')
+      .attr('transform', `translate(0, ${height - 50})`)
+      .call(xAxis)
 }
