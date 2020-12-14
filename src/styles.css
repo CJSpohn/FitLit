@@ -100,7 +100,7 @@ h3 {
 
 .welcome-message {
   font-size: 2em;
-  margin-left: 1vw;
+  margin-left: 2vw;
 }
 
 .main-page-menu {
@@ -163,11 +163,14 @@ h3 {
 }
 
 .widget-graph {
-  text-align: center;
   margin: 6vw;
   width: 80vw;
   height: 20vh;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .widget,
@@ -175,6 +178,12 @@ h3 {
   background-color: darkgrey;
   border-radius: 20px;
   opacity: .8;
+}
+
+.chart-wrapper {
+  width: 80vw;
+  height: 30vh;
+  border: 1px solid black;
 }
 
 .widget-header {
@@ -216,7 +225,6 @@ h3 {
   }
 
   .welcome-message {
-    margin: 0;
     font-size: 1.5em;
     margin-top: .5em;
   }
@@ -230,7 +238,7 @@ h3 {
   }
 
   .widget-header {
-    font-size: 2em;
+    font-size: 1.5em;
     margin-top: 3vw;
     margin-bottom: 0;
   }
@@ -243,16 +251,11 @@ h3 {
 
   .widget-text {
     font-size: .8em;
-    align-self: baseline;
   }
 
   .widget-graph {
     width: 95vw;
     height: 35vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
   }
 
   .login-header {
@@ -274,7 +277,7 @@ h3 {
   }
 
   h2 {
-    font-size: 2em;
+    font-size: 1.2em;
     margin: 0;
     margin-top: .2em;
   }
@@ -288,9 +291,9 @@ h3 {
   }
 }
 
-@media only screen and (min-device-width: 321px, max-device-width: 425px) {
+@media only screen and (min-device-width: 321px) {
   .main-page-header {
-    font-size: ;
+    height: 10vh;
   }
 
   .login-header {
@@ -307,5 +310,13 @@ h3 {
 
   .go-to-site {
     font-size: 1em;
+  }
+
+  .nav-buttons-wrapper {
+    height: 5vh;
+  }
+
+  .nav-button {
+    font-size: 1.1em;
   }
 }
