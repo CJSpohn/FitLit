@@ -5,10 +5,6 @@ const barChart = (section, data) => {
               .append('svg')
               .attr('viewBox', `0 0 ${width} ${height}`);
 
-
-  svg.attr("viewbox", `0 0 ${width} ${height}`);
-
-
   let dates = data.map(data => data.date);
 
   let xScale = d3.scaleBand()

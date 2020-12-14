@@ -28,6 +28,11 @@ h2 {
   margin-bottom: 0;
 }
 
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 /* Login Page */
 .login-page {
   margin-top: 30vh;
@@ -185,6 +190,7 @@ h2 {
 
 .compare-number {
   font-size: 4em;
+  margin-top: 0;
 }
 
 .positive {
@@ -271,6 +277,10 @@ h2 {
     font-size: 2em;
     margin: 0;
     margin-top: .2em;
+  }
+
+  .compare-number {
+    font-size: 2.5em;
   }
 
 
