@@ -1,16 +1,16 @@
 const barChart = (section, data) => {
   let svg = d3.select(section);
 
-  let width = 600, height = 200;
+  let width = '100vw', height = '100vh';
 
-  svg.attr('width', width)
-      .attr('height', height);
+  svg.attr("viewbox", `0 0 ${width} ${height}`);
+
 
   let dates = data.map(data => data.date);
 
   let xScale = d3.scaleBand()
                   .domain(dates)
-                  .range([50, width])
+                  .range([0, width])
                   .padding(0.1);
 
   let xAxis = d3.axisBottom()
@@ -31,13 +31,6 @@ const barChart = (section, data) => {
       .attr('width', (d) => xScale.bandwidth())
       .attr('height', (d, i) => yScale(d.numOunces) - 50)
       .attr('fill', '#005AB5')
-
-  // svg.selectAll('.bar')
-  //     .data(data)
-  //     .enter()
-  //     .append('text')
-  //     .attr('')
-
 
   svg.append('g')
       .attr('transform', `translate(0, ${height - 50})`)

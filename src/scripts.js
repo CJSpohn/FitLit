@@ -131,14 +131,10 @@ const writeUserHydrationAvg = (userHydration) => {
     </p>
   `
 }
-
+//INSERT BAR CHART
 const writeWeeklySleep = (userSleep) => {
   const sleepWeekly = userSleep.getSleepInfoForRange('2019/09/16', '2019/09/22');
-  sleepWeekly.forEach(day => {
-    weeklySleep.innerHTML += `
-      <p>Day: ${day.date} Hours: ${day.hoursSlept} Quality: ${day.sleepQuality}</p>
-    `
-  })
+
 }
 
 const writeDailySleep = (userSleep) => {
