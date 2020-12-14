@@ -1,7 +1,7 @@
 const barChart = (section, data) => {
   let svg = d3.select(section);
 
-  let width = 600, height = 600;
+  let width = 600, height = 200;
 
   svg.attr('width', width)
       .attr('height', height);

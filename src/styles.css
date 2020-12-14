@@ -210,7 +210,9 @@ h2 {
   }
 
   .welcome-message {
-    font-size: 4em;
+    margin: 0;
+    font-size: 1.5em;
+    margin-top: .5em;
   }
 
   .nav-buttons-wrapper {
@@ -218,11 +220,11 @@ h2 {
   }
 
   .nav-button {
-    font-size: 2.2em
+    font-size: 1em;
   }
 
   .widget-header {
-    font-size: 5em;
+    font-size: 2em;
     margin-top: 3vw;
     margin-bottom: 0;
   }
@@ -234,13 +236,47 @@ h2 {
   }
 
   .widget-text {
-    font-size: 2.3em;
+    font-size: .8em;
     align-self: baseline;
   }
 
   .widget-graph {
     width: 95vw;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
   }
+
+  .login-header {
+    font-size: 1.5em;
+  }
+
+  .user-select-label {
+    font-size: .5em;
+  }
+
+  .all-users-list {
+    width: 60vw;
+    height: 4vh;
+    font-size: .5em
+  }
+
+  .go-to-site {
+    font-size: 1em;
+  }
+
+  h2 {
+    font-size: 2em;
+    margin: 0;
+    margin-top: .2em;
+  }
+
+  .hy-bar-chart {
+    width: 20vw;
+  }
+
 
 
 }

@@ -28,7 +28,6 @@ const profileButton = document.querySelector('.js-profile');
 const hydrationStartCalender = document.querySelector('.js-hy-start');
 const hydrationEndCalender = document.querySelector('.js-hy-end');
 
-
 //pages
 const mainPage = document.querySelector('.js-main-page');
 const loginPage = document.querySelector('.js-login');
@@ -101,11 +100,6 @@ const compareStepGoals = () => {
 const writeWeeklyHydration = (userHydration) => {
   const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/10', '2019/09/22');
   barChart('.hy-bar-chart', hydrationWeekly);
-  hydrationWeekly.forEach(day => {
-    weeklyHydration.innerHTML += `
-      <p>${day.date}: ${day.numOunces}</p>
-    `
-  })
 }
 
 const writeDailyHydration = (userHydration) => {
@@ -218,9 +212,22 @@ const writeActivityComparison = (userActivity) => {
 }
 
 const displayCalender = () => {
-  const picker1 = datepicker('.js-hy-start-calender', {id: 1});
+  const picker1 = datepicker('.js-hy-start', {
+    id: 1,
+    onSelect: (picker1, date) => {
+      picker2.show();
+      console.log(picker1.getRange())},
+    startDate: new Date(2019, 5, 15),
+    minDate: new Date(2019, 5, 15),
+    maxDate: new Date(2019, 8, 22)
+    });
+  const picker2 = datepicker('.js-hy-end', {
+    id: 1,
+    onSelect: (picker2, date) => console.log(picker2.getRange()),
+    // minDate: new Date(2019, 6, 15),
+    // maxDate: new Date(2019, 9, 22)
+    });
   picker1.show();
-  console.log('yee')
 }
 
 
@@ -266,11 +273,7 @@ window.onload = () => {
   dropDownForUsers.innerHTML += `
     <option value='${user.id}'>${user.name}</option>
     `
-  });
-  // const picker2 = datepicker('.js-hy-end', {id: 1});
-  // picker1.show();
-  // picker2.show();
-}
+  })};
 
 goToDashboardButton.addEventListener('click', goToDashboard);
 hydrationButton.addEventListener('click', function() {
@@ -287,3 +290,4 @@ profileButton.addEventListener('click', function() {
 });
 
 hydrationStartCalender.addEventListener('click', displayCalender);
+hydrationEndCalender.addEventListener('click', displayCalender);
