@@ -1,3 +1,4 @@
+
 //Global variables
 let allUsers = new UserRepository(userData);
 let currentUser;
@@ -17,13 +18,15 @@ const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
 const dailySleep = document.querySelector('.js-sl-daily');
 const weeklySleep = document.querySelector('.js-sl-weekly');
 const dailyActivity = document.querySelector('.js-ac-daily');
-const activityComparison = document.querySelector('.js-ac-comparison')
+const activityComparison = document.querySelector('.js-ac-comparison');
 
 //buttons
 const hydrationButton = document.querySelector('.js-hydration');
 const sleepButton = document.querySelector('.js-sleep');
 const activityButton = document.querySelector('.js-activity');
 const profileButton = document.querySelector('.js-profile');
+const hydrationStartCalender = document.querySelector('.js-hy-start');
+const hydrationEndCalender = document.querySelector('.js-hy-end');
 
 //pages
 const mainPage = document.querySelector('.js-main-page');
@@ -85,28 +88,28 @@ const compareStepGoals = () => {
   const allUsersStepGoal = allUsers.getAvgStepGoal();
   if (currentUser.dailyStepGoal > allUsersStepGoal) {
     allUserStepGoalCard.innerHTML += `
-      <p>Your step goal of ${currentUser.dailyStepGoal} steps is ${currentUser.dailyStepGoal - allUsersStepGoal} steps more than the average user step goal!</p>
+      <p class="widget-text">Your step goal of ${currentUser.dailyStepGoal} steps is ${currentUser.dailyStepGoal - allUsersStepGoal} steps more than the average user step goal!</p>
     `
   } else {
     allUserStepGoalCard.innerHTML += `
-    <p>Your step goal of ${currentUser.dailyStepGoal} steps is ${allUsersStepGoal - currentUser.dailyStepGoal} steps fewer than the average user step goal!<p>
+    <p class="widget-text">Your step goal of ${currentUser.dailyStepGoal} steps is ${allUsersStepGoal - currentUser.dailyStepGoal} steps fewer than the average user step goal!<p>
     `
   }
 }
 //WIDGET  CREATOR FUNCTIONS
 const writeWeeklyHydration = (userHydration) => {
-  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/16', '2019/09/22');
-  hydrationWeekly.forEach(day => {
-    weeklyHydration.innerHTML += `
-      <p>${day.date}: ${day.numOunces}</p>
-    `
-  })
+  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/10', '2019/09/22');
+  barChart('.hy-bar-chart', hydrationWeekly, 'numOunces');
 }
 
 const writeDailyHydration = (userHydration) => {
   const hydrationToday = userHydration.getHydrationForSpecificDate('2019/09/22');
   dailyHydration.innerHTML += `
-    <p>You have consumed ${hydrationToday} ounces of water today.</p>
+    <p class="widget-text">
+      You have consumed
+      <span class="user-stat">${hydrationToday}</span>
+      ounces of water today.
+    </p>
   `
 }
 //REFACTOR
@@ -121,17 +124,17 @@ const createUserInfo = () => {
 const writeUserHydrationAvg = (userHydration) => {
   const userLifetimeAvg = userHydration.getLifetimeHydrationAvg();
   lifetimeHydrationAvg.innerHTML += `
-    <p>You've consumed ${userLifetimeAvg} ounces per day since starting FitLit!</p>
+    <p class="widget-text">
+      You've consumed
+      <span class="user-stat">${userLifetimeAvg}</span>
+      ounces per day since starting FitLit!
+    </p>
   `
 }
-
+//INSERT BAR CHART
 const writeWeeklySleep = (userSleep) => {
   const sleepWeekly = userSleep.getSleepInfoForRange('2019/09/16', '2019/09/22');
-  sleepWeekly.forEach(day => {
-    weeklySleep.innerHTML += `
-      <p>Day: ${day.date} Hours: ${day.hoursSlept} Quality: ${day.sleepQuality}</p>
-    `
-  })
+
 }
 
 const writeDailySleep = (userSleep) => {
@@ -146,7 +149,13 @@ const writeSleepAvg = (userSleep) => {
   const userLifetimeSleepHoursAvg = userSleep.getLifetimeSleepAttAvg('hoursSlept');
   const userLifetimeSleepQualityAvg = userSleep.getLifetimeSleepAttAvg('sleepQuality');
   lifetimeSleepHoursAvg.innerHTML += `
-    <p>You've slept ${userLifetimeSleepHoursAvg} hours per day with an average quality of ${userLifetimeSleepQualityAvg} since starting FitLit!</p>
+    <p class="widget-text">
+      You've slept
+      <span class="user-stat">${userLifetimeSleepHoursAvg}</span>
+      hours per day with an average quality of
+      <span class="user-stat">${userLifetimeSleepQualityAvg}</span>
+      since starting FitLit!
+    </p>
   `
 }
 
@@ -154,9 +163,9 @@ const writeDailyActivity = (userActivity) => {
   const activityToday = userActivity.getActivityForSpecificDate('2019/09/22');
   const milesWalked = userActivity.getMilesForSpecificDate('2019/09/22');
   dailyActivity.innerHTML += `
-    <p>Steps taken: ${activityToday.numSteps}</p>
-    <p>Minute Active: ${activityToday.minutesActive}</p>
-    <p>Miles walked: ${milesWalked}</p>
+    <p class="ac-stats">Steps taken: ${activityToday.numSteps}</p>
+    <p class="ac-stats">Minute Active: ${activityToday.minutesActive}</p>
+    <p class="ac-stats">Miles walked: ${milesWalked}</p>
   `
 }
 
@@ -185,7 +194,7 @@ const writeActivityComparison = (userActivity) => {
   const compareSteps = document.querySelector('.js-steps');
   const compareFlights = document.querySelector('.js-flights');
   const compareMinutes = document.querySelector('.js-minutes');
-  
+
   //TODO: Move this function into Activity as a method
   let differences = calculateUserDifferences(userActivity);
 
@@ -196,6 +205,25 @@ const writeActivityComparison = (userActivity) => {
   editNumberStyling(compareSteps, 'numSteps', differences);
   editNumberStyling(compareFlights, 'flightsOfStairs', differences);
   editNumberStyling(compareMinutes, 'minutesActive', differences);
+}
+
+const displayCalender = () => {
+  const picker1 = datepicker('.js-hy-start', {
+    id: 1,
+    onSelect: (picker1, date) => {
+      picker2.show();
+      console.log(picker1.getRange())},
+    startDate: new Date(2019, 5, 15),
+    minDate: new Date(2019, 5, 15),
+    maxDate: new Date(2019, 8, 22)
+    });
+  const picker2 = datepicker('.js-hy-end', {
+    id: 1,
+    onSelect: (picker2, date) => console.log(picker2.getRange()),
+    // minDate: new Date(2019, 6, 15),
+    // maxDate: new Date(2019, 9, 22)
+    });
+  picker1.show();
 }
 
 
@@ -240,8 +268,8 @@ window.onload = () => {
   allUsers.users.forEach(user => {
   dropDownForUsers.innerHTML += `
     <option value='${user.id}'>${user.name}</option>
-    `;
-})};
+    `
+  })};
 
 goToDashboardButton.addEventListener('click', goToDashboard);
 hydrationButton.addEventListener('click', function() {
@@ -256,3 +284,6 @@ activityButton.addEventListener('click', function() {
 profileButton.addEventListener('click', function() {
   displayPage('profile')
 });
+
+hydrationStartCalender.addEventListener('click', displayCalender);
+hydrationEndCalender.addEventListener('click', displayCalender);
