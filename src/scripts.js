@@ -163,9 +163,9 @@ const writeDailyActivity = (userActivity) => {
   const activityToday = userActivity.getActivityForSpecificDate('2019/09/22');
   const milesWalked = userActivity.getMilesForSpecificDate('2019/09/22');
   dailyActivity.innerHTML += `
-    <p>Steps taken: ${activityToday.numSteps}</p>
-    <p>Minute Active: ${activityToday.minutesActive}</p>
-    <p>Miles walked: ${milesWalked}</p>
+    <p class="ac-stats">Steps taken: ${activityToday.numSteps}</p>
+    <p class="ac-stats">Minute Active: ${activityToday.minutesActive}</p>
+    <p class="ac-stats">Miles walked: ${milesWalked}</p>
   `
 }
 
