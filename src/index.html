@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="../node_modules/js-datepicker/dist/datepicker.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -51,6 +52,10 @@
           <h1 class="widget-header">This Week</h1>
           <section class="widget-graph hy-weekly js-hy-weekly">
             <h2>Past Seven Days</h2>
+            <button class="js-hy-start">
+              <input class="js-hy-start-calender"></input>
+            </button>
+              <input class="js-hy-end"></input>
             <svg class="hy-bar-chart"></svg>
           </section>
         </section>
@@ -109,6 +114,7 @@
     <script type="text/javascript" src="./Activity.js"></script>
     <script type="text/javascript" src="./Sleep.js"></script>
     <script type="text/javascript" src="./bar-chart.js"></script>
+    <script src="../node_modules/js-datepicker/dist/datepicker.min.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

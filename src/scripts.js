@@ -1,3 +1,4 @@
+
 //Global variables
 let allUsers = new UserRepository(userData);
 let currentUser;
@@ -17,13 +18,16 @@ const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
 const dailySleep = document.querySelector('.js-sl-daily');
 const weeklySleep = document.querySelector('.js-sl-weekly');
 const dailyActivity = document.querySelector('.js-ac-daily');
-const activityComparison = document.querySelector('.js-ac-comparison')
+const activityComparison = document.querySelector('.js-ac-comparison');
 
 //buttons
 const hydrationButton = document.querySelector('.js-hydration');
 const sleepButton = document.querySelector('.js-sleep');
 const activityButton = document.querySelector('.js-activity');
 const profileButton = document.querySelector('.js-profile');
+const hydrationStartCalender = document.querySelector('.js-hy-start');
+const hydrationEndCalender = document.querySelector('.js-hy-end');
+
 
 //pages
 const mainPage = document.querySelector('.js-main-page');
@@ -96,7 +100,6 @@ const compareStepGoals = () => {
 //WIDGET  CREATOR FUNCTIONS
 const writeWeeklyHydration = (userHydration) => {
   const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/10', '2019/09/22');
-  console.log(hydrationWeekly);
   barChart('.hy-bar-chart', hydrationWeekly);
   hydrationWeekly.forEach(day => {
     weeklyHydration.innerHTML += `
@@ -214,6 +217,12 @@ const writeActivityComparison = (userActivity) => {
   editNumberStyling(compareMinutes, 'minutesActive', differences);
 }
 
+const displayCalender = () => {
+  const picker1 = datepicker('.js-hy-start-calender', {id: 1});
+  picker1.show();
+  console.log('yee')
+}
+
 
 const makeProfileWidgets = () => {
   createUserInfo();
@@ -256,8 +265,12 @@ window.onload = () => {
   allUsers.users.forEach(user => {
   dropDownForUsers.innerHTML += `
     <option value='${user.id}'>${user.name}</option>
-    `;
-})};
+    `
+  });
+  // const picker2 = datepicker('.js-hy-end', {id: 1});
+  // picker1.show();
+  // picker2.show();
+}
 
 goToDashboardButton.addEventListener('click', goToDashboard);
 hydrationButton.addEventListener('click', function() {
@@ -272,3 +285,5 @@ activityButton.addEventListener('click', function() {
 profileButton.addEventListener('click', function() {
   displayPage('profile')
 });
+
+hydrationStartCalender.addEventListener('click', displayCalender);
