@@ -288,6 +288,24 @@ h3 {
   }
 }
 
-@media only screen and (min-device-width: 320px, max-device-width: 425px) {
-  
+@media only screen and (min-device-width: 321px, max-device-width: 425px) {
+  .main-page-header {
+    font-size: ;
+  }
+
+  .login-header {
+    font-size: 2em;
+  }
+
+  .user-select-label {
+    font-size: .6em;
+  }
+
+  .all-users-list {
+    font-size: .5em;
+  }
+
+  .go-to-site {
+    font-size: 1em;
+  }
 }
