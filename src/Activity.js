@@ -18,15 +18,13 @@ class Activity {
     return this.userActivityData.find(data => data.date === date);
   }
 
-  getMinutesActiveDataForRange(startDate, endDate) {
+  getActivityDataForRange(startDate, endDate, att) {
     let firstIndex = this.userActivityData.findIndex(data => startDate === data.date);
     let endIndex = this.userActivityData.findIndex(data => endDate === data.date);
 
     let dataRange = this.userActivityData.slice(firstIndex, endIndex + 1);
 
-    let minutesActiverPerDay = dataRange.map(data => data.minutesActive);
-
-    return minutesActiverPerDay;
+    return dataRange
   }
 
   verifyStepGoalForSpecificDate(date) {

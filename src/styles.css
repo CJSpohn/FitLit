@@ -107,7 +107,8 @@ h3 {
   margin-right: 2vw;
   width: 10vw;
   border: none;
-  background-image: url("../assets/profile2.png");
+  background-color: inherit;
+  background-image: url("../assets/profile.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -150,7 +151,6 @@ h3 {
   align-items: center;
 }
 
-
 .widget {
   text-align: center;
   margin: 6vw;
@@ -165,7 +165,7 @@ h3 {
 .widget-graph {
   margin: 6vw;
   width: 80vw;
-  height: 20vh;
+  height: 30vh;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -221,6 +221,21 @@ h3 {
   display: none;
 }
 
+.sl-checkbox,
+.ac-radio {
+  display: flex;
+  margin-bottom: 2vh;
+}
+
+.ac-radio {
+  width: 100%;
+  justify-content: space-around;
+}
+
+
+.graph-label {
+  margin-bottom: 2vh;
+}
 @media only screen and (max-device-width: 320px) {
   .main-page-header {
     height: 7vh;
@@ -398,7 +413,7 @@ h3 {
 
   .widget-graph {
     width: 90vw;
-    height: 40vh;
+    height: 50vh;
   }
 
   .chart-wrapper {

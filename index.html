@@ -57,6 +57,7 @@
             <h2>Past Seven Days</h2>
             <div class="chart-wrapper">
               <svg class="hy-bar-chart"></svg>
+              <h3 class="graph-label">Ounces Consumed Per Day</h3>
             </div>
           </section>
           <input class="js-hy-start"></input>
@@ -76,6 +77,14 @@
           <h1 class="widget-header">This Week</h1>
           <section class="widget-graph sl-weekly js-sl-weekly">
             <h2>Past Seven Days</h2>
+            <div class="chart-wrapper">
+              <svg class="sl-bar-chart"></svg>
+              <h3 class="js-sl-chart-label sl-chart-label">Hours Slept</h3>
+              <div class="sl-checkbox">
+                <label for="sleep-checkbox">Show Sleep Quality</label>
+                <input class="js-sleep-checkbox" name="sleep-checkbox" type="checkbox"/>
+              </div>
+            </div>
           </section>
         </section>
 
@@ -107,6 +116,22 @@
           <h1 class="widget-header">This Week</h1>
           <section class="widget-graph ac-weekly js-ac-weekly">
             <h2>Past Seven Days</h2>
+            <svg class="ac-bar-chart"></svg>
+            <h3 class="js-ac-label">Steps Per Day</h3>
+            <div class="ac-radio">
+              <div>
+                <label for="flights">Show Steps</label>
+                <input class="js-ac-radio" name="activity-radio" type="radio" value="steps" checked="true"/>
+              </div>
+              <div>
+                <label for="flights">Show Flights Climbed</label>
+                <input class="js-ac-radio" name="activity-radio" type="radio" value="flights"/>
+              </div>
+              <div>
+                <label for="minutes">Show Minutes Active</label>
+                <input class="js-ac-radio" name="activity-radio" type="radio" value="minutes"/>
+              </div>
+            </div>
           </section>
         </section>
       </section>
