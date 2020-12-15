@@ -116,6 +116,22 @@
           <h1 class="widget-header">This Week</h1>
           <section class="widget-graph ac-weekly js-ac-weekly">
             <h2>Past Seven Days</h2>
+            <svg class="ac-bar-chart"></svg>
+            <h3 class="js-ac-label">Steps Per Day</h3>
+            <div class="ac-radio">
+              <div>
+                <label for="flights">Show Steps</label>
+                <input class="js-ac-radio" name="activity-radio" type="radio" value="steps" checked="true"/>
+              </div>
+              <div>
+                <label for="flights">Show Flights Climbed</label>
+                <input class="js-ac-radio" name="activity-radio" type="radio" value="flights"/>
+              </div>
+              <div>
+                <label for="minutes">Show Minutes Active</label>
+                <input class="js-ac-radio" name="activity-radio" type="radio" value="minutes"/>
+              </div>
+            </div>
           </section>
         </section>
       </section>

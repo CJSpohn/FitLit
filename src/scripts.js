@@ -36,8 +36,10 @@ const activityDisplay = document.querySelector('.js-activity-display');
 const profileDisplay = document.querySelector('.js-profile-display');
 
 //misc
-const sleepCheckBox = document.querySelector('.js-sleep-checkbox')
-const sleepChartLabel = document.querySelector('.js-sl-chart-label')
+const sleepCheckBox = document.querySelector('.js-sleep-checkbox');
+const sleepChartLabel = document.querySelector('.js-sl-chart-label');
+const activityChartLabel = document.querySelector('.js-ac-label');
+const activityRadios = document.querySelectorAll('input[name="activity-radio"]');
 
 //Functions
 const hidePages = () => {
@@ -103,7 +105,7 @@ const compareStepGoals = () => {
 }
 //WIDGET  CREATOR FUNCTIONS
 const writeWeeklyHydration = () => {
-  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/10', '2019/09/22');
+  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/16', '2019/09/22');
   barChart('.hy-bar-chart', hydrationWeekly, 'numOunces');
 }
 
@@ -218,6 +220,11 @@ const writeActivityComparison = (userActivity) => {
   editNumberStyling(compareMinutes, 'minutesActive', differences);
 }
 
+const writeWeeklyActivity = () => {
+  const activityWeekly = userActivity.getActivityDataForRange('2019/09/16', '2019/09/22');
+  toggleActivityChart(activityWeekly);
+}
+
 const displayCalender = () => {
   const picker1 = datepicker('.js-hy-start', {
     id: 1,
@@ -237,6 +244,18 @@ const displayCalender = () => {
   picker1.show();
 }
 
+const toggleActivityChart = (data) => {
+  if (activityRadios[0].checked) {
+    activityChartLabel.innerText = 'Steps Per Day';
+    barChart('.ac-bar-chart', data, 'numSteps')
+  } else if (activityRadios[1].checked) {
+    barChart('.ac-bar-chart', data, 'flightsOfStairs')
+    activityChartLabel.innerText = 'Flights of Stairs Per Day';
+  } else {
+    barChart('.ac-bar-chart', data, 'minutesActive')
+    activityChartLabel.innerText = 'Minutes Active Per Day';
+  }
+}
 
 const makeProfileWidgets = () => {
   createUserInfo();
@@ -246,6 +265,7 @@ const makeProfileWidgets = () => {
 const makeActivityWidgets = () => {
   writeDailyActivity();
   writeActivityComparison();
+  writeWeeklyActivity();
 }
 
 const makeHydrationWidgets = () => {
@@ -301,4 +321,8 @@ hydrationEndCalender.addEventListener('click', displayCalender);
 
 sleepCheckBox.addEventListener('change', () => {
   writeWeeklySleep()
+})
+
+activityRadios.forEach(radio => {
+  radio.addEventListener('change', writeWeeklyActivity)
 })

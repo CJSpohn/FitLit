@@ -221,13 +221,17 @@ h3 {
   display: none;
 }
 
-.sl-checkbox {
+.sl-checkbox,
+.ac-radio {
   display: flex;
-}
-
-.sl-checkbox {
   margin-bottom: 2vh;
 }
+
+.ac-radio {
+  width: 100%;
+  justify-content: space-around;
+}
+
 
 .graph-label {
   margin-bottom: 2vh;
