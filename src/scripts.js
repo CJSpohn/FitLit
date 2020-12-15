@@ -35,7 +35,9 @@ const sleepDisplay = document.querySelector('.js-sleep-display');
 const activityDisplay = document.querySelector('.js-activity-display');
 const profileDisplay = document.querySelector('.js-profile-display');
 
+//misc
 const sleepCheckBox = document.querySelector('.js-sleep-checkbox')
+const sleepChartLabel = document.querySelector('.js-sl-chart-label')
 
 //Functions
 const hidePages = () => {
@@ -138,9 +140,10 @@ const writeUserHydrationAvg = () => {
 const writeWeeklySleep = () => {
   const sleepWeekly = userSleep.getSleepInfoForRange('2019/09/16', '2019/09/22');
   if (sleepCheckBox.checked === true) {
-    
+    sleepChartLabel.innerText = 'Sleep Quality'
     barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality')
   } else {
+    sleepChartLabel.innerText = 'Hours Slept'
     barChart('.sl-bar-chart', sleepWeekly, 'hoursSlept')
   }
 }
