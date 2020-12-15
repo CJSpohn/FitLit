@@ -6,6 +6,7 @@ const User = require('../src/User');
 const sampleData = require('../data/test-data');
 const sampleUserData = sampleData.sampleUserData;
 
+
 describe('User', () => {
   let users, currentUser;
 

@@ -1,7 +1,7 @@
 class Hydration {
-  constructor(user) {
+  constructor(user, data) {
     this.userID = user.id;
-    this.userHydrationData = hydrationData.filter(data => this.userID === data.userID);
+    this.userHydrationData = data.filter(data => this.userID === data.userID);
   }
 
   getLifetimeHydrationAvg() {
@@ -27,4 +27,8 @@ class Hydration {
 
     return dataRange;
   }
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = Hydration;
 }
