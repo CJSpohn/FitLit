@@ -181,10 +181,11 @@ h3 {
 }
 
 .chart-wrapper {
-  width: 80vw;
+  width: 100vw;
   height: 30vh;
   border: 1px solid black;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  display: contents;
 }
 
 .widget-header {
@@ -251,7 +252,7 @@ h3 {
   }
 
   .widget-text {
-    font-size: .8em;
+    font-size: 1em;
   }
 
   .widget-graph {
@@ -292,9 +293,37 @@ h3 {
   }
 }
 
-@media only screen and (min-device-width: 321px) {
+@media only screen and (min-device-width: 321px) and (max-device-width: 767px) {
+  h2 {
+    font-size: 1.2em;
+  }
+
   .main-page-header {
-    height: 10vh;
+    height: 8vh;
+  }
+
+  .welcome-message {
+    font-size: 1.5em;
+  }
+
+  .widget-header {
+    font-size: 1.5em;
+    margin: 0;
+    margin-top: .4em;
+  }
+
+  .widget {
+    width: 85vw;
+    height: 29vh;
+  }
+
+  .widget-graph {
+    width: 95vw;
+    height: 35vh;
+  }
+
+  .login-page {
+    margin-top: 20vh;
   }
 
   .login-header {
@@ -306,7 +335,7 @@ h3 {
   }
 
   .all-users-list {
-    font-size: .5em;
+    font-size: .45em;
   }
 
   .go-to-site {
@@ -319,5 +348,70 @@ h3 {
 
   .nav-button {
     font-size: 1.1em;
+  }
+
+  .compare-number {
+    font-size: 2em;
+  }
+}
+ /* and (max-device-width: 991px)  */
+@media only screen and (min-device-width: 768px) {
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .login-page {
+    margin-top: 10vh;
+  }
+
+  .login-header {
+    margin-top: 7vh;
+    font-size: 2em;
+  }
+
+  .user-select-label {
+    font-size: .8em;
+  }
+
+  .all-users-list {
+    font-size: .65em;
+  }
+
+  .go-to-site {
+    font-size: 1.5em;
+  }
+
+  .nav-buttons-wrapper {
+    height: 5.2vh;
+  }
+
+  .small-widget {
+    display: flex;
+  }
+
+  .widget {
+    width: 40vw;
+    margin: 4vw;
+    height: 40vh;
+  }
+
+  .widget-graph {
+    width: 90vw;
+    height: 40vh;
+  }
+
+  .chart-wrapper {
+    width: 90vw;
+  }
+
+  .tick {
+    font-size: 1.5em;
+  }
+
+  .compare-number {
+    font-size: 2.5em;
+    margin: 0;
+    margin-top: 2.6vh;
   }
 }

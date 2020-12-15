@@ -40,10 +40,11 @@ const barChart = (section, data, att) => {
       .enter()
       .append('text')
       .text((d) => d[att])
-      .style('font-size', '0.5em')
+      .style('font-size', '0.8em')
         .attr('fill', 'white')
         .attr('x', (d, i) => xScale(d.date.slice(5)) + (width * .02))
         .attr('y', (d, i) => height - yScale(d[att]) + (height * .1))
+        // .attr('transform', 'rotate(-90)')
 
   //append the x Axis
   svg.append('g')
