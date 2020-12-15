@@ -21,7 +21,7 @@ describe('Hydration', () => {
     expect(Hydration).to.be.a('function')
   })
 
-  it('should contain the userId and hydration Data', () => {
+  it('should contain the userId and hydration data', () => {
     let currentUserHydrationData = sampleHydrationData.filter(datum => datum.userID === currentUser.id)
 
     expect(userHydration.userID).to.equal(1)
