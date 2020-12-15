@@ -1,29 +1,28 @@
 const barChart = (section, data, att) => {
-
-  let svg = d3.select(section);
+  let svg = d3.select(section)
 
   let width = parseInt(d3.select(".chart-wrapper").style("width"));
-  let height = parseInt(d3.select(".chart-wrapper").style("height"));
+  let height =  parseInt(d3.select(".chart-wrapper").style("height"));
 
   svg.attr('width', width)
-      .attr('height', height);
+  .attr('height', height)
 
   let dates = data.map(data => data.date.slice(5));
-  let atts = data.map(data => data[att]);
+  let atts = data.map(data => data[att])
 
   let xScale = d3.scaleBand()
                   .domain(dates)
-                  .range([25, width - 25])
+                  .range([25, width-25])
                   .padding(0.1);
 
   let xAxis = d3.axisBottom(xScale)
-                  .tickValues(dates.filter((d, i) => (i === 0 || i === data.length - 1)))
-
+                  .tickValues(dates.filter((d,i) => (i === 0 || i === data.length - 1)))
 
   let yScale = d3.scaleLinear()
-                  .domain([0, d3.max(atts) + 5])
+                  .domain([0, d3.max(atts)+10])
                   .range([50, height])
 
+  //creating our bars
   svg.selectAll('rect')
       .data(data)
       .enter()
@@ -33,18 +32,20 @@ const barChart = (section, data, att) => {
       .attr('y', (d, i) => height - yScale(d[att]))
       .attr('width', (d) => xScale.bandwidth())
       .attr('height', (d, i) => yScale(d[att]) - 50)
-      .attr('fill', '#005AB5');
+      .attr('fill', '#005AB5')
 
+  //numbers in bars
   svg.selectAll('text')
       .data(data)
       .enter()
       .append('text')
       .text((d) => d[att])
+      .style('font-size', '0.5em')
         .attr('fill', 'white')
-        .style('font-size', '.5em')
         .attr('x', (d, i) => xScale(d.date.slice(5)) + (width * .02))
-        .attr('y', (d, i) => height - yScale(d[att]) + (height * .1));
+        .attr('y', (d, i) => height - yScale(d[att]) + (height * .1))
 
+  //append the x Axis
   svg.append('g')
       .attr('transform', `translate(0, ${height - 50})`)
       .call(xAxis)

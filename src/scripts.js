@@ -1,4 +1,3 @@
-
 //Global variables
 let allUsers = new UserRepository(userData);
 let currentUser;
