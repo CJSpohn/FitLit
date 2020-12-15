@@ -243,7 +243,7 @@ const makeHydrationWidgets = () => {
 }
 
 const makeSleepWidgets = () => {
-  writeWeeklySleep(new Sleep(currentUser));
+  writeWeeklySleep(new Sleep(currentUser, sleepData, userData));
   writeSleepAvg(new Sleep(currentUser));
   writeDailySleep(new Sleep(currentUser));
 }
