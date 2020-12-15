@@ -354,8 +354,12 @@ h3 {
     font-size: 2em;
   }
 }
+ /* and (max-device-width: 991px)  */
+@media only screen and (min-device-width: 768px) {
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 991px) {
+  h2 {
+    font-size: 1.5em;
+  }
 
   .login-page {
     margin-top: 10vh;
@@ -378,5 +382,36 @@ h3 {
     font-size: 1.5em;
   }
 
+  .nav-buttons-wrapper {
+    height: 5.2vh;
+  }
 
+  .small-widget {
+    display: flex;
+  }
+
+  .widget {
+    width: 40vw;
+    margin: 4vw;
+    height: 40vh;
+  }
+
+  .widget-graph {
+    width: 90vw;
+    height: 40vh;
+  }
+
+  .chart-wrapper {
+    width: 90vw;
+  }
+
+  .tick {
+    font-size: 1.5em;
+  }
+
+  .compare-number {
+    font-size: 2.5em;
+    margin: 0;
+    margin-top: 2.6vh;
+  }
 }
