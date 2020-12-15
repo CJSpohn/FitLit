@@ -292,9 +292,18 @@ h3 {
   }
 }
 
-@media only screen and (min-device-width: 321px) {
+@media only screen and (min-device-width: 321px) and (max-device-width: 425px) {
   .main-page-header {
-    height: 10vh;
+    height: 8vh;
+  }
+
+  .welcome-message {
+    font-size: 1.5em;
+  }
+
+  .widget-header {
+    font-size: 1.7em;
+    margin-bottom: 0;
   }
 
   .login-header {
@@ -306,7 +315,7 @@ h3 {
   }
 
   .all-users-list {
-    font-size: .5em;
+    font-size: .45em;
   }
 
   .go-to-site {
