@@ -1,0 +1,323 @@
+/* All File */
+/* Our colors:
+#005AB5
+#DC3220
+*/
+
+* {
+  font-family: 'Comfortaa', cursive;
+}
+
+html {
+ height: 100%;
+ background: radial-gradient(circle, #084888 0%, #052442 100%);
+ background-attachment: fixed;
+ background-repeat: no-repeat;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  color: white;
+}
+
+h2 {
+  font-size: 3em;
+  margin-bottom: 0;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Login Page */
+.login-page {
+  margin-top: 30vh;
+  height: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login-form {
+  color: white;
+  font-size: 40px;
+  min-height: 60vh;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  opacity: .7;
+  border-radius: 20px;
+}
+
+.go-to-site {
+  color: white;
+  font-size: 2.5em;
+  margin-top: 4vh;
+  width: 60vw;
+  min-height: 5vh;
+  border-radius: 20px;
+  background: #005AB5;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.login-header {
+  font-size: 3em;
+  margin-bottom: 20vh;
+}
+
+.user-select-label {
+  font-size: 1.5em;
+}
+
+.all-users-list {
+  font-size: 1em;
+}
+
+.all-user-list:focus {
+  height: 1px;
+  width: 1px;
+}
+
+/* Main Page */
+
+/* header */
+.main-page-header {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+}
+
+.welcome-message {
+  font-size: 2em;
+  margin-left: 2vw;
+}
+
+.main-page-menu {
+  margin-right: 2vw;
+  width: 10vw;
+  border: none;
+  background-image: url("../assets/profile2.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* nav buttons */
+.nav-buttons-wrapper {
+  width: 100vw;
+  height: 3vh;
+  display: flex;
+}
+
+.nav-button {
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  width: 34vw;
+  background-color: #005AB5;
+  opacity: 65%;
+}
+
+.nav-button:hover,
+.main-page-menu:hover,
+.main-page-menu:focus,
+.nav-button:focus {
+  outline: none;
+}
+
+.nav-button-select {
+  border-bottom: 3px solid orange;
+  opacity: 100%;
+}
+
+
+/* widgets */
+.widget-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.widget {
+  text-align: center;
+  margin: 6vw;
+  width: 80vw;
+  height: 20vh;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.widget-graph {
+  margin: 6vw;
+  width: 80vw;
+  height: 20vh;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget,
+.widget-graph {
+  background-color: darkgrey;
+  border-radius: 20px;
+  opacity: .8;
+}
+
+.chart-wrapper {
+  width: 80vw;
+  height: 30vh;
+  border: 1px solid black;
+  margin-bottom: 10px
+}
+
+.widget-header {
+  font-size: 2.5em;
+  margin-bottom: 0;
+}
+
+.compare-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.compare-number {
+  font-size: 4em;
+  margin-top: 0;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.user-stat {
+  color: #005AB5;
+  font-weight: bolder;
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-device-width: 320px) {
+  .main-page-header {
+    height: 7vh;
+  }
+
+  .welcome-message {
+    font-size: 1.5em;
+    margin-top: .5em;
+  }
+
+  .nav-buttons-wrapper {
+    height: 5vh;
+  }
+
+  .nav-button {
+    font-size: 1em;
+  }
+
+  .widget-header {
+    font-size: 1.5em;
+    margin-top: 3vw;
+    margin-bottom: 0;
+  }
+
+  .widget {
+    width: 90vw;
+    margin: 3vw;
+    height: 25vh;
+  }
+
+  .widget-text {
+    font-size: .8em;
+  }
+
+  .widget-graph {
+    width: 95vw;
+    height: 35vh;
+  }
+
+  .login-header {
+    font-size: 1.5em;
+  }
+
+  .user-select-label {
+    font-size: .5em;
+  }
+
+  .all-users-list {
+    width: 60vw;
+    height: 4vh;
+    font-size: .4em
+  }
+
+  .go-to-site {
+    font-size: 1em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+    margin: 0;
+    margin-top: .2em;
+  }
+
+  .compare-number {
+    font-size: 2.5em;
+  }
+
+  .ac-stats {
+    margin: .1em;
+  }
+}
+
+@media only screen and (min-device-width: 321px) {
+  .main-page-header {
+    height: 10vh;
+  }
+
+  .login-header {
+    font-size: 2em;
+  }
+
+  .user-select-label {
+    font-size: .6em;
+  }
+
+  .all-users-list {
+    font-size: .5em;
+  }
+
+  .go-to-site {
+    font-size: 1em;
+  }
+
+  .nav-buttons-wrapper {
+    height: 5vh;
+  }
+
+  .nav-button {
+    font-size: 1.1em;
+  }
+}

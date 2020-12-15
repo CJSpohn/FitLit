@@ -12,7 +12,7 @@ class Hydration {
 
     let userHydrationAvg = userHydrationTotal / this.userHydrationData.length;
 
-    return userHydrationAvg;
+    return parseFloat(userHydrationAvg.toFixed(2));
   }
 
   getHydrationForSpecificDate(date) {
@@ -20,14 +20,11 @@ class Hydration {
   }
 
   getHydrationDataForRange(startDate, endDate) {
-    let firstIndex = this.userHydrationData.findIndex(data => startDate === data.date);
+    let startIndex = this.userHydrationData.findIndex(data => startDate === data.date);
     let endIndex = this.userHydrationData.findIndex(data => endDate === data.date);
 
-    let dataRange = this.userHydrationData.slice(firstIndex, endIndex + 1);
+    let dataRange = this.userHydrationData.slice(startIndex, endIndex + 1);
 
-    let ouncesPerDay = dataRange.map(data => data.numOunces);
-
-    return ouncesPerDay;
-
+    return dataRange;
   }
 }
