@@ -222,6 +222,10 @@ h3 {
   display: none;
 }
 
+.sl-checkbox {
+  display: flex;
+}
+
 @media only screen and (max-device-width: 320px) {
   .main-page-header {
     height: 7vh;

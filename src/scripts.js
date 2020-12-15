@@ -1,6 +1,6 @@
 //Global variables
 let allUsers = new UserRepository(userData);
-let currentUser;
+let currentUser, userSleep, userActivity, userHydration;
 
 //query selectors
 const dropDownForUsers = document.querySelector('.js-all-users');
@@ -35,6 +35,7 @@ const sleepDisplay = document.querySelector('.js-sleep-display');
 const activityDisplay = document.querySelector('.js-activity-display');
 const profileDisplay = document.querySelector('.js-profile-display');
 
+const sleepCheckBox = document.querySelector('.js-sleep-checkbox')
 
 //Functions
 const hidePages = () => {
@@ -77,6 +78,9 @@ const switchPage = () => {
 const instantiateUser = () => {
   const selectedUser = allUsers.getUserData(parseInt(dropDownForUsers.value));
   currentUser = new User(selectedUser);
+  userSleep = new Sleep(currentUser); //, allUsers, sleepData
+  userActivity = new Activity(currentUser);
+  userHydration = new Hydration(currentUser);
 }
 
 const welcomeUser = () => {
@@ -96,12 +100,12 @@ const compareStepGoals = () => {
   }
 }
 //WIDGET  CREATOR FUNCTIONS
-const writeWeeklyHydration = (userHydration) => {
+const writeWeeklyHydration = () => {
   const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/10', '2019/09/22');
   barChart('.hy-bar-chart', hydrationWeekly, 'numOunces');
 }
 
-const writeDailyHydration = (userHydration) => {
+const writeDailyHydration = () => {
   const hydrationToday = userHydration.getHydrationForSpecificDate('2019/09/22');
   dailyHydration.innerHTML += `
     <p class="widget-text">
@@ -120,7 +124,7 @@ const createUserInfo = () => {
   }
 }
 
-const writeUserHydrationAvg = (userHydration) => {
+const writeUserHydrationAvg = () => {
   const userLifetimeAvg = userHydration.getLifetimeHydrationAvg();
   lifetimeHydrationAvg.innerHTML += `
     <p class="widget-text">
@@ -131,12 +135,17 @@ const writeUserHydrationAvg = (userHydration) => {
   `
 }
 //INSERT BAR CHART
-const writeWeeklySleep = (userSleep) => {
+const writeWeeklySleep = () => {
   const sleepWeekly = userSleep.getSleepInfoForRange('2019/09/16', '2019/09/22');
-
+  if (sleepCheckBox.checked === true) {
+    
+    barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality')
+  } else {
+    barChart('.sl-bar-chart', sleepWeekly, 'hoursSlept')
+  }
 }
 
-const writeDailySleep = (userSleep) => {
+const writeDailySleep = () => {
   const userDailySleep = userSleep.getSleepInfoForSpecificDate('2019/09/22');
   dailySleep.innerHTML += `
     <p>Sleep Quality: ${userDailySleep.sleepQuality}</p>
@@ -144,7 +153,7 @@ const writeDailySleep = (userSleep) => {
   `
 }
 
-const writeSleepAvg = (userSleep) => {
+const writeSleepAvg = () => {
   const userLifetimeSleepHoursAvg = userSleep.getLifetimeSleepAttAvg('hoursSlept');
   const userLifetimeSleepQualityAvg = userSleep.getLifetimeSleepAttAvg('sleepQuality');
   lifetimeSleepHoursAvg.innerHTML += `
@@ -158,7 +167,7 @@ const writeSleepAvg = (userSleep) => {
   `
 }
 
-const writeDailyActivity = (userActivity) => {
+const writeDailyActivity = () => {
   const activityToday = userActivity.getActivityForSpecificDate('2019/09/22');
   const milesWalked = userActivity.getMilesForSpecificDate('2019/09/22');
   dailyActivity.innerHTML += `
@@ -168,7 +177,7 @@ const writeDailyActivity = (userActivity) => {
   `
 }
 
-const calculateUserDifferences = (userActivity) => {
+const calculateUserDifferences = () => {
   const activityTodayUser = userActivity.getActivityForSpecificDate('2019/09/22');
   const activityTodayAvg = userActivity.getActivityAvgsForAllUsers('2019/09/22');
 
@@ -232,20 +241,20 @@ const makeProfileWidgets = () => {
 }
 
 const makeActivityWidgets = () => {
-  writeDailyActivity(new Activity(currentUser));
-  writeActivityComparison(new Activity(currentUser));
+  writeDailyActivity();
+  writeActivityComparison();
 }
 
 const makeHydrationWidgets = () => {
-  writeDailyHydration(new Hydration(currentUser));
-  writeUserHydrationAvg(new Hydration(currentUser));
-  writeWeeklyHydration(new Hydration(currentUser));
+  writeDailyHydration();
+  writeUserHydrationAvg();
+  writeWeeklyHydration();
 }
 
 const makeSleepWidgets = () => {
-  writeWeeklySleep(new Sleep(currentUser));
-  writeSleepAvg(new Sleep(currentUser));
-  writeDailySleep(new Sleep(currentUser));
+  writeWeeklySleep();
+  writeSleepAvg();
+  writeDailySleep();
 }
 
 const populateWidgets = () => {
@@ -286,3 +295,7 @@ profileButton.addEventListener('click', function() {
 
 hydrationStartCalender.addEventListener('click', displayCalender);
 hydrationEndCalender.addEventListener('click', displayCalender);
+
+sleepCheckBox.addEventListener('change', () => {
+  writeWeeklySleep()
+})
