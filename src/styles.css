@@ -107,7 +107,8 @@ h3 {
   margin-right: 2vw;
   width: 10vw;
   border: none;
-  background-image: url("../assets/profile2.png");
+  background-color: inherit;
+  background-image: url("../assets/profile.svg");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
