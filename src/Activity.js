@@ -1,8 +1,10 @@
 class Activity {
-  constructor(user) {
+  constructor(user, activityData, userData) {
     this.userID = user.id;
     this.strideLength = user.strideLength;
     this.userStepGoal = user.dailyStepGoal;
+    this.userData = userData,
+    this.activityData = activityData,
     this.userActivityData = activityData.filter(data => this.userID === data.userID);
   }
 
@@ -67,4 +69,8 @@ class Activity {
     return totalNumOfActivity;
   }
 
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = Activity;
 }

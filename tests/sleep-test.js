@@ -21,12 +21,14 @@ describe('Sleep', () => {
     expect(Sleep).to.be.a('function')
   })
 
-  it('should contain the userId and sleep data', () => {
+  it('should contain the userId, all sleep data, all user data, and user specific sleep data', () => {
     let currentUserSleepData = sampleSleepData.filter(datum => datum.userID === currentUser.id)
 
     expect(userSleep.userID).to.equal(1)
-    expect(userSleep.userSleepData.length).to.equal(3)
+    expect(userSleep.userData).to.eql(sampleUserData)
+    expect(userSleep.sleepData).to.eql(sampleSleepData)
     expect(userSleep.userSleepData).to.eql(currentUserSleepData)
+
   })
 
   it('should return a user\'s avg for hoursSlept', () => {
