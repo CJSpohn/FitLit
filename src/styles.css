@@ -293,7 +293,7 @@ h3 {
   }
 }
 
-@media only screen and (min-device-width: 321px) and (max-device-width: 425px) {
+@media only screen and (min-device-width: 321px) and (max-device-width: 767px) {
   h2 {
     font-size: 1.2em;
   }
@@ -320,6 +320,10 @@ h3 {
   .widget-graph {
     width: 95vw;
     height: 35vh;
+  }
+
+  .login-page {
+    margin-top: 20vh;
   }
 
   .login-header {
@@ -349,4 +353,30 @@ h3 {
   .compare-number {
     font-size: 2em;
   }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 991px) {
+
+  .login-page {
+    margin-top: 10vh;
+  }
+
+  .login-header {
+    margin-top: 7vh;
+    font-size: 2em;
+  }
+
+  .user-select-label {
+    font-size: .8em;
+  }
+
+  .all-users-list {
+    font-size: .65em;
+  }
+
+  .go-to-site {
+    font-size: 1.5em;
+  }
+
+
 }
