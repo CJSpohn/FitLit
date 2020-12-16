@@ -84,7 +84,7 @@ const instantiateUser = () => {
   currentUser = new User(selectedUser);
   userSleep = new Sleep(currentUser, sleepData, allUsers); //, allUsers, sleepData
   userActivity = new Activity(currentUser, activityData, allUsers);
-  userHydration = new Hydration(currentUser, allUsers);
+  userHydration = new Hydration(currentUser, hydrationData);
 }
 
 const welcomeUser = () => {
