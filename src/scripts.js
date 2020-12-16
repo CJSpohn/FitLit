@@ -24,9 +24,15 @@ const hydrationButton = document.querySelector('.js-hydration');
 const sleepButton = document.querySelector('.js-sleep');
 const activityButton = document.querySelector('.js-activity');
 const profileButton = document.querySelector('.js-profile');
-const hydrationStartCalender = document.querySelector('.js-hy-start');
-const hydrationEndCalender = document.querySelector('.js-hy-end');
-const changeDateButton = document.querySelector('.change-dates');
+const hydrationStartCalender = document.querySelector('.hydration-start');
+const hydrationEndCalender = document.querySelector('.hydration-end');
+const activityStartCalender = document.querySelector('.activity-start');
+const activityEndCalender = document.querySelector('.activity-end');
+const sleepStartCalender = document.querySelector('.sleep-start');
+const sleepEndCalender = document.querySelector('.sleep-end');
+const hydrationChangeDateButton = document.querySelector('.hy-change-dates');
+const activityChangeDateButton = document.querySelector('.ac-change-dates');
+const sleepChangeDateButton = document.querySelector('.sl-change-dates');
 
 //pages
 const mainPage = document.querySelector('.js-main-page');
@@ -140,8 +146,8 @@ const writeUserHydrationAvg = () => {
   `
 }
 //INSERT BAR CHART
-const writeWeeklySleep = () => {
-  const sleepWeekly = userSleep.getSleepInfoForRange('2019/09/16', '2019/09/22');
+const writeWeeklySleep = (date1, date2) => {
+  const sleepWeekly = userSleep.getSleepInfoForRange(date1, date2);
   if (sleepCheckBox.checked === true) {
     sleepChartLabel.innerText = 'Sleep Quality'
     barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality')
@@ -221,33 +227,18 @@ const writeActivityComparison = (userActivity) => {
   editNumberStyling(compareMinutes, 'minutesActive', differences);
 }
 
-const writeWeeklyActivity = () => {
-  const activityWeekly = userActivity.getActivityDataForRange('2019/09/16', '2019/09/22');
+const writeWeeklyActivity = (startDate, endDate) => {
+  const activityWeekly = userActivity.getActivityDataForRange(startDate, endDate);
   toggleActivityChart(activityWeekly);
 }
 
-const displayCalender = () => {
-  const picker1 = datepicker('.js-hy-start', {
-    startDate: new Date(2019, 5, 15),
-    minDate: new Date(2019, 5, 15),
-    maxDate: new Date(2019, 8, 22),
-    formatter: (input, date, instance) => {
-      input.value = date.toLocaleDateString('en-ZA');
-      }
-    });
-  const picker2 = datepicker('.js-hy-end', {
-    startDate: new Date(2019, 5, 15),
-    maxDate: new Date(2019, 8, 22),
-    formatter: (input, date, instance) => {
-      input.value = date.toLocaleDateString('en-ZA');
-      }
-    });
-    picker2.show();
-    picker1.show();
-}
 
-const createChartWithSelectedDates = () => {
-  writeWeeklyHydration(hydrationStartCalender.value, hydrationEndCalender.value);
+const createChartWithSelectedDates = (startCalender, endCalender) => {
+  let startDate = startCalender.value.replace(/-/gi, '/');
+  let endDate = endCalender.value.replace(/-/gi, '/');
+  writeWeeklyHydration(startDate, endDate);
+  writeWeeklyActivity(startDate, endDate);
+  writeWeeklySleep(startDate, endDate);
 }
 
 const toggleActivityChart = (data) => {
@@ -322,15 +313,24 @@ profileButton.addEventListener('click', function() {
   displayPage('profile')
 });
 
-hydrationStartCalender.addEventListener('click', displayCalender);
-hydrationEndCalender.addEventListener('click', displayCalender);
-
 sleepCheckBox.addEventListener('change', () => {
-  writeWeeklySleep()
+  createChartWithSelectedDates(sleepStartCalender, sleepEndCalender);
 })
 
 activityRadios.forEach(radio => {
-  radio.addEventListener('change', writeWeeklyActivity)
+  radio.addEventListener('change', function() {
+    createChartWithSelectedDates(activityStartCalender, activityEndCalender);
+  })
 })
 
-changeDateButton.addEventListener('click', createChartWithSelectedDates);
+hydrationChangeDateButton.addEventListener('click', function() {
+  createChartWithSelectedDates(hydrationStartCalender, hydrationEndCalender);
+})
+
+activityChangeDateButton.addEventListener('click', function() {
+  createChartWithSelectedDates(activityStartCalender, activityEndCalender);
+})
+
+sleepChangeDateButton.addEventListener('click', function() {
+  createChartWithSelectedDates(sleepStartCalender, sleepEndCalender);
+})
