@@ -24,8 +24,9 @@ const hydrationButton = document.querySelector('.js-hydration');
 const sleepButton = document.querySelector('.js-sleep');
 const activityButton = document.querySelector('.js-activity');
 const profileButton = document.querySelector('.js-profile');
-const hydrationStartCalender = document.querySelector('.js-hy-start');
-const hydrationEndCalender = document.querySelector('.js-hy-end');
+const startCalendar = document.querySelector('.date-start');
+const endCalendar = document.querySelector('.date-end');
+const changeDateButton = document.querySelector('.change-dates');
 
 //pages
 const mainPage = document.querySelector('.js-main-page');
@@ -104,8 +105,8 @@ const compareStepGoals = () => {
   }
 }
 //WIDGET  CREATOR FUNCTIONS
-const writeWeeklyHydration = () => {
-  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/16', '2019/09/22');
+const writeWeeklyHydration = (date1, date2) => {
+  const hydrationWeekly = userHydration.getHydrationDataForRange(date1, date2);
   barChart('.hy-bar-chart', hydrationWeekly, 'numOunces');
 }
 
@@ -139,8 +140,8 @@ const writeUserHydrationAvg = () => {
   `
 }
 //INSERT BAR CHART
-const writeWeeklySleep = () => {
-  const sleepWeekly = userSleep.getSleepInfoForRange('2019/09/16', '2019/09/22');
+const writeWeeklySleep = (date1, date2) => {
+  const sleepWeekly = userSleep.getSleepInfoForRange(date1, date2);
   if (sleepCheckBox.checked === true) {
     sleepChartLabel.innerText = 'Sleep Quality'
     barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality')
@@ -220,28 +221,18 @@ const writeActivityComparison = (userActivity) => {
   editNumberStyling(compareMinutes, 'minutesActive', differences);
 }
 
-const writeWeeklyActivity = () => {
-  const activityWeekly = userActivity.getActivityDataForRange('2019/09/16', '2019/09/22');
+const writeWeeklyActivity = (startDate, endDate) => {
+  const activityWeekly = userActivity.getActivityDataForRange(startDate, endDate);
   toggleActivityChart(activityWeekly);
 }
 
-const displayCalender = () => {
-  const picker1 = datepicker('.js-hy-start', {
-    id: 1,
-    onSelect: (picker1, date) => {
-      picker2.show();
-      console.log(picker1.getRange())},
-    startDate: new Date(2019, 5, 15),
-    minDate: new Date(2019, 5, 15),
-    maxDate: new Date(2019, 8, 22)
-    });
-  const picker2 = datepicker('.js-hy-end', {
-    id: 1,
-    onSelect: (picker2, date) => console.log(picker2.getRange()),
-    // minDate: new Date(2019, 6, 15),
-    // maxDate: new Date(2019, 9, 22)
-    });
-  picker1.show();
+
+const createChartWithSelectedDates = () => {
+  let startDate = startCalendar.value.replace(/-/gi, '/');
+  let endDate = endCalendar.value.replace(/-/gi, '/');
+  writeWeeklyHydration(startDate, endDate);
+  writeWeeklyActivity(startDate, endDate);
+  writeWeeklySleep(startDate, endDate);
 }
 
 const toggleActivityChart = (data) => {
@@ -265,17 +256,17 @@ const makeProfileWidgets = () => {
 const makeActivityWidgets = () => {
   writeDailyActivity();
   writeActivityComparison();
-  writeWeeklyActivity();
+  writeWeeklyActivity('2019/09/16', '2019/09/22');
 }
 
 const makeHydrationWidgets = () => {
   writeDailyHydration();
   writeUserHydrationAvg();
-  writeWeeklyHydration();
+  writeWeeklyHydration('2019/09/16', '2019/09/22');
 }
 
 const makeSleepWidgets = () => {
-  writeWeeklySleep();
+  writeWeeklySleep('2019/09/16', '2019/09/22');
   writeSleepAvg();
   writeDailySleep();
 }
@@ -316,13 +307,16 @@ profileButton.addEventListener('click', function() {
   displayPage('profile')
 });
 
-hydrationStartCalender.addEventListener('click', displayCalender);
-hydrationEndCalender.addEventListener('click', displayCalender);
-
 sleepCheckBox.addEventListener('change', () => {
-  writeWeeklySleep()
+  createChartWithSelectedDates();
 })
 
 activityRadios.forEach(radio => {
-  radio.addEventListener('change', writeWeeklyActivity)
+  radio.addEventListener('change', function() {
+    createChartWithSelectedDates();
+  })
+})
+
+changeDateButton.addEventListener('click', function() {
+  createChartWithSelectedDates();
 })
