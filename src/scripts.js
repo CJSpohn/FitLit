@@ -26,6 +26,7 @@ const activityButton = document.querySelector('.js-activity');
 const profileButton = document.querySelector('.js-profile');
 const hydrationStartCalender = document.querySelector('.js-hy-start');
 const hydrationEndCalender = document.querySelector('.js-hy-end');
+const changeDateButton = document.querySelector('.change-dates');
 
 //pages
 const mainPage = document.querySelector('.js-main-page');
@@ -104,8 +105,8 @@ const compareStepGoals = () => {
   }
 }
 //WIDGET  CREATOR FUNCTIONS
-const writeWeeklyHydration = () => {
-  const hydrationWeekly = userHydration.getHydrationDataForRange('2019/09/16', '2019/09/22');
+const writeWeeklyHydration = (date1, date2) => {
+  const hydrationWeekly = userHydration.getHydrationDataForRange(date1, date2);
   barChart('.hy-bar-chart', hydrationWeekly, 'numOunces');
 }
 
@@ -227,21 +228,26 @@ const writeWeeklyActivity = () => {
 
 const displayCalender = () => {
   const picker1 = datepicker('.js-hy-start', {
-    id: 1,
-    onSelect: (picker1, date) => {
-      picker2.show();
-      console.log(picker1.getRange())},
     startDate: new Date(2019, 5, 15),
     minDate: new Date(2019, 5, 15),
-    maxDate: new Date(2019, 8, 22)
+    maxDate: new Date(2019, 8, 22),
+    formatter: (input, date, instance) => {
+      input.value = date.toLocaleDateString('en-ZA');
+      }
     });
   const picker2 = datepicker('.js-hy-end', {
-    id: 1,
-    onSelect: (picker2, date) => console.log(picker2.getRange()),
-    // minDate: new Date(2019, 6, 15),
-    // maxDate: new Date(2019, 9, 22)
+    startDate: new Date(2019, 5, 15),
+    maxDate: new Date(2019, 8, 22),
+    formatter: (input, date, instance) => {
+      input.value = date.toLocaleDateString('en-ZA');
+      }
     });
-  picker1.show();
+    picker2.show();
+    picker1.show();
+}
+
+const createChartWithSelectedDates = () => {
+  writeWeeklyHydration(hydrationStartCalender.value, hydrationEndCalender.value);
 }
 
 const toggleActivityChart = (data) => {
@@ -265,17 +271,17 @@ const makeProfileWidgets = () => {
 const makeActivityWidgets = () => {
   writeDailyActivity();
   writeActivityComparison();
-  writeWeeklyActivity();
+  writeWeeklyActivity('2019/09/16', '2019/09/22');
 }
 
 const makeHydrationWidgets = () => {
   writeDailyHydration();
   writeUserHydrationAvg();
-  writeWeeklyHydration();
+  writeWeeklyHydration('2019/09/16', '2019/09/22');
 }
 
 const makeSleepWidgets = () => {
-  writeWeeklySleep();
+  writeWeeklySleep('2019/09/16', '2019/09/22');
   writeSleepAvg();
   writeDailySleep();
 }
@@ -326,3 +332,5 @@ sleepCheckBox.addEventListener('change', () => {
 activityRadios.forEach(radio => {
   radio.addEventListener('change', writeWeeklyActivity)
 })
+
+changeDateButton.addEventListener('click', createChartWithSelectedDates);
