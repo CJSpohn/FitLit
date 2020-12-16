@@ -1,8 +1,10 @@
 class Activity {
-  constructor(user) {
+  constructor(user, activityData, userData) {
     this.userID = user.id;
     this.strideLength = user.strideLength;
     this.userStepGoal = user.dailyStepGoal;
+    this.userData = userData,
+    this.activityData = activityData,
     this.userActivityData = activityData.filter(data => this.userID === data.userID);
   }
 
@@ -18,7 +20,8 @@ class Activity {
     return this.userActivityData.find(data => data.date === date);
   }
 
-  getActivityDataForRange(startDate, endDate, att) {
+
+  getActivityDataForRange(startDate, endDate) {
     let firstIndex = this.userActivityData.findIndex(data => startDate === data.date);
     let endIndex = this.userActivityData.findIndex(data => endDate === data.date);
 
@@ -31,9 +34,9 @@ class Activity {
     let numOfStepsOnDate = this.userActivityData.find(data => data.date === date).numSteps;
 
     if (numOfStepsOnDate >= this.userStepGoal) {
-      return "You have reached your goal!";
+      return 'You have reached your goal!';
     } else {
-      return "You're almost to your goal!";
+      return 'You\'re almost to your goal!';
     }
   }
 
@@ -49,7 +52,7 @@ class Activity {
   }
 
   getActivityAvgsForAllUsers(date) {
-    let todaysData = activityData.filter(day => day.date === date);
+    let todaysData = this.activityData.filter(day => day.date === date);
 
     let totalNumOfActivity = todaysData.reduce((total, data) => {
       total.numSteps += data.numSteps;
@@ -65,4 +68,8 @@ class Activity {
     return totalNumOfActivity;
   }
 
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = Activity;
 }

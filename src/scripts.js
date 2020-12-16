@@ -82,9 +82,9 @@ const switchPage = () => {
 const instantiateUser = () => {
   const selectedUser = allUsers.getUserData(parseInt(dropDownForUsers.value));
   currentUser = new User(selectedUser);
-  userSleep = new Sleep(currentUser); //, allUsers, sleepData
-  userActivity = new Activity(currentUser);
-  userHydration = new Hydration(currentUser);
+  userSleep = new Sleep(currentUser, sleepData, allUsers); //, allUsers, sleepData
+  userActivity = new Activity(currentUser, activityData, allUsers);
+  userHydration = new Hydration(currentUser, allUsers);
 }
 
 const welcomeUser = () => {

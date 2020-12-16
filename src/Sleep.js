@@ -1,5 +1,7 @@
 class Sleep {
-  constructor(user) {
+  constructor(user, sleepData, userData) {
+    this.userData = userData,
+    this.sleepData = sleepData,
     this.userID = user.id,
     this.userSleepData = sleepData.filter(data => this.userID === data.userID);
   }
@@ -28,12 +30,12 @@ class Sleep {
   }
 
   getAllUsersAvgSleepQuality() {
-    let allUserSleepQualityTotal = sleepData.reduce((total, day) => {
+    let allUserSleepQualityTotal = this.sleepData.reduce((total, day) => {
       total += day.sleepQuality;
       return total
     }, 0)
 
-    let allUserSleepQualityAvg = allUserSleepQualityTotal / sleepData.length
+    let allUserSleepQualityAvg = allUserSleepQualityTotal / this.sleepData.length
 
     return parseFloat(allUserSleepQualityAvg.toFixed(2));
   }
@@ -41,10 +43,13 @@ class Sleep {
   getAllUsersSleepQualityAvgOver3(startDate, endDate) {
     let usersWhoAvgOver3 = [];
 
-    userData.forEach(user => {
-      let curUser = new Sleep(user);
+    this.userData.forEach(user => {
+      let curUser = new Sleep(user, this.sleepData, this.userData);
       let userSleepRange = curUser.getSleepInfoForRange(startDate, endDate, 'sleepQuality');
-      let userSleepTotal = userSleepRange.reduce((a, c) => a + c);
+      let userSleepTotal = userSleepRange.reduce((a, c) => {
+        let total = a + c.sleepQuality;
+        return total
+      }, 0);
       let userSleepAvg = userSleepTotal / userSleepRange.length
       if (userSleepAvg > 3) {
         usersWhoAvgOver3.push(user);
@@ -56,13 +61,16 @@ class Sleep {
 
 
   getSleepRecordForDate(date) {
-    let usersSleepData = sleepData.filter(data => data.date === date);
+    let usersSleepData = this.sleepData.filter(data => data.date === date);
 
     let sortedSleepData = usersSleepData.sort((a, b) => b.hoursSlept - a.hoursSlept);
-    let mostSleptHours = sortedSleepData[0].hoursSlept;
-
-    let sleepRecordWinners = sortedSleepData.filter(data => data.hoursSlept === mostSleptHours);
+    let mostSleptHours = sortedSleepData[0];
+    let sleepRecordWinners = sortedSleepData.filter(data => data.hoursSlept === mostSleptHours.hoursSlept);
 
     return sleepRecordWinners
   }
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = Sleep;
 }

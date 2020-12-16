@@ -16,5 +16,5 @@ class User {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = UserRepository;
+  module.exports = User;
 }
