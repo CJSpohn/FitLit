@@ -1,5 +1,6 @@
 const barChart = (section, data, att) => {
-  let svg = d3.select(section)
+  let svg = d3.select(section);
+  svg.selectAll("*").remove();
 
   let width = parseInt(d3.select(".chart-wrapper").style("width"));
   let height =  parseInt(d3.select(".chart-wrapper").style("height"));
@@ -19,7 +20,7 @@ const barChart = (section, data, att) => {
                   .tickValues(dates.filter((d,i) => (i === 0 || i === data.length - 1)))
 
   let yScale = d3.scaleLinear()
-                  .domain([0, d3.max(atts)+10])
+                  .domain([0, d3.max(atts)])
                   .range([50, height])
 
   //creating our bars
@@ -29,10 +30,20 @@ const barChart = (section, data, att) => {
       .append('rect')
       .attr('class', 'bar')
       .attr('x', (d, i) => xScale(d.date.slice(5)))
-      .attr('y', (d, i) => height - yScale(d[att]))
+      .attr('y', 0)
+      // .attr('y', (d, i) => height - yScale(d[att]))
       .attr('width', (d) => xScale.bandwidth())
-      .attr('height', (d, i) => yScale(d[att]) - 50)
+      .attr('height', 0)
+      // .attr('height', (d, i) => yScale(d[att]) - 50)
       .attr('fill', '#005AB5')
+
+  //animation
+  svg.selectAll("rect")
+    .transition()
+    .duration(800)
+      .attr('y', (d, i) => height - yScale(d[att]))
+      .attr('height', (d, i) => yScale(d[att]) - 50)
+      .delay((d,i) => i*100)
 
   //numbers in bars
   svg.selectAll('text')
@@ -40,7 +51,10 @@ const barChart = (section, data, att) => {
       .enter()
       .append('text')
       .text((d) => d[att])
-      .style('font-size', '0.5em')
+      .style('font-size', '0.8em')
+        .transition()
+        .duration(800)
+        .delay((d,i) => i*100)
         .attr('fill', 'white')
         .attr('x', (d, i) => xScale(d.date.slice(5)) + (width * .02))
         .attr('y', (d, i) => height - yScale(d[att]) + (height * .1))

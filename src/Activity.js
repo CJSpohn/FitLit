@@ -20,6 +20,7 @@ class Activity {
     return this.userActivityData.find(data => data.date === date);
   }
 
+
   getActivityDataForRange(startDate, endDate) {
     let firstIndex = this.userActivityData.findIndex(data => startDate === data.date);
     let endIndex = this.userActivityData.findIndex(data => endDate === data.date);
