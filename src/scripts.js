@@ -24,15 +24,9 @@ const hydrationButton = document.querySelector('.js-hydration');
 const sleepButton = document.querySelector('.js-sleep');
 const activityButton = document.querySelector('.js-activity');
 const profileButton = document.querySelector('.js-profile');
-const hydrationStartCalender = document.querySelector('.hydration-start');
-const hydrationEndCalender = document.querySelector('.hydration-end');
-const activityStartCalender = document.querySelector('.activity-start');
-const activityEndCalender = document.querySelector('.activity-end');
-const sleepStartCalender = document.querySelector('.sleep-start');
-const sleepEndCalender = document.querySelector('.sleep-end');
-const hydrationChangeDateButton = document.querySelector('.hy-change-dates');
-const activityChangeDateButton = document.querySelector('.ac-change-dates');
-const sleepChangeDateButton = document.querySelector('.sl-change-dates');
+const startCalendar = document.querySelector('.date-start');
+const endCalendar = document.querySelector('.date-end');
+const changeDateButton = document.querySelector('.change-dates');
 
 //pages
 const mainPage = document.querySelector('.js-main-page');
@@ -233,9 +227,9 @@ const writeWeeklyActivity = (startDate, endDate) => {
 }
 
 
-const createChartWithSelectedDates = (startCalender, endCalender) => {
-  let startDate = startCalender.value.replace(/-/gi, '/');
-  let endDate = endCalender.value.replace(/-/gi, '/');
+const createChartWithSelectedDates = () => {
+  let startDate = startCalendar.value.replace(/-/gi, '/');
+  let endDate = endCalendar.value.replace(/-/gi, '/');
   writeWeeklyHydration(startDate, endDate);
   writeWeeklyActivity(startDate, endDate);
   writeWeeklySleep(startDate, endDate);
@@ -314,23 +308,15 @@ profileButton.addEventListener('click', function() {
 });
 
 sleepCheckBox.addEventListener('change', () => {
-  createChartWithSelectedDates(sleepStartCalender, sleepEndCalender);
+  createChartWithSelectedDates();
 })
 
 activityRadios.forEach(radio => {
   radio.addEventListener('change', function() {
-    createChartWithSelectedDates(activityStartCalender, activityEndCalender);
+    createChartWithSelectedDates();
   })
 })
 
-hydrationChangeDateButton.addEventListener('click', function() {
-  createChartWithSelectedDates(hydrationStartCalender, hydrationEndCalender);
-})
-
-activityChangeDateButton.addEventListener('click', function() {
-  createChartWithSelectedDates(activityStartCalender, activityEndCalender);
-})
-
-sleepChangeDateButton.addEventListener('click', function() {
-  createChartWithSelectedDates(sleepStartCalender, sleepEndCalender);
+changeDateButton.addEventListener('click', function() {
+  createChartWithSelectedDates();
 })
