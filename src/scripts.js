@@ -176,11 +176,11 @@ const writeSleepAvg = () => {
 const writeDailyActivity = () => {
   const activityToday = userActivity.getActivityForSpecificDate('2019/09/22');
   const milesWalked = userActivity.getMilesForSpecificDate('2019/09/22');
-  dailyActivity.innerHTML += `
-    <p class="ac-stats">Steps taken: ${activityToday.numSteps}</p>
-    <p class="ac-stats">Minute Active: ${activityToday.minutesActive}</p>
-    <p class="ac-stats">Miles walked: ${milesWalked}</p>
-  `
+  // dailyActivity.innerHTML += `
+  //   // <p class="ac-stats">Steps taken: ${activityToday.numSteps}</p>
+  //   // <p class="ac-stats">Minute Active: ${activityToday.minutesActive}</p>
+  //   // <p class="ac-stats">Miles walked: ${milesWalked}</p>
+  // `
 }
 
 const calculateUserDifferences = () => {

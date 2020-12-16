@@ -1,0 +1,13 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .big {font-size: 40px; fill: white;}
+    .small {font-size: 20px;}
+   </style>
+<circle cx="100" cy="141" r="44" fill="cornflowerblue"/>
+<path d="M 100 184 C 20 170, 70 90, 100 20" stroke="cornflowerblue" fill="cornflowerblue"/>
+  <path d="M 100 184 C 180 170, 130 90, 100 20" stroke="cornflowerblue" fill="cornflowerblue"/>
+ <path d="M72 165 C 60 145, 60 135, 66 110 L 73 115 C 65 135, 70 145, 72 165" fill="white"/>
+   <!-- <text id='text' x="80" y="150" class="big">36</text>
+   <text x="120" y="150" class="small" fill="white">oz</text> -->
+
+</svg>

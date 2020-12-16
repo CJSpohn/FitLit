@@ -160,6 +160,21 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+}
+
+.sl-image-wrapper {
+  display: flex;
+  justify-content: space-around;
+  height: 40%;
+  width: 50%
+}
+
+.ac-image-wrapper {
+  display: flex;
+  justify-content: space-around;
+  height: 20%;
+  width: 10%;
 }
 
 .widget-graph {
