@@ -54,7 +54,6 @@ describe('Hydration', () => {
   it('should return hydration data for a range of dates', () => {
     let rangeHydration = userHydration.getHydrationDataForRange('2019/06/15', '2019/06/17');
 
-
     expect(rangeHydration).to.eql([{
          "date": "2019/06/15",
          "numOunces": 37,
@@ -77,5 +76,4 @@ describe('Hydration', () => {
 
     expect(rank).to.equal(2)
   })
-
 });

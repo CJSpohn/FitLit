@@ -13,11 +13,11 @@ const barChart = (section, data, att, color) => {
 
   let xScale = d3.scaleBand()
                   .domain(dates)
-                  .range([25, width-25])
+                  .range([25, width - 25])
                   .padding(0.1);
 
   let xAxis = d3.axisBottom(xScale)
-                  .tickValues(dates.filter((d,i) => (i === 0 || i === data.length - 1)))
+                  .tickValues(dates.filter((d, i) => (i === 0 || i === data.length - 1)))
 
   let yScale = d3.scaleLinear()
                   .domain([0, d3.max(atts)])
@@ -41,7 +41,7 @@ const barChart = (section, data, att, color) => {
     .duration(800)
       .attr('y', (d, i) => height - yScale(d[att]))
       .attr('height', (d, i) => yScale(d[att]) - 50)
-      .delay((d,i) => i*100)
+      .delay((d, i) => i * 100)
 
   //numbers in bars
   svg.selectAll('text')
@@ -52,13 +52,13 @@ const barChart = (section, data, att, color) => {
       .style('font-size', '0.8em')
         .transition()
         .duration(800)
-        .delay((d,i) => i*100)
+        .delay((d, i) => i * 100)
         .attr('fill', 'black')
         .attr('x', (d, i) => {
           if (data.length > 15) {
             return xScale(d.date.slice(5))
           } else {
-            return (xScale(d.date.slice(5)) + xScale.bandwidth()/2)
+            return (xScale(d.date.slice(5)) + xScale.bandwidth() / 2)
           }
         })
         .attr('y', (d, i) => {

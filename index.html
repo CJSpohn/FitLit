@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="src/styles.css">
-    <link rel="stylesheet" href="node_modules/js-datepicker/dist/datepicker.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -14,8 +13,8 @@
     <section class="login-page js-login">
       <form class="login-form">
         <h1 class='login-header'>FitLit</h1>
-        <label class="user-select-label">Select User</label>
-        <select class="all-users-list js-all-users">
+        <label class="user-select-label" for="select-user">Select User</label>
+        <select name="select-user" class="all-users-list js-all-users">
         </select>
       </form>
       <button class="go-to-site js-enter-dashboard">Enter Dashboard</button>
@@ -51,7 +50,7 @@
               <img class="js-hy-award-svg" src="./assets/blue-award.svg" alt="An award ribbon"/>
             </section>
           </div>
-          <h1 class="widget-header">This Week</h1>
+          <h1 class="widget-header">Hydration Trends</h1>
           <section class="widget-graph hy-weekly js-hy-weekly">
             <h2>Timeline</h2>
             <div class="chart-wrapper">
@@ -64,7 +63,7 @@
         <section class="widget-display hidden js-sleep-display">
           <h1 class="widget-header">Today</h1>
           <div class="small-widget">
-            <section class="widget sl-daily js-sl-daily">
+            <section class="widget sl-daily">
               <h2>Last Night</h2>
               <div class="sl-image-wrapper">
                 <div class="data-wrapper alarm-clock-wrapper">
@@ -82,8 +81,8 @@
               <img class="widget-svg" src="./assets/purple-award.svg" alt="A blue award ribbon"/>
             </section>
           </div>
-          <h1 class="widget-header">This Week</h1>
-          <section class="widget-graph sl-weekly js-sl-weekly">
+          <h1 class="widget-header">Sleep Trends</h1>
+          <section class="widget-graph sl-weekly">
             <h2>Timeline</h2>
             <div class="chart-wrapper">
               <svg class="sl-bar-chart"></svg>
@@ -137,7 +136,7 @@
               </div>
             </section>
           </div>
-          <h1 class="widget-header">This Week</h1>
+          <h1 class="widget-header">Activity Trends</h1>
           <section class="widget-graph ac-weekly js-ac-weekly">
             <h2>Timeline</h2>
             <svg class="ac-bar-chart"></svg>
@@ -178,7 +177,6 @@
     <script type="text/javascript" src="src/Activity.js"></script>
     <script type="text/javascript" src="src/Sleep.js"></script>
     <script type="text/javascript" src="src/bar-chart.js"></script>
-    <script src="node_modules/js-datepicker/dist/datepicker.min.js"></script>
     <script type="text/javascript" src="src/scripts.js"></script>
   </body>
 </html>

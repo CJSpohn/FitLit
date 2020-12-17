@@ -50,7 +50,7 @@ describe('Activity', () => {
         "flightsOfStairs": 18
       }
     ]);
-  })
+  });
 
   it('should return the miles walked for a specific date', () => {
     let milesDate1 = userActivity.getMilesForSpecificDate('2019/06/15');
@@ -64,11 +64,11 @@ describe('Activity', () => {
 
     expect(userActivityOnDate.numSteps).to.equal(3577);
     expect(userActivityOnDate.minutesActive).to.equal(140);
-    expect(userActivityOnDate.flightsOfStairs).to.equal(16)
+    expect(userActivityOnDate.flightsOfStairs).to.equal(16);
   });
 
   it('should return all activity for a range of dates', () => {
-    let userActivityRange = userActivity.getActivityDataForRange('2019/06/15', '2019/06/17')
+    let userActivityRange = userActivity.getActivityDataForRange('2019/06/15', '2019/06/17');
 
     expect(userActivityRange.length).to.equal(3);
     expect(userActivityRange).to.eql([

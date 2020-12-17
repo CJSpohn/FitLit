@@ -11,12 +11,7 @@ const welcomeMessage = document.querySelector('.js-welcome');
 const infoCard = document.querySelector('.js-user-info');
 const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
 const dailyHydration = document.querySelector('.js-hy-daily');
-const weeklyHydration = document.querySelector('.js-hy-weekly');
 const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
-const dailySleep = document.querySelector('.js-sl-daily');
-const weeklySleep = document.querySelector('.js-sl-weekly');
-const dailyActivity = document.querySelector('.js-ac-daily');
-const activityComparison = document.querySelector('.js-ac-comparison');
 
 //buttons
 const hydrationButton = document.querySelector('.js-hydration');
@@ -40,6 +35,7 @@ const sleepCheckBox = document.querySelector('.js-sleep-checkbox');
 const sleepChartLabel = document.querySelector('.js-sl-chart-label');
 const activityChartLabel = document.querySelector('.js-ac-label');
 const activityRadios = document.querySelectorAll('input[name="activity-radio"]');
+const calendar = document.querySelector('.date-wrapper');
 
 //Functions
 const hidePages = () => {
@@ -57,21 +53,10 @@ const updateNavDisplay = (buttonToHighlight) => {
   buttonToHighlight.classList.add('nav-button-select');
 }
 
-const displayPage = (pageToShow) => {
+const displayPage = (pageButton, section) => {
   hidePages();
-  if (pageToShow === 'activity') {
-    updateNavDisplay(activityButton);
-    activityDisplay.classList.remove('hidden');
-  } else if (pageToShow === 'sleep') {
-    updateNavDisplay(sleepButton);
-    sleepDisplay.classList.remove('hidden');
-  } else if (pageToShow === 'hydration') {
-    updateNavDisplay(hydrationButton);
-    hydrationDisplay.classList.remove('hidden');
-  } else if (pageToShow === 'profile') {
-    updateNavDisplay(profileButton);
-    profileDisplay.classList.remove('hidden');
-  }
+  updateNavDisplay(pageButton);
+  section.classList.remove('hidden');
 }
 
 const switchPage = () => {
@@ -82,7 +67,7 @@ const switchPage = () => {
 const instantiateUser = () => {
   const selectedUser = allUsers.getUserData(parseInt(dropDownForUsers.value));
   currentUser = new User(selectedUser);
-  userSleep = new Sleep(currentUser, sleepData, allUsers); //, allUsers, sleepData
+  userSleep = new Sleep(currentUser, sleepData, allUsers);
   userActivity = new Activity(currentUser, activityData, allUsers);
   userHydration = new Hydration(currentUser, hydrationData, allUsers);
 }
@@ -99,11 +84,22 @@ const compareStepGoals = () => {
     `
   } else {
     infoCard.innerHTML += `
-    <p class="widget-text">Your step goal of ${currentUser.dailyStepGoal} steps is ${allUsersStepGoal - currentUser.dailyStepGoal} steps fewer than the average user step goal!<p>
+      <p class="widget-text">Your step goal of ${currentUser.dailyStepGoal} steps is ${allUsersStepGoal - currentUser.dailyStepGoal} steps fewer than the average user step goal!<p>
     `
   }
 }
-//WIDGET  CREATOR FUNCTIONS
+
+//////WIDGET CREATOR FUNCTIONS////////
+// profile //
+const createUserInfo = () => {
+  infoCard.innerHTML += `
+  <p>Name: <span style="font-weight:bold">${currentUser.name}</span></p>
+  <p>Email: <span style="font-weight:bold">${currentUser.email}</span></p>
+  <p>Address: <span style="font-weight:bold">${currentUser.address}</span></p>
+  `
+}
+
+// hydration //
 const writeWeeklyHydration = (date1, date2) => {
   const hydrationWeekly = userHydration.getHydrationDataForRange(date1, date2);
   barChart('.hy-bar-chart', hydrationWeekly, 'numOunces', 'cornflowerblue');
@@ -119,36 +115,28 @@ const writeDailyHydration = () => {
     </p>
   `
 }
-//REFACTOR
-const createUserInfo = () => {
-  infoCard.innerHTML += `
-  <p>Name: <span style="font-weight:bold">${currentUser.name}</span></p>
-  <p>Email: <span style="font-weight:bold">${currentUser.email}</span></p>
-  <p>Address: <span style="font-weight:bold">${currentUser.address}</span></p>
-  `
-}
 
 const writeUserHydrationAvg = () => {
   const userLifetimeAvg = userHydration.getLifetimeHydrationAvg();
   const userRanking = userHydration.getUserRank();
   lifetimeHydrationAvg.innerHTML += `
-    <p class="widget-text">
-      You're average consumption of
-      <span class="hy-user-stat">${userLifetimeAvg}</span>
-      ounces per day since starting FitLit is rank <span class="hy-user-stat">${userRanking}</span> among all of our users!
-    </p>
+  <p class="widget-text">
+  You're average consumption of
+  <span class="hy-user-stat">${userLifetimeAvg}</span>
+  ounces per day since starting FitLit is rank <span class="hy-user-stat">${userRanking}</span> among all of our users!
+  </p>
   `
-
 }
-//INSERT BAR CHART
+
+// sleep //
 const writeWeeklySleep = (date1, date2) => {
   const sleepWeekly = userSleep.getSleepInfoForRange(date1, date2);
   if (sleepCheckBox.checked === true) {
-    sleepChartLabel.innerText = 'Sleep Quality'
-    barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality', 'mediumpurple')
+    sleepChartLabel.innerText = 'Sleep Quality';
+    barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality', 'mediumpurple');
   } else {
-    sleepChartLabel.innerText = 'Hours Slept'
-    barChart('.sl-bar-chart', sleepWeekly, 'hoursSlept', 'mediumpurple')
+    sleepChartLabel.innerText = 'Hours Slept';
+    barChart('.sl-bar-chart', sleepWeekly, 'hoursSlept', 'mediumpurple');
   }
 }
 
@@ -172,6 +160,7 @@ const writeSleepAvg = () => {
   `
 }
 
+// activity //
 const writeDailyActivity = () => {
   const activityToday = userActivity.getActivityForSpecificDate('2019/09/22');
   const milesWalked = userActivity.getMilesForSpecificDate('2019/09/22');
@@ -195,18 +184,17 @@ const calculateUserDifferences = () => {
 
 const editNumberStyling = (element, att, result) => {
   if (result[att] > 0) {
-    element.classList.add('positive')
+    element.classList.add('positive');
   } else {
-    element.classList.add('negative')
+    element.classList.add('negative');
   }
 }
 
-const writeActivityComparison = (userActivity) => {
+const writeActivityComparison = () => {
   const compareSteps = document.querySelector('.js-steps');
   const compareFlights = document.querySelector('.js-flights');
   const compareMinutes = document.querySelector('.js-minutes');
 
-  //TODO: Move this function into Activity as a method
   let differences = calculateUserDifferences(userActivity);
 
   compareSteps.innerText = `${differences.numSteps}`;
@@ -223,7 +211,7 @@ const writeWeeklyActivity = (startDate, endDate) => {
   toggleActivityChart(activityWeekly);
 }
 
-
+// charts //
 const createChartWithSelectedDates = () => {
   let startDate = startCalendar.value.replace(/-/gi, '/');
   let endDate = endCalendar.value.replace(/-/gi, '/');
@@ -234,17 +222,18 @@ const createChartWithSelectedDates = () => {
 
 const toggleActivityChart = (data) => {
   if (activityRadios[0].checked) {
+    barChart('.ac-bar-chart', data, 'numSteps', 'chocolate');
     activityChartLabel.innerText = 'Steps Per Day';
-    barChart('.ac-bar-chart', data, 'numSteps', 'chocolate')
   } else if (activityRadios[1].checked) {
-    barChart('.ac-bar-chart', data, 'flightsOfStairs', 'chocolate')
+    barChart('.ac-bar-chart', data, 'flightsOfStairs', 'chocolate');
     activityChartLabel.innerText = 'Flights of Stairs Per Day';
   } else {
-    barChart('.ac-bar-chart', data, 'minutesActive', 'chocolate')
+    barChart('.ac-bar-chart', data, 'minutesActive', 'chocolate');
     activityChartLabel.innerText = 'Minutes Active Per Day';
   }
 }
 
+//Construct Widgets//
 const makeProfileWidgets = () => {
   createUserInfo();
   compareStepGoals();
@@ -288,32 +277,35 @@ window.onload = () => {
   dropDownForUsers.innerHTML += `
     <option value='${user.id}'>${user.name}</option>
     `
-  })};
+  });
+}
 
 goToDashboardButton.addEventListener('click', goToDashboard);
-hydrationButton.addEventListener('click', function() {
-  displayPage('hydration')
-});
-sleepButton.addEventListener('click', function() {
-  displayPage('sleep')
-});
-activityButton.addEventListener('click', function() {
-  displayPage('activity')
-});
-profileButton.addEventListener('click', function() {
-  displayPage('profile')
-});
 
-sleepCheckBox.addEventListener('change', () => {
-  createChartWithSelectedDates();
+hydrationButton.addEventListener('click', function() {
+  displayPage(hydrationButton, hydrationDisplay);
+  calendar.classList.remove('hidden');
 })
+
+sleepButton.addEventListener('click', function() {
+  displayPage(sleepButton, sleepDisplay);
+  calendar.classList.remove('hidden');
+})
+
+activityButton.addEventListener('click', function() {
+  displayPage(activityButton, activityDisplay);
+  calendar.classList.remove('hidden');
+})
+
+profileButton.addEventListener('click', function() {
+  displayPage(profileButton, profileDisplay);
+  calendar.classList.add('hidden');
+})
+
+sleepCheckBox.addEventListener('change', createChartWithSelectedDates);
 
 activityRadios.forEach(radio => {
-  radio.addEventListener('change', function() {
-    createChartWithSelectedDates();
-  })
+  radio.addEventListener('change', createChartWithSelectedDates);
 })
 
-changeDateButton.addEventListener('click', function() {
-  createChartWithSelectedDates();
-})
+changeDateButton.addEventListener('click', createChartWithSelectedDates);
