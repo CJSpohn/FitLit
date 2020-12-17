@@ -9,7 +9,6 @@ const welcomeMessage = document.querySelector('.js-welcome');
 
 //widgets
 const infoCard = document.querySelector('.js-user-info');
-const allUserStepGoalCard = document.querySelector('.js-step-goal');
 const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
 const dailyHydration = document.querySelector('.js-hy-daily');
 const weeklyHydration = document.querySelector('.js-hy-weekly');
@@ -95,11 +94,11 @@ const welcomeUser = () => {
 const compareStepGoals = () => {
   const allUsersStepGoal = allUsers.getAvgStepGoal();
   if (currentUser.dailyStepGoal > allUsersStepGoal) {
-    allUserStepGoalCard.innerHTML += `
+    infoCard.innerHTML += `
       <p class="widget-text">Your step goal of ${currentUser.dailyStepGoal} steps is ${currentUser.dailyStepGoal - allUsersStepGoal} steps more than the average user step goal!</p>
     `
   } else {
-    allUserStepGoalCard.innerHTML += `
+    infoCard.innerHTML += `
     <p class="widget-text">Your step goal of ${currentUser.dailyStepGoal} steps is ${allUsersStepGoal - currentUser.dailyStepGoal} steps fewer than the average user step goal!<p>
     `
   }
@@ -122,11 +121,11 @@ const writeDailyHydration = () => {
 }
 //REFACTOR
 const createUserInfo = () => {
-  for (let key in currentUser) {
-    infoCard.innerHTML += `
-      <p>${key}: ${currentUser[key]}</p>
-    `
-  }
+  infoCard.innerHTML += `
+  <p>Name: <span style="font-weight:bold">${currentUser.name}</span></p>
+  <p>Email: <span style="font-weight:bold">${currentUser.email}</span></p>
+  <p>Address: <span style="font-weight:bold">${currentUser.address}</span></p>
+  `
 }
 
 const writeUserHydrationAvg = () => {

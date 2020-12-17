@@ -6,6 +6,7 @@
 
 * {
   font-family: 'Comfortaa', cursive;
+  overflow:
 }
 
 html {
@@ -13,10 +14,13 @@ html {
  background: radial-gradient(circle, #084888 0%, #052442 100%);
  background-attachment: fixed;
  background-repeat: no-repeat;
+ overflow: hidden
 }
 
 body {
   margin: 0;
+  height: 100%;
+  overflow: auto;
 }
 
 h1 {
@@ -36,7 +40,7 @@ h3 {
 /* Login Page */
 .login-page {
   margin-top: 30vh;
-  height: 60vw;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -288,6 +292,12 @@ h3 {
 
 .alarm-clock-wrapper {
   margin-right: 3vw;
+}
+
+.profile-widget {
+  display: inline;
+  text-align: center;
+  height: 50vh;
 }
 
 /* datepicker */
