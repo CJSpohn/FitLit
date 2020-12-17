@@ -32,7 +32,7 @@ class Hydration {
 
   getUserRank() {
     let allUsersRanking = [];
-
+    
     this.userData.users.forEach(user => {
       let userHydration = new Hydration(user, this.hydrationData, this.userData)
       allUsersRanking.push({ userID: userHydration.userID, hydrationAvg: userHydration.getLifetimeHydrationAvg()})
