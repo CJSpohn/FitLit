@@ -31,10 +31,8 @@ const barChart = (section, data, att, color) => {
       .attr('class', 'bar')
       .attr('x', (d, i) => xScale(d.date.slice(5)))
       .attr('y', 0)
-      // .attr('y', (d, i) => height - yScale(d[att]))
       .attr('width', (d) => xScale.bandwidth())
       .attr('height', 0)
-      // .attr('height', (d, i) => yScale(d[att]) - 50)
       .attr('fill', `${color}`)
 
   //animation
