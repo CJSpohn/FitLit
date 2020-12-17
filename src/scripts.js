@@ -85,7 +85,7 @@ const instantiateUser = () => {
   currentUser = new User(selectedUser);
   userSleep = new Sleep(currentUser, sleepData, allUsers); //, allUsers, sleepData
   userActivity = new Activity(currentUser, activityData, allUsers);
-  userHydration = new Hydration(currentUser, hydrationData);
+  userHydration = new Hydration(currentUser, hydrationData, allUsers);
 }
 
 const welcomeUser = () => {
@@ -131,13 +131,15 @@ const createUserInfo = () => {
 
 const writeUserHydrationAvg = () => {
   const userLifetimeAvg = userHydration.getLifetimeHydrationAvg();
+  const userRanking = userHydration.getUserRank();
   lifetimeHydrationAvg.innerHTML += `
     <p class="widget-text">
-      You've consumed
+      You're average consumption of
       <span class="user-stat">${userLifetimeAvg}</span>
-      ounces per day since starting FitLit!
+      ounces per day since starting FitLit is rank <span class="user-stat">${userRanking}</span> among all of our users!
     </p>
   `
+
 }
 //INSERT BAR CHART
 const writeWeeklySleep = (date1, date2) => {

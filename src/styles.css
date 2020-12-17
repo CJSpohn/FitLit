@@ -212,6 +212,8 @@ h3 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  width: 90%;
+  margin-bottom: 8vh;
 }
 
 .compare-number {
@@ -229,6 +231,7 @@ h3 {
 
 .user-stat {
   color: #005AB5;
+  font-size: 1.2em;
   font-weight: bolder;
 }
 
@@ -247,10 +250,12 @@ h3 {
   justify-content: space-around;
 }
 
-
 .graph-label {
   margin-bottom: 2vh;
 }
+
+
+
 @media only screen and (max-device-width: 320px) {
   .main-page-header {
     height: 7vh;
