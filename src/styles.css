@@ -247,10 +247,22 @@ h3 {
   justify-content: space-around;
 }
 
-
 .graph-label {
   margin-bottom: 2vh;
 }
+
+.date-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-picker-heading {
+  margin-top: 0;
+  color: white;
+  margin-bottom: 1vh;
+}
+
 @media only screen and (max-device-width: 320px) {
   .main-page-header {
     height: 7vh;
@@ -350,16 +362,8 @@ h3 {
     margin-left: 12vw;
   }
 
-  .date-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .date-picker-heading {
-    margin-top: 0;
-    color: white;
-    margin-bottom: 1vh;
+  .change-dates {
+    margin-top: 1.5vh;
   }
 }
 @media only screen and (min-device-width: 321px) and (max-device-width: 767px) {
@@ -388,7 +392,7 @@ h3 {
 
   .widget-graph {
     width: 95vw;
-    height: 40vh;
+    height: 47vh;
   }
 
   .login-page {
@@ -421,6 +425,23 @@ h3 {
 
   .compare-number {
     font-size: 2em;
+  }
+
+  .droplet-svg {
+    height: 14vh;
+  }
+
+  .ac-radio {
+    margin-left: 10vw;
+  }
+
+  .sl-checkbox,
+  .ac-radio {
+    margin-top: 2vh;
+  }
+
+  .date-start {
+    margin-right:8vw;
   }
 }
  /* and (max-device-width: 991px)  */
