@@ -354,7 +354,11 @@ h3 {
   .widget {
     width: 90vw;
     margin: 3vw;
-    height: 25vh;
+    height: 29vh;
+  }
+
+  .profile-widget {
+    height: 31vh;
   }
 
   .widget-text {
@@ -363,7 +367,11 @@ h3 {
 
   .widget-graph {
     width: 95vw;
-    height: 35vh;
+    height: 40vh;
+  }
+
+  .login-page {
+    margin-top: 15vh;
   }
 
   .login-header {
@@ -403,8 +411,35 @@ h3 {
       border: 1px solid black;
       margin-bottom: 10px
   }
-}
 
+  .widget-svg {
+    height: 12vh;
+  }
+
+  .js-hy-award-svg {
+    height: 10vh;
+  }
+
+  .sl-checkbox,
+  .ac-radio {
+    margin-bottom: 0;
+    margin-top: 5vh;
+  }
+
+  .ac-weekly {
+    height: 47vh;
+  }
+
+  .ac-radio {
+    margin-left: 12vw;
+  }
+
+  .change-dates {
+    margin-top: 1.5vh;
+    width: 20vw;
+    height: 4vh;
+  }
+}
 @media only screen and (min-device-width: 321px) and (max-device-width: 767px) {
   h2 {
     font-size: 1.2em;
@@ -429,9 +464,13 @@ h3 {
     height: 29vh;
   }
 
+  .profile-widget {
+    height: 35vh;
+  }
+
   .widget-graph {
     width: 95vw;
-    height: 35vh;
+    height: 47vh;
   }
 
   .login-page {
@@ -464,6 +503,35 @@ h3 {
 
   .compare-number {
     font-size: 2em;
+  }
+
+  .droplet-svg {
+    height: 14vh;
+  }
+
+  .ac-radio {
+    margin-left: 10vw;
+  }
+
+  .sl-checkbox,
+  .ac-radio {
+    margin-top: 2vh;
+  }
+
+  .date-start {
+    margin-right:8vw;
+  }
+
+  .change-dates {
+    width: 20vw;
+  }
+
+  .widget-svg {
+    height: 11vh;
+  }
+
+  .js-hy-award-svg {
+    height: 8.4vh;
   }
 }
  /* and (max-device-width: 991px)  */
@@ -525,5 +593,17 @@ h3 {
     font-size: 2.5em;
     margin: 0;
     margin-top: 2.6vh;
+  }
+
+  .date-start {
+    margin-right: 10vw;
+  }
+
+  .widget-svg {
+    height: 15vh;
+  }
+
+  .js-hy-award-svg {
+    height: 15vh;
   }
 }
