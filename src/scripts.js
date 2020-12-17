@@ -155,8 +155,8 @@ const writeWeeklySleep = (date1, date2) => {
 
 const writeDailySleep = () => {
   const userDailySleep = userSleep.getSleepInfoForSpecificDate('2019/09/22');
-  document.querySelector('.js-sleep-hours-p').innerHTML = `Hours: <span class="sl-user-stat">${userDailySleep.hoursSlept}</span>`
-  document.querySelector('.js-sleep-quality-p').innerHTML = `Quality: <span class="sl-user-stat">${userDailySleep.sleepQuality}</span>`
+  document.querySelector('.js-sleep-hours-p').innerHTML += `Hours: <span class="sl-user-stat">${userDailySleep.hoursSlept}</span>`
+  document.querySelector('.js-sleep-quality-p').innerHTML += `Quality: <span class="sl-user-stat">${userDailySleep.sleepQuality}</span>`
 }
 
 const writeSleepAvg = () => {
@@ -176,11 +176,9 @@ const writeSleepAvg = () => {
 const writeDailyActivity = () => {
   const activityToday = userActivity.getActivityForSpecificDate('2019/09/22');
   const milesWalked = userActivity.getMilesForSpecificDate('2019/09/22');
-  // dailyActivity.innerHTML += `
-  //   // <p class="ac-stats">Steps taken: ${activityToday.numSteps}</p>
-  //   // <p class="ac-stats">Minute Active: ${activityToday.minutesActive}</p>
-  //   // <p class="ac-stats">Miles walked: ${milesWalked}</p>
-  // `
+  document.querySelector('.js-ac-steps-p').innerHTML += `Steps: <span class="ac-user-stat">${activityToday.numSteps}</span>`
+  document.querySelector('.js-ac-stairs-p').innerHTML += `Stairs: <span class="ac-user-stat">${activityToday.flightsOfStairs}</span>`
+  document.querySelector('.js-ac-minutes-p').innerHTML += `Minutes: <span class="ac-user-stat">${activityToday.minutesActive}</span>`
 }
 
 const calculateUserDifferences = () => {

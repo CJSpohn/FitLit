@@ -173,8 +173,7 @@ h3 {
 .ac-image-wrapper {
   display: flex;
   justify-content: space-around;
-  height: 20%;
-  width: 10%;
+  width: 100%;
 }
 
 .widget-graph {
@@ -241,6 +240,12 @@ h3 {
   font-weight: bolder;
 }
 
+.ac-user-stat {
+  color: chocolate;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
 .hidden {
   display: none;
 }
@@ -262,6 +267,27 @@ h3 {
 
 .sl-daily {
   justify-content: flex-start;
+}
+
+.data-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-top: 2vh;
+}
+
+.ac-data-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  height: 50%;
+  margin-top: 2vh;
+}
+
+.alarm-clock-wrapper {
+  margin-right: 3vw;
 }
 
 /* datepicker */
@@ -290,17 +316,6 @@ h3 {
   height: 5vh;
 }
 
-.data-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 40%;
-  margin-top: 2vh;
-}
-
-.alarm-clock-wrapper {
-  margin-right: 3vw;
-}
 
 @media only screen and (max-device-width: 320px) {
   .main-page-header {
