@@ -1,4 +1,4 @@
-const barChart = (section, data, att) => {
+const barChart = (section, data, att, color) => {
   let svg = d3.select(section);
   svg.selectAll("*").remove();
 
@@ -35,7 +35,7 @@ const barChart = (section, data, att) => {
       .attr('width', (d) => xScale.bandwidth())
       .attr('height', 0)
       // .attr('height', (d, i) => yScale(d[att]) - 50)
-      .attr('fill', '#005AB5')
+      .attr('fill', `${color}`)
 
   //animation
   svg.selectAll("rect")

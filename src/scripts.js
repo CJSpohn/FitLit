@@ -107,7 +107,7 @@ const compareStepGoals = () => {
 //WIDGET  CREATOR FUNCTIONS
 const writeWeeklyHydration = (date1, date2) => {
   const hydrationWeekly = userHydration.getHydrationDataForRange(date1, date2);
-  barChart('.hy-bar-chart', hydrationWeekly, 'numOunces');
+  barChart('.hy-bar-chart', hydrationWeekly, 'numOunces', 'cornflowerblue');
 }
 
 const writeDailyHydration = () => {
@@ -144,10 +144,10 @@ const writeWeeklySleep = (date1, date2) => {
   const sleepWeekly = userSleep.getSleepInfoForRange(date1, date2);
   if (sleepCheckBox.checked === true) {
     sleepChartLabel.innerText = 'Sleep Quality'
-    barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality')
+    barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality', 'purple')
   } else {
     sleepChartLabel.innerText = 'Hours Slept'
-    barChart('.sl-bar-chart', sleepWeekly, 'hoursSlept')
+    barChart('.sl-bar-chart', sleepWeekly, 'hoursSlept', 'purple')
   }
 }
 
@@ -238,12 +238,12 @@ const createChartWithSelectedDates = () => {
 const toggleActivityChart = (data) => {
   if (activityRadios[0].checked) {
     activityChartLabel.innerText = 'Steps Per Day';
-    barChart('.ac-bar-chart', data, 'numSteps')
+    barChart('.ac-bar-chart', data, 'numSteps', 'tomato')
   } else if (activityRadios[1].checked) {
-    barChart('.ac-bar-chart', data, 'flightsOfStairs')
+    barChart('.ac-bar-chart', data, 'flightsOfStairs', 'tomato')
     activityChartLabel.innerText = 'Flights of Stairs Per Day';
   } else {
-    barChart('.ac-bar-chart', data, 'minutesActive')
+    barChart('.ac-bar-chart', data, 'minutesActive', 'tomato')
     activityChartLabel.innerText = 'Minutes Active Per Day';
   }
 }
