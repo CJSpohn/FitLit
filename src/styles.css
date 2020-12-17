@@ -598,4 +598,12 @@ h3 {
   .date-start {
     margin-right: 10vw;
   }
+
+  .widget-svg {
+    height: 15vh;
+  }
+
+  .js-hy-award-svg {
+    height: 15vh;
+  }
 }
