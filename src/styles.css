@@ -354,7 +354,11 @@ h3 {
   .widget {
     width: 90vw;
     margin: 3vw;
-    height: 25vh;
+    height: 29vh;
+  }
+
+  .profile-widget {
+    height: 31vh;
   }
 
   .widget-text {
@@ -408,8 +412,12 @@ h3 {
       margin-bottom: 10px
   }
 
-  .droplet-svg {
+  .widget-svg {
     height: 12vh;
+  }
+
+  .js-hy-award-svg {
+    height: 10vh;
   }
 
   .sl-checkbox,
@@ -428,6 +436,8 @@ h3 {
 
   .change-dates {
     margin-top: 1.5vh;
+    width: 20vw;
+    height: 4vh;
   }
 }
 @media only screen and (min-device-width: 321px) and (max-device-width: 767px) {
