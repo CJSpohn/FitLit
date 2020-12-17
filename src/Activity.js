@@ -68,6 +68,19 @@ class Activity {
     return totalNumOfActivity;
   }
 
+  calculateUserDifferences() {
+    const activityTodayUser = this.getActivityForSpecificDate('2019/09/22');
+    const activityTodayAvg = this.getActivityAvgsForAllUsers('2019/09/22');
+
+    const userDifferences = {
+      minutesActive: parseInt(activityTodayUser.minutesActive - activityTodayAvg.minutesActive),
+      flightsOfStairs: parseInt(activityTodayUser.flightsOfStairs - activityTodayAvg.flightsOfStairs),
+      numSteps: parseInt(activityTodayUser.numSteps - activityTodayAvg.numSteps)
+    }
+
+    return userDifferences;
+  }
+
 }
 
 if (typeof module !== 'undefined') {
