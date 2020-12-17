@@ -6,7 +6,7 @@ const barChart = (section, data, att, color) => {
   let height =  parseInt(d3.select(".chart-wrapper").style("height"));
 
   svg.attr('width', width)
-  .attr('height', height)
+    .attr('height', height)
 
   let dates = data.map(data => data.date.slice(5));
   let atts = data.map(data => data[att])
@@ -53,9 +53,21 @@ const barChart = (section, data, att, color) => {
         .transition()
         .duration(800)
         .delay((d,i) => i*100)
-        .attr('fill', 'white')
-        .attr('x', (d, i) => xScale(d.date.slice(5)) + (width * .02))
-        .attr('y', (d, i) => height - yScale(d[att]) + (height * .1))
+        .attr('fill', 'black')
+        .attr('x', (d, i) => {
+          if (data.length > 15) {
+            return xScale(d.date.slice(5))
+          } else {
+            return (xScale(d.date.slice(5)) + xScale.bandwidth()/2)
+          }
+        })
+        .attr('y', (d, i) => {
+          if (yScale(d[att]) < 100) {
+            return height - yScale(d[att])
+          } else {
+            return height - yScale(d[att]) + (height * .1)
+          }
+        })
 
   //append the x Axis
   svg.append('g')

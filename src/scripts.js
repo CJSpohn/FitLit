@@ -115,7 +115,7 @@ const writeDailyHydration = () => {
   dailyHydration.innerHTML += `
     <p class="widget-text">
       You have consumed
-      <span class="user-stat">${hydrationToday}</span>
+      <span class="hy-user-stat">${hydrationToday}</span>
       ounces of water today.
     </p>
   `
@@ -135,8 +135,8 @@ const writeUserHydrationAvg = () => {
   lifetimeHydrationAvg.innerHTML += `
     <p class="widget-text">
       You're average consumption of
-      <span class="user-stat">${userLifetimeAvg}</span>
-      ounces per day since starting FitLit is rank <span class="user-stat">${userRanking}</span> among all of our users!
+      <span class="hy-user-stat">${userLifetimeAvg}</span>
+      ounces per day since starting FitLit is rank <span class="hy-user-stat">${userRanking}</span> among all of our users!
     </p>
   `
 
@@ -146,19 +146,17 @@ const writeWeeklySleep = (date1, date2) => {
   const sleepWeekly = userSleep.getSleepInfoForRange(date1, date2);
   if (sleepCheckBox.checked === true) {
     sleepChartLabel.innerText = 'Sleep Quality'
-    barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality', 'purple')
+    barChart('.sl-bar-chart', sleepWeekly, 'sleepQuality', 'mediumpurple')
   } else {
     sleepChartLabel.innerText = 'Hours Slept'
-    barChart('.sl-bar-chart', sleepWeekly, 'hoursSlept', 'purple')
+    barChart('.sl-bar-chart', sleepWeekly, 'hoursSlept', 'mediumpurple')
   }
 }
 
 const writeDailySleep = () => {
   const userDailySleep = userSleep.getSleepInfoForSpecificDate('2019/09/22');
-  dailySleep.innerHTML += `
-    <p>Sleep Quality: ${userDailySleep.sleepQuality}</p>
-    <p>Hours Slept: ${userDailySleep.hoursSlept}</p>
-  `
+  document.querySelector('.js-sleep-hours-p').innerHTML = `Hours: <span class="sl-user-stat">${userDailySleep.hoursSlept}</span>`
+  document.querySelector('.js-sleep-quality-p').innerHTML = `Quality: <span class="sl-user-stat">${userDailySleep.sleepQuality}</span>`
 }
 
 const writeSleepAvg = () => {
@@ -167,9 +165,9 @@ const writeSleepAvg = () => {
   lifetimeSleepHoursAvg.innerHTML += `
     <p class="widget-text">
       You've slept
-      <span class="user-stat">${userLifetimeSleepHoursAvg}</span>
+      <span class="sl-user-stat">${userLifetimeSleepHoursAvg}</span>
       hours per day with an average quality of
-      <span class="user-stat">${userLifetimeSleepQualityAvg}</span>
+      <span class="sl-user-stat">${userLifetimeSleepQualityAvg}</span>
       since starting FitLit!
     </p>
   `
@@ -240,12 +238,12 @@ const createChartWithSelectedDates = () => {
 const toggleActivityChart = (data) => {
   if (activityRadios[0].checked) {
     activityChartLabel.innerText = 'Steps Per Day';
-    barChart('.ac-bar-chart', data, 'numSteps', 'tomato')
+    barChart('.ac-bar-chart', data, 'numSteps', 'chocolate')
   } else if (activityRadios[1].checked) {
-    barChart('.ac-bar-chart', data, 'flightsOfStairs', 'tomato')
+    barChart('.ac-bar-chart', data, 'flightsOfStairs', 'chocolate')
     activityChartLabel.innerText = 'Flights of Stairs Per Day';
   } else {
-    barChart('.ac-bar-chart', data, 'minutesActive', 'tomato')
+    barChart('.ac-bar-chart', data, 'minutesActive', 'chocolate')
     activityChartLabel.innerText = 'Minutes Active Per Day';
   }
 }
