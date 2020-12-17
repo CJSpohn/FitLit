@@ -14,7 +14,7 @@ describe('Hydration', () => {
   beforeEach(function() {
     users = new UserRepository(sampleUserData);
     currentUser = new User(users.users[0]);
-    userHydration = new Hydration(currentUser, sampleHydrationData)
+    userHydration = new Hydration(currentUser, sampleHydrationData, users)
   });
 
   it('should be a function', () => {
@@ -68,6 +68,12 @@ describe('Hydration', () => {
         "date": "2019/06/17",
         "numOunces": 96,
          "userID": 1
-    }]);
-  });
+       }])
+  })
+
+  it('should be able to get a user\'s daily hydration rank', () => {
+    let rank = userHydration.getUserRank();
+
+    expect(rank).to.equal(2)
+  })
 });
