@@ -177,7 +177,7 @@ const writeDailyActivity = () => {
   const activityToday = userActivity.getActivityForSpecificDate('2019/09/22');
   const milesWalked = userActivity.getMilesForSpecificDate('2019/09/22');
   document.querySelector('.js-ac-steps-p').innerHTML += `Steps: <span class="ac-user-stat">${activityToday.numSteps}</span>`
-  document.querySelector('.js-ac-stairs-p').innerHTML += `Stairs: <span class="ac-user-stat">${activityToday.flightsOfStairs}</span>`
+  document.querySelector('.js-ac-stairs-p').innerHTML += `Miles: <span class="ac-user-stat">${milesWalked}</span>`
   document.querySelector('.js-ac-minutes-p').innerHTML += `Minutes: <span class="ac-user-stat">${activityToday.minutesActive}</span>`
 }
 
