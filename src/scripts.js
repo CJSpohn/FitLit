@@ -11,12 +11,7 @@ const welcomeMessage = document.querySelector('.js-welcome');
 const infoCard = document.querySelector('.js-user-info');
 const lifetimeHydrationAvg = document.querySelector('.js-hy-lifetime-avg');
 const dailyHydration = document.querySelector('.js-hy-daily');
-const weeklyHydration = document.querySelector('.js-hy-weekly');
 const lifetimeSleepHoursAvg = document.querySelector('.js-sh-lifetime-avg');
-const dailySleep = document.querySelector('.js-sl-daily');
-const weeklySleep = document.querySelector('.js-sl-weekly');
-const dailyActivity = document.querySelector('.js-ac-daily');
-const activityComparison = document.querySelector('.js-ac-comparison');
 
 //buttons
 const hydrationButton = document.querySelector('.js-hydration');
@@ -103,6 +98,7 @@ const compareStepGoals = () => {
     `
   }
 }
+
 //WIDGET  CREATOR FUNCTIONS
 const writeWeeklyHydration = (date1, date2) => {
   const hydrationWeekly = userHydration.getHydrationDataForRange(date1, date2);
@@ -288,32 +284,36 @@ window.onload = () => {
   dropDownForUsers.innerHTML += `
     <option value='${user.id}'>${user.name}</option>
     `
-  })};
+  })
+};
 
 goToDashboardButton.addEventListener('click', goToDashboard);
 hydrationButton.addEventListener('click', function() {
-  displayPage('hydration')
+  displayPage('hydration');
 });
+
 sleepButton.addEventListener('click', function() {
-  displayPage('sleep')
+  displayPage('sleep');
 });
+
 activityButton.addEventListener('click', function() {
-  displayPage('activity')
+  displayPage('activity');
 });
+
 profileButton.addEventListener('click', function() {
-  displayPage('profile')
+  displayPage('profile');
 });
 
 sleepCheckBox.addEventListener('change', () => {
   createChartWithSelectedDates();
-})
+});
 
 activityRadios.forEach(radio => {
   radio.addEventListener('change', function() {
     createChartWithSelectedDates();
   })
-})
+});
 
 changeDateButton.addEventListener('click', function() {
   createChartWithSelectedDates();
-})
+});
