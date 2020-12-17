@@ -464,6 +464,10 @@ h3 {
     height: 29vh;
   }
 
+  .profile-widget {
+    height: 35vh;
+  }
+
   .widget-graph {
     width: 95vw;
     height: 47vh;
@@ -516,6 +520,18 @@ h3 {
 
   .date-start {
     margin-right:8vw;
+  }
+
+  .change-dates {
+    width: 20vw;
+  }
+
+  .widget-svg {
+    height: 11vh;
+  }
+
+  .js-hy-award-svg {
+    height: 8.4vh;
   }
 }
  /* and (max-device-width: 991px)  */
