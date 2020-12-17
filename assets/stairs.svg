@@ -12,7 +12,7 @@
     id="svg1395"
     sodipodi:docname="aiga_stairs_up_.svg"
     inkscape:export-filename="/home/joanna/gfx/vector/aiga/aiga_stairs_up_.png"
-    viewBox="0 0 265.14 365.14"
+    viewBox="0 0 395.14 365.14"
     sodipodi:version="0.32"
     inkscape:export-xdpi="49.323254"
     inkscape:output_extension="org.inkscape.output.svg.inkscape"
@@ -42,12 +42,12 @@
     >
     <path
         id="path1407"
-        style="fill:#000000"
+        style="fill:chocolate"
         d="m0 323.97h80.05v-81.47h79.53v-82.03h80.79v-80.496h80.24v-79.974h119.14v40.804h-79.2v80.276h-80.33v81.41h-80.17v80.98h-80.5v81.67h-119.55v-41.17z"
     />
     <path
         id="path1409"
-        style="fill:#000000"
+        style="fill:chocolate"
         d="m358.84 237.89h-70.79c-19.5 0-20.25 30 0 30h36.29l-69.02 69.01c-15.29 15.3 6.34 37.44 22.6 21.18l67.98-68.17v35.92c-0.1 19.5 30.15 20.25 30.2 0v-70.36c0-10.5-7.05-17.58-17.26-17.58z"
     />
   </g

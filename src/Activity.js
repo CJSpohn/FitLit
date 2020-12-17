@@ -1,11 +1,11 @@
 class Activity {
   constructor(user, activityData, userData) {
-    this.userID = user.id;
-    this.strideLength = user.strideLength;
-    this.userStepGoal = user.dailyStepGoal;
+    this.userID = user.id,
+    this.strideLength = user.strideLength,
+    this.userStepGoal = user.dailyStepGoal,
     this.userData = userData,
     this.activityData = activityData,
-    this.userActivityData = activityData.filter(data => this.userID === data.userID);
+    this.userActivityData = activityData.filter(data => this.userID === data.userID)
   }
 
   getMilesForSpecificDate(date) {

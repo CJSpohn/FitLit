@@ -35,10 +35,7 @@
 
         <section class="widget-display hidden js-profile-display">
           <h1 class="widget-header">Info</h1>
-          <section class="widget user-info js-user-info">
-          </section>
-          <h1 class="widget-header">Daily Goals</h1>
-          <section class=" widget step-goal-display js-step-goal">
+          <section class="widget profile-widget user-info js-user-info">
           </section>
         </section>
 
@@ -51,11 +48,12 @@
             </section>
             <section class="widget hy-lifetime-avg js-hy-lifetime-avg">
               <h2>All Time Average</h2>
+              <img class="js-hy-award" src="./assets/blue-award.svg" alt="An award ribbon"/>
             </section>
           </div>
           <h1 class="widget-header">This Week</h1>
           <section class="widget-graph hy-weekly js-hy-weekly">
-            <h2>Past Seven Days</h2>
+            <h2>Timeline</h2>
             <div class="chart-wrapper">
               <svg class="hy-bar-chart"></svg>
               <h3 class="graph-label">Ounces Consumed Per Day</h3>
@@ -69,17 +67,24 @@
             <section class="widget sl-daily js-sl-daily">
               <h2>Last Night</h2>
               <div class="sl-image-wrapper">
-                <img src="assets/bed.svg" alt="A bed"/>
-                <img src="assets/alarmclock.svg" alt="An alarm clock"/>
+                <div class="data-wrapper alarm-clock-wrapper">
+                  <img src="assets/alarmclock.svg" alt="An alarm clock"/>
+                  <p class="js-sleep-hours-p"></p>
+                </div>
+                <div class="data-wrapper">
+                  <img src="assets/bed.svg" alt="A bed"/>
+                  <p class="js-sleep-quality-p"></p>
+                </div>
               </div>
             </section>
             <section class="widget sh-lifetime-avg js-sh-lifetime-avg">
               <h2>All Time Average</h2>
+              <img src="./assets/purple-award.svg" alt="A blue award ribbon"/>
             </section>
           </div>
           <h1 class="widget-header">This Week</h1>
           <section class="widget-graph sl-weekly js-sl-weekly">
-            <h2>Past Seven Days</h2>
+            <h2>Timeline</h2>
             <div class="chart-wrapper">
               <svg class="sl-bar-chart"></svg>
               <h3 class="js-sl-chart-label sl-chart-label">Hours Slept</h3>
@@ -97,14 +102,25 @@
             <section class="widget ac-daily js-ac-daily">
               <h2>Your Fitness</h2>
               <div class="ac-image-wrapper">
-                <img src="assets/shoeprint.svg" alt="Foot prints"/>
-                <img src="assets/stairs.svg" alt="Stair Case"/>
-                <img src="assets/stopwatch.svg" alt="Stopwatch"/>
+                <div class="ac-data-wrapper">
+                  <img src="assets/shoeprint.svg" alt="Foot prints"/>
+                  <p class="js-ac-steps-p"></p>
+                </div>
+                <div class="ac-data-wrapper">
+                  <img src="assets/miles.svg" alt="Stair Case"/>
+                  <p class="js-ac-stairs-p"></p>
+                </div>
+                <div class="ac-data-wrapper">
+                  <img src="assets/stopwatch.svg" alt="Stopwatch"/>
+                  <p class="js-ac-minutes-p"></p>
+                </div>
               </div>
             </section>
             <section class="widget ac-comparison js-ac-comparison">
-              <h2>You Vs. Them</h2>
-              <p class="widget-text">See how you compare to all of our users</p>
+              <div>
+                <h2>You Vs. Them</h2>
+                <p class="widget-text">See how today's numbers stack up against other users</p>
+              </div>
               <div class="compare-wrapper">
                 <div>
                   <h3>Steps:</h1>
@@ -123,7 +139,7 @@
           </div>
           <h1 class="widget-header">This Week</h1>
           <section class="widget-graph ac-weekly js-ac-weekly">
-            <h2>Past Seven Days</h2>
+            <h2>Timeline</h2>
             <svg class="ac-bar-chart"></svg>
             <h3 class="js-ac-label">Steps Per Day</h3>
             <div class="ac-radio">
@@ -143,9 +159,11 @@
           </section>
         </section>
         <section class="date-wrapper">
-          <p class="date-picker-heading">View Your Data For
-          <input type="date" class="date-start" max="2019-09-22" min="2019-06-15" value="2019-06-15"></input>
-          <input type="date" class="date-end" max="2019-09-22" min="2019-06-15" value="2019-06-21"></input>
+          <p class="date-picker-heading">Change your data range
+          <div class="date-input-wrapper">
+            <input type="date" class="date-start" max="2019-09-22" min="2019-06-15" value="2019-06-15"></input>
+            <input type="date" class="date-end" max="2019-09-22" min="2019-06-15" value="2019-06-21"></input>
+          </div>
           <button class="change-dates">View</button>
         </section>
       </section>
