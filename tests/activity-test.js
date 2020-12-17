@@ -133,4 +133,10 @@ describe('Activity', () => {
 
     expect(allUserAverage).to.eql({ "numSteps": 5374.5, "minutesActive": 197.5, "flightsOfStairs": 36.5 })
   })
+
+  it('should calculuate the user differences for a user against all avgs', () => {
+    let differences = userActivity.calculateUserDifferences('2019/06/17')
+
+    expect(differences).to.eql({minutesActive: 51, flightsOfStairs: 7, numSteps: 289})
+  })
 });
